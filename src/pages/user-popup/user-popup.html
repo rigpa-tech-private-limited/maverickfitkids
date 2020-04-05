@@ -1,0 +1,44 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <form class="form" [formGroup]="validations_form_user" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <ion-item class="user-item">
+                <ion-input text-center [(ngModel)]="loginData.username" formControlName="username" type="text" placeholder="Username"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.username">
+                  <div text-center class="error-message" *ngIf="validations_form_user.get('username').hasError(validation.type) && (validations_form_user.get('username').dirty || validations_form_user.get('username').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <ion-item class="user-item">
+                <ion-input text-center [(ngModel)]="loginData.password" formControlName="password" type="password" placeholder="Password"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <div text-center class="error-message" *ngIf="validations_form_user.get('password').hasError(validation.type) && (validations_form_user.get('password').dirty || validations_form_user.get('password').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+      <button type="submit" class="hiddenSubmitBtn"></button>
+    </form>
+    <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_user.valid" (click)="checkUserDetails()">Submit</button>
+  </div>
+</ion-content>

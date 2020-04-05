@@ -1,0 +1,90 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h2 text-center class="KaushanScript-Regular top-title">Happy Day {{studentName}} !</h2>
+  <ion-grid class="zero-margin zero-padding">
+    <ion-row class="zero-margin zero-padding">
+      <ion-col col-12>
+        <ion-avatar class="add-photo-circle">
+          <img src="{{imgPreview}}">
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <h2 text-center class="KaushanScript-Regular star-title">Trust that was fun !</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 class="stars">
+        <p text-center class="KaushanScript-Regular">
+          Your progress this week
+        </p>
+        <div class="star-holder">
+          <div class="day-star">
+            <img *ngIf="starList[0].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[0].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>S</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="starList[1].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[1].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>M</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="starList[2].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[2].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>T</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="starList[3].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[3].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>W</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="starList[4].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[4].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>T</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="starList[5].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[5].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>F</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="starList[6].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="starList[6].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>S</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

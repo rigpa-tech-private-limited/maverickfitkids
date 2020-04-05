@@ -1,0 +1,45 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="imageContent" style="visibility:visible;">
+    <ion-row class="zero-margin zero-padding text-image-icon">
+      <ion-col col-10 class="zero-margin zero-padding">
+        <h2 text-left class="highlight-text KaushanScript-Regular">Did you Know?</h2>
+      </ion-col>
+      <ion-col col-2 class="zero-margin zero-padding">
+        <img src="assets/icon/text_icon.png" (click)="showImageOrText(1)">
+      </ion-col>
+    </ion-row>
+    <img [src]="insightContent.imagePath" />
+  </div>
+  <div class="textContent" style="visibility:hidden;height:0;">
+    <ion-row class="zero-margin zero-padding text-image-icon">
+      <ion-col col-10 class="zero-margin zero-padding">
+        <h2 text-left class="highlight-text KaushanScript-Regular">Did you Know?</h2>
+      </ion-col>
+      <ion-col col-2 class="zero-margin zero-padding">
+        <img src="assets/icon/image_icon.png" (click)="showImageOrText(2)">
+      </ion-col>
+    </ion-row>
+    <div class="content-inner" id="insight-content"></div>
+  </div>
+
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,35 @@
+// App Variables and Theming.
+$font-path: "../assets/fonts";
+$app-direction: ltr;
+@import "ionic.globals";
+$colors: (
+  primary: #021337,
+  secondary: #2D609A,
+  danger: #F41010,
+  light: #f4f4f4,
+  dark: #222,
+  base: #FFF,
+);
+$tabs-tab-color-active: color($colors, secondary, base);
+$tabs-background: color($colors, primary, base); //$background-color: color($colors, dark, base);
+//$list-border-color: color($colors, light, base);
+$text-color: color($colors, primary, base); //$card-md-header-color:  color($colors, light, base);
+//$card-ios-header-color:  color($colors, light, base);
+// App iOS Variables
+// App Material Design Variables
+// App Windows Variables
+// App Theme
+@import "ionic.theme.default"; // Ionicons
+@import "ionic.ionicons"; // Fonts
+@import "roboto";
+@import "noto-sans";
+@font-face {
+  font-family: 'Montserrat-Regular';
+  font-style: normal;
+  src: url("../assets/fonts/Montserrat/Montserrat-Regular.otf");
+}
+@font-face {
+  font-family: 'KaushanScript-Regular';
+  font-style: normal;
+  src: url("../assets/fonts/KaushanScript/KaushanScript-Regular.otf");
+}

@@ -1,0 +1,108 @@
+page-query {
+  .question-answer,
+  .textContent {
+    float: left;
+    width: 100%;
+  }
+
+  .textContent {
+    height: 100%;
+  }
+
+  .question {
+    float: left;
+    background: #d4d2d2;
+    text-align: right;
+    width: 80%;
+    padding: 3vw;
+    margin: 1vw;
+    line-height: 2.5rem;
+    border: 1px solid #000;
+  }
+
+  .answer {
+    float: right;
+    background: #d4d2d2;
+    text-align: left;
+    width: 80%;
+    padding: 3vw;
+    margin: 1vw;
+    line-height: 2.5rem;
+    border: 1px solid #000;
+  }
+
+  button {
+    background-color: #ff4301 !important;
+    color: #fff !important;
+  }
+
+  .query-form {
+    bottom: 0;
+    position: absolute;
+  }
+
+  .list .item-block .item-inner {
+    border: 1px solid #031337 !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    background: #D4D2D3 !important;
+    box-shadow: inset 0 -1px 0 0 #D4D2D3 !important;
+  }
+
+  .toolbar-background {
+    background: #fff !important;
+  }
+
+  #footer-container ion-col {
+    background: #FFF;
+  }
+
+  .footer-icons-holder,
+  .footer-icons-holder ion-col {
+    background: #021337 !important;
+  }
+
+  .button {
+    padding: 1em !important;
+  }
+
+  input {
+    padding: 0.6em !important;
+  }
+
+  .flex-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .admin-avatar,
+  .user-avatar {
+    width: 9vw;
+    height: 9vw;
+    -webkit-border-radius: 9vw;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 9vw;
+    -moz-background-clip: padding;
+    border-radius: 9vw;
+    background-clip: padding-box;
+    margin: 1.5vw 2vw;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .user-avatar {
+    float: left;
+  }
+
+  .admin-avatar {
+    background-image: url("../assets/icon/m_icon.png");
+    background-color: #ff7c00;
+    float: right;
+  }
+  @media screen and (min-width : 767px) {
+    .scroll-content,
+    ion-content {
+      padding: 0 20% !important;
+    }
+  }
+}

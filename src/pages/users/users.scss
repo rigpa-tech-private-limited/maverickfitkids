@@ -1,0 +1,235 @@
+page-users {
+  h2 {
+    margin: 1rem 0 !important;
+  }
+
+  .not-visible {
+    visibility: hidden;
+  }
+
+  .toggle {
+    padding: 5px !important;
+  }
+
+  .user-profile-avatar {
+    width: 12vw;
+    height: 12vw;
+    -webkit-border-radius: 12vw;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 12vw;
+    -moz-background-clip: padding;
+    border-radius: 12vw;
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+    background-image: url("../assets/imgs/add_user.png");
+    margin: 0 1.5vw;
+  }
+
+  .lockunlock {
+    width: 7vw;
+    height: 7vw;
+    float: left;
+  }
+
+  .lockunlock-switch{
+    justify-content: flex-end;
+  }
+
+  .users-row ion-col {
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  .users-row {
+    padding: 3vw 0 !important;
+    border-bottom: 1px solid #021337;
+  }
+
+  .user-label img {
+    width: 2vw;
+    height: 2vw;
+  }
+
+  .user-label p {
+    font-weight: bold;
+  }
+
+  .user-stars img {
+    width: 3vw;
+    height: 3vw;
+    float: left;
+    margin: 5px;
+  }
+
+  .instruction-icons-holder {
+    background: #fff !important;
+  }
+
+  .toolbar-background {
+    background: #fff !important;
+  }
+
+  #footer-container ion-col p {
+    color: #021337 !important;
+  }
+
+  .footer-icons-holder {
+    background: #021337 !important;
+  }
+
+  .instruction-icon {
+    width: 15vw;
+    margin: 0 auto;
+    display: table;
+  }
+
+  .help-text {
+    font-size: 1.2rem !important;
+  }
+
+  .red-dot {
+    width: 3vw;
+    height: 3vw;
+    padding: 1vw;
+    color: red;
+    background: red;
+  }
+
+  /*Create ripple effec*/
+
+.ripple1 {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple1:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.ripple1:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+.ripple2 {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple2:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.ripple2:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+.ripple3 {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple3:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.ripple3:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+.ripple4 {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple4:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.ripple4:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+  //iPad Pro
+  @media screen and (min-width : 768px) {
+    .user-profile-avatar {
+      width: 6vw;
+      height: 6vw;
+    }
+
+    .lockunlock {
+      width: 4vw;
+      height: 4vw;
+    }
+
+    .instruction-icon {
+      width: 10vw;
+    }
+  }
+}

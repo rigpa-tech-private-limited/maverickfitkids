@@ -1,0 +1,60 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <nav class='menu'>
+    <input checked='checked' class='menu-toggler' id='menu-toggler' type='checkbox'>
+    <label class="label-home"></label>
+    <ul>
+      <li class='menu-item 1'>
+        <a class='fa' (click)="sportsSelect('0')"><img src="{{sportsImg1}}" /></a>
+        <p>{{sportsName1}}</p>
+      </li>
+      <li class='menu-item 2'>
+        <a class='fa' (click)="sportsSelect('1')"><img src="{{sportsImg2}}" /></a>
+        <p>{{sportsName2}}</p>
+      </li>
+      <li class='menu-item 3'>
+        <a class='fa' (click)="sportsSelect('2')"><img src="{{sportsImg3}}" /></a>
+        <p>{{sportsName3}}</p>
+      </li>
+      <li class='menu-item 4'>
+        <a class='fa' (click)="sportsSelect('3')"><img src="{{sportsImg4}}" /></a>
+        <p>{{sportsName4}}</p>
+      </li>
+      <li class='menu-item 5'>
+        <a class='fa' (click)="sportsSelect('4')"><img src="{{sportsImg5}}" /></a>
+        <p>{{sportsName5}}</p>
+      </li>
+      <li class='menu-item 6'>
+        <a class='fa' (click)="sportsSelect('5')"><img src="{{sportsImg6}}" /></a>
+        <p>{{sportsName6}}</p>
+      </li>
+      <li class='menu-item 7'>
+        <a class='fa' (click)="sportsSelect('7')"><img src="{{sportsImg7}}" /></a>
+        <p [innerHTML]="sportsName7"></p>
+      </li>
+      <li class='menu-item 8'>
+        <a class='fa' (click)="sportsSelect('6')"><img src="{{sportsImg8}}" /></a>
+        <p>{{sportsName8}}</p>
+      </li>
+    </ul>
+  </nav>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

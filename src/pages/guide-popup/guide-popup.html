@@ -1,0 +1,41 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <form class="form" [formGroup]="validations_form_select_type" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <ion-item class="student_class">
+                <ion-select text-center [(ngModel)]="guideData.exercise" formControlName="exercise" (ionChange)="onSelectChange($event)" cancelText="Cancel" okText="OK" placeholder="Select Exercise Type">
+                  <ion-option [value]="exercise.exerciseTypeCode" *ngFor="let exercise of exercises">{{exercise.exerciseTypeName}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.exercise">
+                  <div text-center class="error-message" *ngIf="validations_form_select_type.get('exercise').hasError(validation.type) && (validations_form_select_type.get('exercise').dirty || validations_form_select_type.get('exercise').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <ion-item class="student_class">
+                <ion-select text-center [(ngModel)]="guideData.implementation" formControlName="implementation" cancelText="Cancel" okText="OK" placeholder="Select Implementation Type">
+                  <ion-option [value]="implementation.implementationCode" *ngFor="let implementation of implementations">{{implementation.implementationName}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+      <button type="submit" class="hiddenSubmitBtn"></button>
+    </form>
+    <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_select_type.valid" (click)="getGuideDetails()">Submit</button>
+  </div>
+</ion-content>

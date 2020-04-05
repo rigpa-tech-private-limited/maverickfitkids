@@ -1,0 +1,32 @@
+page-insight {
+  h2 {
+    margin: 1.5rem 0 !important;
+  }
+
+  .textContent {
+    padding: 0 0 30px;
+  }
+
+  .text-image-icon img {
+    padding: 0;
+    max-width: 75%;
+    float: right;
+    margin: 10px !important;
+  }
+
+  .imageContent img {
+    display: table;
+    margin: 0 auto;
+  }
+
+  .textContent p {
+    text-align: justify;
+    line-height: 2rem;
+  }
+
+  .content-inner {
+    text-align: justify;
+    line-height: 2rem;
+    white-space: pre-wrap;
+  }
+}

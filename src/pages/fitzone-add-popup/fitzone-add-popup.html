@@ -1,0 +1,45 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <form class="form" [formGroup]="validations_form_user" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <p>
+                Enter your friend's MFK#
+              </p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <ion-item class="user-item">
+                <ion-input text-center [(ngModel)]="mfkID" formControlName="mfkID" type="text" placeholder="MFK#"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.mfkID">
+                  <div text-center class="error-message" *ngIf="validations_form_user.get('mfkID').hasError(validation.type) && (validations_form_user.get('mfkID').dirty || validations_form_user.get('mfkID').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+      <button type="submit" class="hiddenSubmitBtn"></button>
+    </form>
+    <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_user.valid" (click)="verifyMFKID()">Verify</button>
+    <ion-row class="zero-margin zero-padding">
+      <ion-col col-12>
+        <ion-avatar class="add-photo-circle">
+          <img src="{{imgPreview}}">
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+    <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!MFKverified" (click)="SendRequest()">Send Request</button>
+  </div>
+</ion-content>

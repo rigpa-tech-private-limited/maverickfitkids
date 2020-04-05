@@ -1,0 +1,67 @@
+page-fit-fest {
+  h2 {
+    margin: 1.5rem 0 !important;
+  }
+
+  .text-image-icon img {
+    padding: 0;
+    max-width: 75%;
+    float: right;
+    margin: 10px !important;
+  }
+
+  .fitfest-logo img {
+    max-width: 80%;
+    margin: 3vh auto 1vh;
+    display: table;
+  }
+
+  .fitfest-heads,
+  .fitfest-list,
+  .fitfest-row,
+  .pre-fitfest-list {
+    display: flex;
+    align-items: center;
+  }
+
+  .fitfest-list img,
+  .pre-fitfest-list img {
+    width: 30%;
+    float: left;
+    padding: 1vw;
+  }
+
+  .fitfest-list p,
+  .pre-fitfest-list p {
+    width: 70%;
+    float: left;
+    padding: 1vw;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .fitfest-heads p {
+    float: right;
+    font-weight: bold;
+    width: 100%;
+    text-align: right;
+    font-family: "KaushanScript-Regular" !important;
+    font-size: 1.2rem;
+  }
+
+  .action-msg {
+    width: 100% !important;
+    float: left !important;
+    text-align: justify !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .fitfest-heads .width-100,
+  .fitfest-list .width-100,
+  .pre-fitfest-list .width-100 {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 6vw;
+  }
+}

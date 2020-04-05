@@ -1,0 +1,37 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <ion-list inset class="zero-margin zero-padding">
+      <ion-grid class="zero-margin zero-padding">
+        <ion-row class="zero-margin zero-padding">
+          <ion-col col-12>
+            <p>
+              {{mfkID}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding">
+          <ion-col col-12>
+            <ion-avatar class="add-photo-circle">
+              <img src="{{imgPreview}}">
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-12>
+            <p>
+              would like to connect with you to get inspired by your progress in fitness.
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding">
+          <ion-col col-6>
+            <button class="submit-btn KaushanScript-Regular" ion-button color="white" (click)="acceptRequest()">Accept</button>
+          </ion-col>
+          <ion-col col-6>
+            <button class="submit-btn KaushanScript-Regular" ion-button color="white" (click)="rejectRequest()">Decline</button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-list>
+  </div>
+</ion-content>

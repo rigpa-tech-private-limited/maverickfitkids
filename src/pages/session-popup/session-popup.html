@@ -1,0 +1,55 @@
+<ion-content padding>
+  <div class="popup-backdrop"></div>
+  <div class="popup-icons-holder" color="primary">
+    <button id="x" (click)="closeModal()">X</button>
+    <ion-row>
+      <ion-col col-12>
+        <p>
+          How was your Maverick session at school this week?
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-2>
+        <img src="assets/imgs/similey/similey1.png">
+      </ion-col>
+      <ion-col col-2>
+        <img src="assets/imgs/similey/similey2.png">
+      </ion-col>
+      <ion-col col-2>
+        <img src="assets/imgs/similey/similey3.png">
+      </ion-col>
+      <ion-col col-2>
+        <img src="assets/imgs/similey/similey4.png">
+      </ion-col>
+      <ion-col col-2>
+        <img src="assets/imgs/similey/similey5.png">
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-2>
+        <input type="radio" name="soption" id="soption" value="1" (click)="submitFeedback('1')" />
+      </ion-col>
+      <ion-col col-2>
+        <input type="radio" name="soption" id="soption" value="2" (click)="submitFeedback('2')" />
+      </ion-col>
+      <ion-col col-2>
+        <input type="radio" name="soption" id="soption" value="3" (click)="submitFeedback('3')" />
+      </ion-col>
+      <ion-col col-2>
+        <input type="radio" name="soption" id="soption" value="4" (click)="submitFeedback('4')" />
+      </ion-col>
+      <ion-col col-2>
+        <input type="radio" name="soption" id="soption" value="5" (click)="submitFeedback('5')" />
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h2 text-center class="KaushanScript-Regular top-title">Quiz</h2>
+  <ion-grid class="zero-margin zero-padding">
+    <ion-row>
+      <ion-col col-12 class="stars">
+        <div class="star-holder">
+          <div class="day-star">
+            <img src="assets/imgs/star1.png" />
+          </div>
+          <div class="day-star">
+            <img src="assets/imgs/star2.png" />
+          </div>
+          <div class="day-star">
+            <img src="assets/imgs/star3.png" />
+          </div>
+          <div class="day-star">
+            <img src="assets/imgs/star4.png" />
+          </div>
+          <div class="day-star">
+            <img src="assets/imgs/star5.png" />
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let quizDate of quizHistoryDate; let i = index;let quizList of quizHistoryListArr; let j = index;">
+      <ion-col col-1 class="progress">
+        <p>
+          {{quizDate.date}}
+        </p>
+      </ion-col>
+      <ion-col col-11 class="progress" *ngIf="quizHistoryListArr">
+        <div class="progress-line" [style.background-color]="quizHistoryListArr[i].colorValue" [style.width.%]="quizHistoryListArr[i].starValue*20"> </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

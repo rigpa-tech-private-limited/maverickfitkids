@@ -1,0 +1,39 @@
+page-user-detail {
+  .add-photo-circle {
+    display: table;
+    margin: 5px auto;
+  }
+
+  .add-photo-circle img {
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #031337 !important;
+  }
+
+  .top-title {
+    margin: 5px auto !important;
+  }
+
+  ion-row ion-col p {
+    margin: 2px 0;
+  }
+
+  .item {
+    padding-left: 0 !important;
+  }
+
+  #footer-container ion-col {
+    background: #FFF;
+  }
+
+  .toolbar-background {
+    background: #fff !important;
+  }
+
+  .footer-icons-holder,
+  .footer-icons-holder ion-col {
+    background: #021337 !important;
+  }
+}

@@ -1,0 +1,261 @@
+// App Global Sass
+// --------------------------------------------------
+
+* {
+  font-family: "Montserrat-Regular" !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) ion-navbar {
+  margin-top: 20px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) ion-content {
+  margin-top: 20px;
+}
+
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.float-none {
+  float: none !important;
+}
+
+.Montserrat-Regular {
+  font-family: "Montserrat-Regular" !important;
+}
+
+.KaushanScript-Regular,
+.KaushanScript-Regular .button-inner {
+  font-family: "KaushanScript-Regular" !important;
+}
+
+.zero-margin {
+  margin: 0 !important;
+}
+
+.zero-padding {
+  padding: 0 !important;
+}
+
+.loading-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+ion-footer,
+ion-footer ion-toolbar {
+  min-height: 4em !important;
+}
+
+ion-header,
+ion-header ion-navbar,
+ion-header ion-navbar .toolbar-background-ios,
+ion-header ion-navbar .toolbar-background-md {
+  background: linear-gradient(to right, color($colors, primary, base), color($colors, secondary, base)) !important;
+}
+
+.error-message {
+  color: color($colors, danger, base) !important;
+}
+
+.submit-btn {
+  display: table;
+  margin: 0 auto;
+  border: 1px solid #031337;
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+.hiddenSubmitBtn {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.alert-wrapper {
+  max-width: 90% !important;
+}
+
+.list-md .item-input.input-has-focus:last-child,
+.list-md .item-input.item-input-has-focus:last-child {
+  border-bottom-color: #fff !important;
+  box-shadow: none !important;
+}
+
+.item-block .item-inner {
+  border-bottom: 0 !important;
+}
+
+.back-button {
+  visibility: hidden !important;
+  display: none !important;
+}
+
+.back-icon {
+  width: 10vw;
+  margin: 1vw auto;
+}
+
+.action-icon {
+  width: 10vw;
+  margin: 0 auto;
+  display: table;
+}
+
+.align-center {
+  margin: 0 auto;
+  display: table;
+}
+
+.text-input {
+  margin: 0.1rem 0 !important;
+}
+
+p {
+  margin: 0.5rem 0 !important;
+}
+
+ion-list[inset] {
+  margin: 5px 0 !important;
+}
+
+.footer-icons-holder img {
+  float: right;
+}
+
+ion-header ion-navbar {
+  min-height: 15px !important;
+}
+
+.toolbar {
+  padding: 0 !important;
+}
+
+.list-ios[inset] .item {
+  border: none !important;
+}
+
+.button {
+  height: auto !important;
+  padding: 0.5em 1em !important;
+}
+
+.item-block {
+  min-height: 3rem !important;
+  padding: 0 !important;
+}
+
+.datetime {
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.logo-img {
+  max-width: 70%;
+  border: 0;
+  margin-right: 20px;
+}
+
+.exercise-modal .modal-wrapper {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  left: unset !important;
+  top: unset !important;
+
+  .ion-page {
+    ion-content {
+      background-color: transparent !important;
+    }
+  }
+}
+
+.footer-icons-holder .add-photo-circle {
+  display: table;
+  margin: 0 auto;
+}
+
+.footer-icons-holder .add-photo-circle img {
+  width: 9vw;
+  height: 9vw;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 2vw 0 0;
+}
+
+.footer-icons-holder .back-icon,
+.footer-icons-holder .home-icon,
+.footer-icons-holder .profile-avatar,
+.footer-icons-holder .settings-icon {
+  width: 9vw;
+  height: 9vw;
+  -webkit-border-radius: 9vw;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 9vw;
+  -moz-background-clip: padding;
+  border-radius: 9vw;
+  background-clip: padding-box;
+  margin: 1.5vw 2vw;
+  background-size: cover;
+  background-position: center center;
+  float: left;
+}
+
+.footer-icons-holder .settings-icon {
+  background-image: url("../assets/icon/settings.png");
+}
+
+.footer-icons-holder .home-icon {
+  background-image: url("../assets/imgs/home_icon.png");
+}
+
+.footer-icons-holder .back-icon {
+  background-image: url("../assets/imgs/back_icon.png");
+}
+
+.user-confirm-page ion-col {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.highlight-text {
+  color: #f58220;
+}
+
+.help-text {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.vertical-align-content > * {
+  display: flex!important;
+  align-content: center!important;
+  align-items: center!important;
+}
+@media screen and (min-width : 767px) {
+  .scroll-content,
+  ion-content {
+    padding: 0 20% !important;
+  }
+}
+//iPhone 5s/SE
+@media screen and (min-height: 320px) and (max-height : 480px) {
+  html {
+    font-size: 50% !important;
+  }
+}
+//iPhone 5s/SE
+@media screen and (min-width: 767px) {
+  html {
+    font-size: 72.5% !important;
+  }
+}

@@ -1,0 +1,194 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="textContent" *ngIf="!showFriendReuslt">
+    <ion-row class="zero-margin zero-padding text-image-icon" *ngIf="!showReuslt">
+      <ion-col col-12 class="zero-margin zero-padding">
+        <p text-center class="wellbeing-content KaushanScript-Regular" [innerHTML]="wellbeingContent"></p>
+        <br />
+        <p class="note-txt-normal">
+          * Your friends have to confirm your transformation
+        </p>
+        <br />
+        <p class="note-txt-red">
+          * Impasse Alert
+        </p>
+        <p class="note-txt-red">
+          Mutual endorsements will not be validated
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="zero-margin zero-padding acceptancecode-result" *ngIf="showReuslt">
+      <ion-col col-12 class="zero-margin zero-padding">
+        <h2 text-center class="highlight-text KaushanScript-Regular">Transform Challenge</h2>
+      </ion-col>
+      <h2 text-center class="highlight-text KaushanScript-Regular">Congratulations !</h2>
+      <ion-col col-12>
+        <ion-avatar class="add-photo-circle">
+          <img src="{{imgPreview}}">
+        </ion-avatar>
+        <p class="user-star">{{acceptByCount}}</p>
+      </ion-col>
+      <ion-col col-12>
+        <p text-center class="highlight-text help-txt">
+          A friend has endorsed your transformation today !
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 class="stars" *ngIf="transformList">
+        <p text-center class="wellbeing-content KaushanScript-Regular">
+          Click on image below to endorse your friend’s transformation today
+        </p>
+        <div class="star-holder friendstar">
+          <div class="day-star" *ngFor="let transform of transformList; let i = index;">
+            <img src="{{(transform.friendsStudentImage!=null && transform.friendsStudentImage!='')?baseUrl+transform.friendsStudentImage:'assets/imgs/no_image.png'}}" (click)="getStudentFriendChallenge(transform)" />
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-12 class="progress">
+        <p text-center class="KaushanScript-Regular">
+          Your progress this week
+        </p>
+        <div class="progress-div">
+          <div class="progress-line" [style.width.%]="progressValue"> </div>
+        </div>
+      </ion-col>
+      <ion-col col-12 class="stars">
+        <div class="star-holder" *ngIf="starList">
+          <div class="day-star">
+            <img src="{{starValueImg1}}" />
+            <br />
+            <p>1</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg2}}" />
+            <br />
+            <p>2</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg3}}" />
+            <br />
+            <p>3</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg4}}" />
+            <br />
+            <p>4</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg5}}" />
+            <br />
+            <p>5</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg6}}" />
+            <br />
+            <p>6</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg7}}" />
+            <br />
+            <p>7</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="textContent" *ngIf="showFriendReuslt">
+    <ion-row class="zero-margin zero-padding acceptancecode-result">
+      <ion-col col-12 class="zero-margin zero-padding">
+        <p text-center class="highlight-text KaushanScript-Regular">You are about to endorse the transformation of</p>
+      </ion-col>
+
+      <ion-col col-12>
+        <ion-avatar class="add-photo-circle">
+          <img src="{{imgPreviewFriend}}">
+        </ion-avatar>
+      </ion-col>
+      <ion-col col-12>
+        <p text-center class="highlight-text KaushanScript-Regular">
+          in the following challenge issued today:
+        </p>
+        <p text-center class="wellbeing-content KaushanScript-Regular" [innerHTML]="friendwellbeingContent"></p>
+
+      </ion-col>
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="markStarForFriendsTransformationChallenge()">Endorse</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col col-12 class="stars">
+        <p text-center class="KaushanScript-Regular">
+          Your endorsement to this friend this week...
+        </p>
+        <div class="star-holder" *ngIf="friendstarList">
+          <div class="day-star">
+            <img *ngIf="friendstarList[0].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[0].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>S</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="friendstarList[1].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[1].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>M</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="friendstarList[2].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[2].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>T</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="friendstarList[3].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[3].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>W</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="friendstarList[4].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[4].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>T</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="friendstarList[5].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[5].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>F</p>
+          </div>
+          <div class="day-star">
+            <img *ngIf="friendstarList[6].starValue=='0'" src="assets/imgs/star_gray.png" />
+            <img *ngIf="friendstarList[6].starValue=='1'" src="assets/imgs/star_orange.png" />
+            <br />
+            <p>S</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

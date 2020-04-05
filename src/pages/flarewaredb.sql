@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY,first_name TEXT,last_name TEXT,email TEXT,password TEXT,user_name TEXT,country_code TEXT,mobile INTEGER);
+CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY, name TEXT, email TEXT,country_code TEXT, mobile TEXT, message TEXT,verified TEXT);

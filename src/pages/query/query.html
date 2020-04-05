@@ -1,0 +1,58 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="textContent" *ngIf="querylist">
+    <div class="question-answer" *ngFor="let query of querylist; let i = index;">
+      <div class="question" *ngIf="query.queryContent">
+        <p>
+          {{query.queryDate}}
+        </p>
+        <p>{{query.queryContent}}
+          <span class="user-avatar"></span>
+        </p>
+      </div>
+      <div class="answer" *ngIf="query.feedBack">
+        <p>
+          {{query.queryDate}}
+        </p>
+        <p>{{query.feedBack}}
+          <span class="admin-avatar"></span>
+        </p>
+      </div>
+    </div>
+    <div class="query-form">
+
+    </div>
+  </div>
+</ion-content>
+<ion-footer color='primary' no-border id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="action-icons-holder">
+      <ion-col col-10>
+        <ion-list inset class="zero-margin zero-padding">
+          <ion-grid class="zero-margin zero-padding">
+            <ion-item class="user-item">
+              <ion-input text-center [(ngModel)]="queryinput" type="text" placeholder=""></ion-input>
+            </ion-item>
+          </ion-grid>
+        </ion-list>
+      </ion-col>
+      <ion-col col-2 class="flex-btn">
+        <button class="submit-btn KaushanScript-Regular" ion-button color="white" (click)="saveQueryDetails()">Send</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

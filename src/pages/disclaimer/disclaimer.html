@@ -1,0 +1,32 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h2 text-center class="KaushanScript-Regular">Disclaimer</h2>
+  <p [innerHTML]="disclaimerContent"></p>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar class="zero-margin zero-padding">
+    <ion-row class="action-icons-holder">
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="goHome()">Agree</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-2>
+        <!-- <img src="assets/imgs/back_icon.png" class="back-icon" (click)="goBack()"> -->
+        &nbsp;
+      </ion-col>
+      <ion-col col-2>
+        &nbsp;
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

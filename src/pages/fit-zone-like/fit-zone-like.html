@@ -1,0 +1,30 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <button id="x" (click)="closeModal()">X</button>
+    <div text-center>
+      <ion-row>
+        <ion-col col-3></ion-col>
+        <ion-col col-6>
+          <p class="fist">&nbsp;</p>
+          <img class="usr-img" src="{{imgPreview}}" />
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h2>{{intendItem}}</h2>
+          <!-- <p>{{quote}}</p> -->
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-5></ion-col>
+        <ion-col col-2 class="like-col">
+          <!--img src="assets/imgs/like_icon_white.png" /-->
+          <img src="{{likeImg}}" (click)="giveLikesForFriendToBeList()" />
+        </ion-col>
+        <ion-col col-5></ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

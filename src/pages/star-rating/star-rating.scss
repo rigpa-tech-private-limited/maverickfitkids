@@ -1,0 +1,59 @@
+page-star-rating {
+  .add-photo-circle {
+    display: table;
+    margin: 5px auto;
+  }
+
+  .add-photo-circle img {
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #031337 !important;
+  }
+
+  .top-title {
+    margin: 5px auto !important;
+  }
+
+  .star-holder {
+    display: table;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .day-star {
+    float: left;
+    width: auto;
+  }
+
+  .day-star img {
+    width: 11vw;
+    padding: 1vw;
+  }
+  @media screen and (min-width: 767px) {
+    .day-star img {
+      width: 7vw;
+      padding: 1vw;
+    }
+
+    .add-photo-circle {
+      margin: 15px auto;
+    }
+
+    .add-photo-circle img {
+      width: 30vw;
+      height: 30vw;
+    }
+  }
+
+  .day-star p {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .star-title {
+    color: #F41010;
+  }
+}

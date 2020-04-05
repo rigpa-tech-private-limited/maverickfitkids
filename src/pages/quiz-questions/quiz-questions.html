@@ -1,0 +1,66 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="quiz-questions" *ngIf="quizShown">
+    <ion-row class="zero-margin zero-padding text-image-icon">
+      <ion-col col-12>
+        <h2 text-center class="KaushanScript-Regular">Quiz # <span [innerHTML]="quizId"> # </span></h2>
+        <input type="hidden" name="QuizId" id="QuizId" value="{{quizId}}">
+      </ion-col>
+      <!-- <ion-col col-2>
+        <img src="assets/icon/text_icon.png" (click)="showQuizResults()">
+      </ion-col> -->
+    </ion-row>
+    <ion-row *ngFor="let quiz of quizList; let i = index;">
+      <ion-col col-12>
+        <p text-left>{{i+1}}. {{quiz.question}}</p>
+        <input type="hidden" name="Question{{i+1}}" id="Question{{i+1}}" value="{{quiz.questionId}}">
+      </ion-col>
+      <ion-col [attr.col-12]="quiz.optionType == '0'? true : null" [attr.col-3]="quiz.optionType == '1'? true : null">
+        <input type="radio" name="option{{i+1}}" id="option{{i+1}}" value="A" class="checkbox" />
+        <label *ngIf="quiz.optionType == '0'">{{quiz.option1}}</label>
+        <img *ngIf="quiz.optionType == '1'" src="{{baseUrl+quiz.ioption1}}" />
+      </ion-col>
+      <ion-col [attr.col-12]="quiz.optionType == '0'? true : null" [attr.col-3]="quiz.optionType == '1'? true : null">
+        <input type="radio" name="option{{i+1}}" id="option{{i+1}}" value="B" class="checkbox" />
+        <label *ngIf="quiz.optionType == '0'">{{quiz.option2}}</label>
+        <img *ngIf="quiz.optionType == '1'" src="{{baseUrl+quiz.ioption2}}" />
+      </ion-col>
+      <ion-col [attr.col-12]="quiz.optionType == '0'? true : null" [attr.col-3]="quiz.optionType == '1'? true : null">
+        <input type="radio" name="option{{i+1}}" id="option{{i+1}}" value="C" class="checkbox" />
+        <label *ngIf="quiz.optionType == '0'">{{quiz.option3}}</label>
+        <img *ngIf="quiz.optionType == '1'" src="{{baseUrl+quiz.ioption3}}" />
+      </ion-col>
+      <ion-col [attr.col-12]="quiz.optionType == '0'? true : null" [attr.col-3]="quiz.optionType == '1'? true : null">
+        <input type="radio" name="option{{i+1}}" id="option{{i+1}}" value="D" class="checkbox" />
+        <label *ngIf="quiz.optionType == '0'">{{quiz.option4}}</label>
+        <img *ngIf="quiz.optionType == '1'" src="{{baseUrl+quiz.ioption4}}" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="SubmitQuiz()">Submit</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container">
+  <ion-toolbar color='primary'>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,44 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <button id="x" (click)="closeModal()">X</button>
+    <div class="endrose-select" *ngIf="endroseSelect" text-center>
+      <ion-row>
+        <ion-col col-12>
+          <h2>Select who endorses your Transformation.</h2>
+
+          <p>If you choose to monitor with friends, be responsible!</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <img src="{{endrose_parent}}" (click)="selectEndrose('0')" />
+          <h4>Parents</h4>
+        </ion-col>
+        <ion-col col-6>
+          <img src="{{endrose_friend}}" (click)="selectEndrose('1')" />
+          <h4>Friends</h4>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="endrose-parent-code" text-center *ngIf="endroseParentCode" text-center>
+      <p>
+        Code to endorse student’s transformation is sent to Parent’s email at the time of enrolment.
+      </p>
+      <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="sendTransformCode()">Click here to resend code</button>
+      <p>
+        * To change email id, send an email with MFK id#, Name & Date of Birth to themavericks@maverickliteracy.net with the subject: Tranformation Challenge Code
+      </p>
+    </div>
+
+    <div class="friends-rules" *ngIf="endroseFriendsRule" text-center>
+      <p>
+        Motivate your friends transformations by endorsing their participation in the day’s challenge! Remember to be responsible for the endorsement should help the other become fit! Yes! Your friends need to validate your transformations as well!
+      </p>
+      <p class="red-color">
+        * Impasse warning! Mutual endorsements will not be validated! So if your endorsement doesn’t reflect it’s not a software glitch!
+      </p>
+    </div>
+  </div>
+</ion-content>

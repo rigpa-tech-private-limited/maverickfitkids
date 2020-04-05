@@ -1,0 +1,1186 @@
+import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
+import { AppConfig } from '../../config/config';
+import { AuthServiceProvider } from '../../providers/auth/auth';
+
+@Injectable()
+export class DataProvider {
+
+  constructor(public authService: AuthServiceProvider) { }
+
+  studentLogin(formData) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentName": formData.existing_student_name,
+            "studentId": formData.existing_student_mfk_id
+          }
+        }, AppConfig.STUDENT_LOGIN)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  addPhoto(formData, encodeImg) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": formData.studentId,
+            "image": encodeImg,
+            "imagepath": formData.studentId,
+            "ext": 'jpeg',
+            "studentaccesslevel": formData.studentAccessLevel
+          }
+        }, AppConfig.ADD_PHOTO)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentStar(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "academicyear": aData.academicYear,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.GET_STUDENT_STAR)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  validatePromotionCode(formData) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "promotecode": formData.school_access_code
+          }
+        }, AppConfig.VALIDATE_PROMO_CODE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getClass() {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID
+          }
+        }, AppConfig.GET_CLASS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  validateGuestMail(email) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "mailid": email
+          }
+        }, AppConfig.VALIDATE_GUSET_MAIL)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  validateGuestMobile(mobile) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "mobile": mobile
+          }
+        }, AppConfig.VALIDATE_GUSET_MOBILE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveGuestDetails(formData) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "promotecode": formData.promotecode,
+            "studentname": formData.studentname,
+            "schoolcode": formData.school.code,
+            "classcode": formData.class.classCode,
+            "sectionname": formData.section,
+            "dob": formData.dob,
+            "gender": formData.gender,
+            "optionType": formData.optionType,
+            "parentname": formData.parentname,
+            "emailid": formData.parentemail,
+            "parentmobile": formData.parentmobile,
+            "image": formData.image,
+            "imagepath": formData.imagepath,
+            "ext": formData.ext
+          }
+        }, AppConfig.SAVE_GUEST_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getDisclaimer() {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID
+          }
+        }, AppConfig.GET_DISCLAIMER)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentExerciseDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.studentAge);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentage": aData.studentAge,
+            "studentaccesslevel": aData.studentAccessLevel,
+          }
+        }, AppConfig.GET_STUDENT_EXERCISE_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentSportSkillsDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.studentAge);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "schoolcode": aData.schoolCode,
+            "classcode": aData.classCode,
+          }
+        }, AppConfig.GET_STUDENT_SPORT_SKILLS_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentInsightDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.studentAge);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "academicyear": aData.academicYear,
+            "classcode": aData.classCode
+          }
+        }, AppConfig.GET_STUDENT_INSIGHT_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentGamesDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.studentAge);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentage": aData.studentAge,
+            "studentaccesslevel": aData.studentAccessLevel,
+          }
+        }, AppConfig.GET_STUDENT_GAMES_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getGuideExerciseType(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.classCode);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "classcode": aData.classCode,
+          }
+        }, AppConfig.GET_GUIDE_EXERCISE_TYPE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getGuideImplementationType(pmextypecode) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "extypecode": pmextypecode,
+          }
+        }, AppConfig.GET_GUIDE_IMPLEMENTATION_TYPE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentGuideDetails(formData, pmExercise, pmImplementation) {
+    return new Promise((resolve, reject) => {
+      let postData: any;
+      if (pmImplementation != null && pmImplementation != "") {
+        postData = {
+          "applicationId": AppConfig.APP_ID,
+          "extypecode": pmExercise,
+          "implementcode": pmImplementation,
+          "classcode": formData.classCode,
+        }
+      } else {
+        postData = {
+          "applicationId": AppConfig.APP_ID,
+          "extypecode": pmExercise,
+          "implementcode": "",
+          "classcode": formData.classCode,
+        }
+      }
+      this.authService.postData(
+        {
+          "content": postData
+        }, AppConfig.GET_STUDENT_GUIDE_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  markStarForStudent(formData, pmeventType) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.studentAge);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "eventType": pmeventType,
+            "academicyear": aData.academicYear,
+            "classcode": aData.classCode,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.MARK_STAR_FOR_STUDENT)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getCoachVideo(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "classcode": aData.classCode,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.GET_COACH_VIDEO)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getMinuteVideo() {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID
+          }
+        }, AppConfig.GET_MINUTE_VIDEO)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getSportsList() {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID
+          }
+        }, AppConfig.GET_SPORTS_LIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getSportsImplementationType() {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID
+          }
+        }, AppConfig.GET_SPORTS_IMPLEMENTATION_TYPE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getSportsFitnessLevel() {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID
+          }
+        }, AppConfig.GET_SPORTS_FITNESS_LEVEL)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+  getStudentSportsDetails(sportsCode, implementationCode, sportsFitnessCode) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "sportsCode": sportsCode,
+            "implementationCode": implementationCode,
+            "sportsFitnessCode": sportsFitnessCode
+          }
+        }, AppConfig.GET_SPORTS_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentQuizDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }, AppConfig.GET_STUDENT_QUIZ_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveStudentQuizDetails(formData, quizId, quizDetails, optionDetails) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aquizDetails = quizDetails;
+      let aoptionDetails = optionDetails;
+      console.log(JSON.stringify(aquizDetails), JSON.stringify(aoptionDetails));
+      let contentStr = { "content": { "applicationId": AppConfig.APP_ID, "studentid": aData.studentId, "quizId": quizId, "academicyear": aData.academicYear, "classcode": aData.classCode, "quizDetails": aquizDetails, "optionDetails": optionDetails } };
+      console.log(contentStr, JSON.stringify(contentStr));
+      this.authService.postData(
+        contentStr, AppConfig.SAVE_STUDENT_QUIZ_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getFriendsQuizResult(formData, quizId) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "quizid": quizId,
+            "academicyear": aData.academicYear
+          }
+        }, AppConfig.GET_FRIENDS_QUIZ_RESULT)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentQuizHistory(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }, AppConfig.GET_STUDENT_QUIZ_HISTORY)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  validateStudentFeedBack(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }, AppConfig.VALIDATE_STUDENT_FEEDBACK)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveSessionFeedBack(formData, sessioncode, imageid) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let asessioncode = sessioncode;
+      let aimageid = imageid;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "sessioncode": asessioncode,
+            "imageid": aimageid
+          }
+        }, AppConfig.SAVE_STUDENT_FEEDBACK)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentSessionDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }, AppConfig.GET_STUDENT_SESSION_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentTransform(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "academicyear": aData.academicYear,
+            "classcode": aData.classCode
+          }
+        }, AppConfig.GET_STUDENT_TRANSFORM)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  validateTodayAcceptanceCode(formData, acceptancecode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aAcceptancecode = acceptancecode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "acceptancecode": aAcceptancecode
+          }
+        }, AppConfig.VALIDATE_TODAY_ACCEPTANCE_CODE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  markStarForParentTransformationChallenge(formData, acceptancecode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aAcceptancecode = acceptancecode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "acceptanceCode": aAcceptancecode,
+            "studentaccesslevel": aData.studentAccessLevel,
+            "academicyear": aData.academicYear,
+            "classcode": aData.classCode
+          }
+        }, AppConfig.MARK_STAR_FOR_PARENT_TRANSFORMATION_CHALLENGE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentChallenge(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "academicyear": aData.academicYear,
+            "classcode": aData.classCode
+          }
+        }, AppConfig.GET_STUDENT_CHALLENGE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentFriendChallenge(studentfriendid) {
+    return new Promise((resolve, reject) => {
+      let astudentfriendid = studentfriendid;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentfriendid": astudentfriendid
+          }
+        }, AppConfig.GET_STUDENT_FRIEND_CHALLENGE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  markStarForFriendsTransformationChallenge(formData, submitedstudentid) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let asubmitedstudentid = submitedstudentid;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "submitedstudentid": asubmitedstudentid,
+            "studentaccesslevel": aData.studentAccessLevel,
+            "academicyear": aData.academicYear,
+            "classcode": aData.classCode
+          }
+        }, AppConfig.MARK_STAR_FOR_FRIENDS_TRANSFORMATION_CHALLENGE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentFitFestDetailsforIIItoXII(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "schoolcode": aData.schoolCode,
+            "classcode": aData.classCode,
+            "sectionname": aData.sectionName,
+            "gender": aData.gender,
+            "academicyear": aData.academicYear
+          }
+        }, AppConfig.GET_STUDENT_FIT_FEST_DETAILS_FOR_III_TO_XII)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentFitFestDetailsforbeforeIII(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "schoolcode": aData.schoolCode,
+            "classcode": aData.classCode,
+            "sectionname": aData.sectionName,
+            "gender": aData.gender,
+            "academicyear": aData.academicYear
+          }
+        }, AppConfig.GET_STUDENT_FIT_FEST_DETAILS_FOR_BEFORE_III)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentFriendsList(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "academicyear": aData.academicYear
+          }
+        }, AppConfig.GET_STUDENT_FRIENDS_LIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  verifyStudentFriendRequest(formData, friendstudentid) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afriendstudentid = friendstudentid;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "friendstudentid": afriendstudentid
+          }
+        }, AppConfig.VERIFY_STUDENT_FRIEND_REQUEST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  sendFriendRequest(formData, friendstudentid) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afriendstudentid = friendstudentid;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "friendstudentid": afriendstudentid
+          }
+        }, AppConfig.SEND_FRIEND_REQUEST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  acceptStudentFriendRequest(formData, fitzonecode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afitzonecode = fitzonecode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "fitzonecode": afitzonecode
+          }
+        }, AppConfig.ACCEPT_STUDENT_FRIEND_REQUEST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  rejectStudentFriendRequest(formData, fitzonecode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afitzonecode = fitzonecode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "fitzonecode": afitzonecode
+          }
+        }, AppConfig.REJECT_STUDENT_FRIEND_REQUEST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  disconnectStudentFriend(formData, fitzonecode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afitzonecode = fitzonecode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "fitzonecode": afitzonecode
+          }
+        }, AppConfig.DISCONNECT_STUDENT_FRIEND)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getToBeList(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }, AppConfig.GET_TO_BE_LIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getToBeQuote(formData, intendcode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aintendcode = intendcode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "intendcode": aintendcode
+          }
+        }, AppConfig.GET_TO_BE_QUOTE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveStudentToBeList(formData, intendcode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aintendcode = intendcode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "intendcode": aintendcode,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.SAVE_STUDENT_TO_BE_LIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentFriendToBeList(formData, friendstudentid) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afriendstudentid = friendstudentid;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "friendstudentid": afriendstudentid
+          }
+        }, AppConfig.GET_STUDENT_FRIEND_TO_BE_LIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  giveLikesForFriendToBeList(formData, friendstudentid, intendcode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let afriendstudentid = friendstudentid;
+      let aintendcode = intendcode;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "friendstudentid": afriendstudentid,
+            "intendcode": aintendcode
+          }
+        }, AppConfig.GIVE_LIKES_FOR_FRIEND_TO_BE_LIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentQueryDetails(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.GET_STUDENT_QUERY_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveStudentQueryDetails(formData, querycontent) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aquerycontent = querycontent;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "querycontent": aquerycontent,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.SAVE_STUDENT_QUERY_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  addPlayList(formData, ext) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aext = ext;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "ext": aext,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.ADD_PLAYLIST)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  validateoldpasswordforstudent(formData, oldpassword) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aoldpassword = oldpassword;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "oldpassword": aoldpassword,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.VALIDATE_OLD_PASSWORD_FOR_STUDENT)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveChangePassword(formData, oldpassword, newpassword) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aoldpassword = oldpassword;
+      let anewpassword = newpassword;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "oldpassword": aoldpassword,
+            "newpassword": anewpassword,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.SAVE_CHANGE_PASSWORD)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getEndorserOption(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.GET_ENDORSER_OPTION)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  saveEndorserOption(formData, optiontype) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      let aoptiontype = optiontype;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "optiontype": aoptiontype,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.SAVE_ENDORSER_OPTION)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  sendTransformCode(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "mailId": aData.mailId,
+            "studentaccesslevel": aData.studentAccessLevel
+          }
+        }, AppConfig.SEND_TRANSFORM_CODE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudentConsistency(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }
+        //{ "content": { "applicationId": "MFK", "studentid": "MFK012790" } }
+        , AppConfig.GET_STUDENT_CONSISTENCY)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getStudent3AReview(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "academicyear": aData.academicYear
+          }
+        }
+        //{ "content": { "applicationId": "MFK", "studentid": "MFK012216", "academicyear": "2018-2019" } }
+        , AppConfig.GET_STUDENT_3A_REVIEW)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+}

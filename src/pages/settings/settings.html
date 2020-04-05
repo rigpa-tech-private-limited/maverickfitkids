@@ -1,0 +1,66 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <nav class='menu'>
+    <input checked='checked' class='menu-toggler' id='menu-toggler' type='checkbox'>
+    <label class="label-home" *ngIf="showMenuIcon"></label>
+    <label class="label-no-access" *ngIf="showNoAccessMsg">Sorry! This feature is available only for schools that use
+      the Maverick Physical Literacy Curriculum.If you have any queries please write to ceo@maverickliteracy.net</label>
+    <ul>
+      <li class='menu-item 1'>
+        <a class='fa' (click)="goPage('ConsistencyPage')"><img src="assets/imgs/settings/consistency.png" /></a>
+        <p>Consistency</p>
+      </li>
+      <li class='menu-item 2'>
+        <a class='fa' (click)="checkNoAccess('ReviewPage')"><img src="assets/imgs/settings/3a_review.png" /></a>
+        <p>3A’s review</p>
+        <p class="review-red-dot" *ngIf="redDotVisibleReview"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 3'>
+        <a class='fa' (click)="checkNoAccess('FitFestPage')"><img src="assets/imgs/settings/fit_fest.png" /></a>
+        <p>Fit Fest</p>
+        <p class="fitfest-red-dot" *ngIf="redDotVisibleFitFest"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 4'>
+        <a class='fa' (click)="goPage('FitZonePage')"><img src="assets/imgs/settings/fit_zone.png" /></a>
+        <p>Fit Zone</p>
+        <p class="fitzone-red-dot" *ngIf="redDotVisibleFitZone"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 5'>
+        <a class='fa' (click)="goPage('ToBeListPage')"><img src="assets/imgs/settings/to_be_list.png" /></a>
+        <p>Aspirations</p>
+      </li>
+      <li class='menu-item 6'>
+        <a class='fa' (click)="checkNoAccess('QueryPage')"><img src="assets/imgs/settings/query.png" /></a>
+        <p>Query</p>
+        <p class="query-red-dot" *ngIf="redDotVisibleQuery"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 7'>
+        <a class='fa' (click)="goPage('UserDetailPage')"><img src="assets/imgs/settings/personal_details.png" /></a>
+        <p>Personal Details</p>
+      </li>
+      <li class='menu-item 8'>
+        <a class='fa' (click)="openModal('EndorserPage')"><img src="assets/imgs/settings/endorser.png" /></a>
+        <p>Endorser</p>
+      </li>
+    </ul>
+  </nav>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

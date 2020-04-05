@@ -1,0 +1,7 @@
+{
+  "name": "maverickfitkids",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

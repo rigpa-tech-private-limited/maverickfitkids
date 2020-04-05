@@ -1,0 +1,53 @@
+page-quiz-history {
+  .star-holder {
+    float: right;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .day-star {
+    float: left;
+    width: auto;
+    padding: 0 1vw;
+  }
+
+  .day-star img {
+    width: 11vw;
+    padding: 1vw;
+  }
+  @media screen and (min-width: 767px) {
+    .day-star img {
+      width: 7vw;
+      padding: 1vw;
+    }
+
+    .add-photo-circle {
+      margin: 15px auto;
+    }
+
+    .add-photo-circle img {
+      width: 30vw;
+      height: 30vw;
+    }
+  }
+
+  .day-star p {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .star-title {
+    color: #F41010;
+  }
+
+  .progress {
+    display: flex;
+    align-items: center;
+  }
+
+  .progress-line {
+    height: 1vh;
+    float: left;
+  }
+}

@@ -1,0 +1,46 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <button id="x" (click)="closeModal()">X</button>
+    <ion-row class="container">
+      <ion-col col-12>
+        <ion-list inset class="zero-margin zero-padding">
+          <ion-grid class="zero-margin zero-padding" text-center>
+            <ion-row class="zero-margin zero-padding">
+              <ion-col col-12 class="dot-img">
+                <img src="assets/imgs/red_dot.png">
+                <img src="assets/imgs/red_dot.png">
+                <img src="assets/imgs/red_dot.png">
+              </ion-col>
+            </ion-row>
+            <ion-row class="zero-margin zero-padding">
+              <ion-col col-12>
+                <p class="quotes" [innerHTML]="quote"></p>
+              </ion-col>
+              <ion-col col-12>
+                <p class="author" [innerHTML]="author"></p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="zero-margin zero-padding">
+              <ion-col col-12>
+                <h2 text-center class="KaushanScript-Regular author-title">Mahatria</h2>
+              </ion-col>
+            </ion-row>
+            <ion-row class="zero-margin zero-padding">
+              <ion-col col-3></ion-col>
+              <ion-col col-3>
+                <img src="assets/icon/fist_up_icon.png" />
+                <p class="counts">{{count}}</p>
+              </ion-col>
+              <ion-col col-3>
+                <img src="assets/icon/like_icon.png" />
+                <p class="counts">{{like}}</p>
+              </ion-col>
+              <ion-col col-3></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

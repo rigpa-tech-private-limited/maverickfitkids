@@ -1,0 +1,30 @@
+page-active-track {
+  #footer-container ion-col p {
+    color: #fff !important;
+  }
+
+  ion-content p {
+    text-align: justify !important;
+    line-height: 2rem !important;
+  }
+
+  ion-content img {
+    display: table !important;
+    margin: 0 auto !important;
+  }
+
+  .content-inner {
+    padding: 0 0 30px;
+  }
+
+  ion-app.ios [padding] .scroll-content {
+    padding: 0 16px !important;
+  }
+
+  audio {
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+}

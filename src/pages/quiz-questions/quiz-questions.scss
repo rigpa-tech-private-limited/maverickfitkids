@@ -1,0 +1,35 @@
+page-quiz-questions {
+  h2 {
+    margin: 1.5rem 0 !important;
+    font-size: 2rem !important;
+    width: 100%;
+  }
+
+  .text-image-icon img {
+    padding: 0;
+    max-width: 75%;
+    float: right;
+    margin: 10px 0 !important;
+  }
+
+  .quiz-questions input {
+    float: left;
+    min-height: 4vh;
+    margin: 0 2vw;
+  }
+
+  .quiz-questions label {
+    float: left;
+    width: 90%;
+  }
+
+  .quiz-questions ion-col {
+    align-items: center;
+    align-content: center;
+    display: flex;
+  }
+
+  .quiz-questions img {
+    width: 75%;
+  }
+}

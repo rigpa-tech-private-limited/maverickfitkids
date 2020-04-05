@@ -1,0 +1,92 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <audio #musicaudio controls></audio>
+  <div id="slides">
+    <div class="slider showing">
+      <h5 class="heading-exercise" text-center [innerHTML]="sportsList.sportsName"></h5>
+      <img src="{{sportsList.path}}" class="gif-image" />
+      <video #video playsinline preload="auto" controls id="videos" class="video-image" loop controlsList="nodownload"></video>
+      <h6 text-center [innerHTML]="sportsList.imageVideoName"></h6>
+      <div class="inner-content" [innerHTML]="sportsList.description"></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding" color="primary">
+  <ion-toolbar class="zero-margin zero-padding" color="primary">
+    <ion-row class="action-icons-holder">
+      <ion-col col-2 (click)="playMusic()">
+        <img [src]="music_icon" class="action-icon">
+        <p class="help-text">
+          Playlist
+        </p>
+      </ion-col>
+      <ion-col col-8>
+        <ion-row class="zero-margin zero-padding">
+          <ion-col col-1></ion-col>
+          <ion-col col-2>
+            <p class="sets-label">
+              Dur
+            </p>
+            <p class="sets-value" [innerHTML]="sportsList.duration">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <p class="sets-label">
+              Load
+            </p>
+            <p class="sets-value" [innerHTML]="sportsList.loads">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <p class="sets-label">
+              Reps
+            </p>
+            <p class="sets-value" [innerHTML]="sportsList.reps">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <p class="sets-label">
+              Rest
+            </p>
+            <p class="sets-value" [innerHTML]="sportsList.rest">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <p class="sets-label">
+              Sets
+            </p>
+            <p class="sets-value" [innerHTML]="sportsList.sets">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-1></ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-2 (click)="nextSlide()">
+        <img src="assets/imgs/next_icon.png" class="action-icon">
+        <p class="help-text">
+          Next
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

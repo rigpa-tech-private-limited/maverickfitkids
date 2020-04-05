@@ -1,0 +1,397 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="afterIII" *ngIf="!beforeIII">
+
+    <div class="TestResultsContent" *ngIf="showTestResults">
+      <ion-row class="zero-margin zero-padding">
+        <ion-col col-2 class="zero-margin zero-padding">
+          &nbsp;
+        </ion-col>
+        <ion-col col-8 class="zero-margin zero-padding fitfest-logo">
+          <img src="assets/imgs/fit_fest_logo.png" />
+        </ion-col>
+        <ion-col col-2 class="zero-margin zero-padding text-image-icon">
+          <img src="assets/icon/about_icon.png" (click)="showAboutOrResult(2)">
+        </ion-col>
+      </ion-row>
+      <div class="currentTestResults" *ngIf="showCurrentResult">
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Date
+            </p>
+          </ion-col>
+          <ion-col col-9 class="zero-margin fitfest-list" *ngIf="(fitfestList.length>0)">
+            <p class="width-100">
+              {{fitfestList[0]?.fitfestDate}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Height
+            </p>
+          </ion-col>
+          <ion-col col-9 class="zero-margin fitfest-list" *ngIf="(fitfestList.length>0)">
+            <p class="width-100">
+              {{fitfestList[0]?.height + ' cms'}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Weight
+            </p>
+          </ion-col>
+          <ion-col col-9 class="zero-margin fitfest-list" *ngIf="(fitfestList.length>0)">
+            <p class="width-100">
+              {{fitfestList[0]?.weight + ' kgs'}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              BMI
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(fitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+            <img *ngIf="(fitfestList[0]?.bmiCode=='Healthy Fitness Zone')" src="assets/icon/healthy.png" />
+            <img *ngIf="(fitfestList[0]?.bmiCode=='Can Improve')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(fitfestList[0]?.bmiCode=='Must Improve')" src="assets/icon/must_improve.png" />
+            <img *ngIf="(fitfestList[0]?.bmiCode=='Very Lean')" src="assets/icon/very_lean.png" />
+            <p [style.color]='((fitfestList[0]?.bmiCode=="Healthy Fitness Zone")?"#228B22":((fitfestList[0]?.bmiCode=="Can Improve")?"#FF9966":((fitfestList[0]?.bmiCode=="Must Improve")?"#FF0000":((fitfestList[0]?.bmiCode=="Very Lean")?"#021337":((fitfestList[0]?.bmiCode=="Not Applicable")?"#FFC31E":"#FFC31E")))))'>
+              {{fitfestList[0]?.bmiCode}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              &nbsp;
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(fitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+            <p class="action-msg">
+              {{fitfestList[0]?.bmiMsg}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Fat %
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(fitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+            <img *ngIf="(fitfestList[0]?.fmiCode=='Healthy Fitness Zone')" src="assets/icon/healthy.png" />
+            <img *ngIf="(fitfestList[0]?.fmiCode=='Can Improve')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(fitfestList[0]?.fmiCode=='Must Improve')" src="assets/icon/must_improve.png" />
+            <img *ngIf="(fitfestList[0]?.fmiCode=='Very Lean')" src="assets/icon/very_lean.png" />
+            <p [style.color]='((fitfestList[0]?.fmiCode=="Healthy Fitness Zone")?"#228B22":((fitfestList[0]?.fmiCode=="Can Improve")?"#FF9966":((fitfestList[0]?.fmiCode=="Must Improve")?"#FF0000":((fitfestList[0]?.fmiCode=="Very Lean")?"#021337":((fitfestList[0]?.fmiCode=="Not Applicable")?"#FFC31E":"#FFC31E")))))'>
+              {{fitfestList[0]?.fmiCode}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              &nbsp;
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(fitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+
+            <p class="action-msg">
+              {{fitfestList[0]?.fmiMsg}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let listtesting of fitfestListtesting; let i = index;">
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              {{listtesting?.testingName}}
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(fitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+            <img *ngIf="(listtesting?.actionName=='A')" src="assets/icon/healthy.png" />
+            <img *ngIf="(listtesting?.actionName=='B')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(listtesting?.actionName=='C')" src="assets/icon/must_improve.png" />
+            <p [style.color]='((listtesting?.actionName=="A")?"#228B22":((listtesting?.actionName=="B")?"#FF9966":((listtesting?.actionName=="C")?"#FF0000":((listtesting?.actionName=="Not Applicable")?"#021337":"#021337"))))'>
+              {{((listtesting?.actionName=="A")?"Healthy Fitness Zone":((listtesting?.actionName=="B")?"Can
+              Improve":((listtesting?.actionName=="C")?"Must Improve":((listtesting?.actionName=="Not Applicable")?"Not
+              Applicable":"-"))))}}
+            </p>
+          </ion-col>
+
+          <ion-col *ngIf="(fitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              &nbsp;
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(fitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+            <p class="action-msg">
+              {{listtesting?.actionPlan}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="(preFitfestList.length>0)">
+          <ion-col col-4></ion-col>
+          <ion-col col-4>
+            <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="showPreviousResult(1)">Previous
+              result</button>
+          </ion-col>
+          <ion-col col-4></ion-col>
+        </ion-row>
+      </div>
+
+      <div class="previousTestResults" *ngIf="!showCurrentResult">
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Date
+            </p>
+          </ion-col>
+          <ion-col col-9 class="zero-margin pre-fitfest-list" *ngIf="(preFitfestList.length>0)">
+            <p class="width-100">
+              {{preFitfestList[0]?.preFitfestDate}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Height
+            </p>
+          </ion-col>
+          <ion-col col-9 class="zero-margin pre-fitfest-list" *ngIf="(preFitfestList.length>0)">
+            <p class="width-100">
+              {{preFitfestList[0]?.preHeight + ' cms'}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Weight
+            </p>
+          </ion-col>
+          <ion-col col-9 class="zero-margin pre-fitfest-list" *ngIf="(preFitfestList.length>0)">
+            <p class="width-100">
+              {{preFitfestList[0]?.preWeight + ' kgs'}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              BMI
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin pre-fitfest-list">
+            <img *ngIf="(preFitfestList[0]?.preBmiCode=='Healthy Fitness Zone')" src="assets/icon/healthy.png" />
+            <img *ngIf="(preFitfestList[0]?.preBmiCode=='Can Improve')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(preFitfestList[0]?.preBmiCode=='Must Improve')" src="assets/icon/must_improve.png" />
+            <img *ngIf="(preFitfestList[0]?.preBmiCode=='Very Lean')" src="assets/icon/very_lean.png" />
+            <p [style.color]='((preFitfestList[0]?.preBmiCode=="Healthy Fitness Zone")?"#228B22":((preFitfestList[0]?.preBmiCode=="Can Improve")?"#FF9966":((preFitfestList[0]?.preBmiCode=="Must Improve")?"#FF0000":((preFitfestList[0]?.preBmiCode=="Very Lean")?"#021337":((preFitfestList[0]?.preBmiCode=="Not Applicable")?"#FFC31E":"#FFC31E")))))'>
+              {{preFitfestList[0]?.preBmiCode}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              &nbsp;
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+            <p class="action-msg">
+              {{preFitfestList[0]?.preBmiMsg}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              Fat %
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin pre-fitfest-list">
+            <img *ngIf="(preFitfestList[0]?.preFmiCode=='Healthy Fitness Zone')" src="assets/icon/healthy.png" />
+            <img *ngIf="(preFitfestList[0]?.preFmiCode=='Can Improve')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(preFitfestList[0]?.preFmiCode=='Must Improve')" src="assets/icon/must_improve.png" />
+            <img *ngIf="(preFitfestList[0]?.preFmiCode=='Very Lean')" src="assets/icon/very_lean.png" />
+            <p [style.color]='((preFitfestList[0]?.preFmiCode=="Healthy Fitness Zone")?"#228B22":((preFitfestList[0]?.preFmiCode=="Can Improve")?"#FF9966":((preFitfestList[0]?.preFmiCode=="Must Improve")?"#FF0000":((preFitfestList[0]?.preFmiCode=="Very Lean")?"#021337":((preFitfestList[0]?.preFmiCode=="Not Applicable")?"#FFC31E":"#FFC31E")))))'>
+              {{preFitfestList[0]?.preFmiCode}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="zero-margin zero-padding fitfest-row">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              &nbsp;
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin fitfest-list">
+
+            <p class="action-msg">
+              {{preFitfestList[0]?.preFmiMsg}}
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let listtesting of fitfestListtesting; let i = index;">
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              {{listtesting?.testingName}}
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin pre-fitfest-list">
+            <img *ngIf="(preFitfestListtesting[i]?.actionName=='A')" src="assets/icon/healthy.png" />
+            <img *ngIf="(preFitfestListtesting[i]?.actionName=='B')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(preFitfestListtesting[i]?.actionName=='C')" src="assets/icon/must_improve.png" />
+            <p [style.color]='((preFitfestListtesting?.actionName=="A")?"#228B22":((preFitfestListtesting?.actionName=="B")?"#FF9966":((preFitfestListtesting?.actionName=="C")?"#FF0000":((preFitfestListtesting?.actionName=="Not Applicable")?"#021337":"#021337"))))'>
+              {{((preFitfestListtesting[i]?.actionName=="A")?"Healthy Fitness
+              Zone":((preFitfestListtesting[i]?.actionName=="B")?"Can
+              Improve":((preFitfestListtesting[i]?.actionName=="C")?"Must
+              Improve":((preFitfestListtesting[i]?.actionName=="Not Applicable")?"Not
+              Applicable":"-"))))}}
+            </p>
+          </ion-col>
+
+          <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
+            <p text-right>
+              &nbsp;
+            </p>
+          </ion-col>
+          <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin pre-fitfest-list">
+
+            <p class="action-msg">
+              {{preFitfestListtesting?.actionPlan}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="(fitfestList.length>0)">
+          <ion-col col-4></ion-col>
+          <ion-col col-4>
+            <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="showPreviousResult(0)">Current
+              result</button>
+          </ion-col>
+          <ion-col col-4></ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div class="AboutTestContent" *ngIf="showAboutTest">
+      <ion-row class="zero-margin zero-padding">
+        <ion-col col-2 class="zero-margin zero-padding">
+          &nbsp;
+        </ion-col>
+        <ion-col col-8 class="zero-margin zero-padding fitfest-logo">
+          <img src="assets/imgs/fit_fest_logo.png" />
+        </ion-col>
+        <ion-col col-2 class="zero-margin zero-padding text-image-icon">
+          <img src="assets/icon/graph_icon.png" (click)="showAboutOrResult(1)">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 text-justify>
+          <font>
+            <font><b>Body Mass index or BMI</b></font> helps verify if you are at a healthy weight for your height.
+            <br><br>
+            <font><b>Body Fat percentage</b></font> identifies the amount of fat in your body and how healthy or
+            unhealthy it is.
+            <br><br>
+            <font><b>Aerobic fitness</b></font> - the ability to deliver oxygen and nutrients to tissues and to remove
+            wastes,over sustained periods of time - measured using the 1 km / 1.5 km run/walk test.
+            <br><br>
+            <font><b>Flexibility</b></font> - the ability to move joints and use muscles through their full range of
+            motion - measured with a sit and reach test.
+            <br><br>
+            <font><b>Upper body strength</b></font> - the ability of a group of muscles to sustain repeated
+            contractions - measured with push up / modified push up (age appropriate).
+            <br><br>
+            <font><b>Core strength</b></font> - the working of the abdominal muscles and the ability to produce force -
+            checked using the plank or the ironman stance.
+            <br><br>
+            <font><b>Balance</b></font> - proprioception or the body's ability to interpret and use information about
+            your position in space - tested using the stork test.
+            <br><br>
+            <font><b>Speed &amp; agility</b></font> - the ability to quickly stop, restart and change body's position -
+            measured using the illinois agility test.
+          </font>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div class="beforeIII" *ngIf="beforeIII">
+    <ion-row class="zero-margin zero-padding">
+      <ion-col col-2 class="zero-margin zero-padding">
+        &nbsp;
+      </ion-col>
+      <ion-col col-8 class="zero-margin zero-padding fitfest-logo">
+        <img src="assets/imgs/fit_fest_logo.png" />
+      </ion-col>
+      <ion-col col-2 class="zero-margin zero-padding text-image-icon">
+        &nbsp;
+      </ion-col>
+    </ion-row>
+    <font color="#000000"> <br>We conducted the TGMD-2 (Test of Gross Motor Development, 2nd edition) on your Name <b>{{studentName}}</b>
+      of Class <b>{{studentClass}}{{'-'+studentSection}}</b>,<b>{{schoolName}}</b>.<br><br>Gross Motor skills involve
+      the large muscles of the
+      body that enable major body movement such as walking, maintaining balance, coordination, jumping and reaching.
+      They depend on both muscle tone and strength. Children with better-developed motor skills may find it easier to
+      be active and engage in
+      more physical activity than those with less-developed motor skills. The relationship between motor skill
+      performance and physical activity may be important to the health of children, particularly in obesity prevention.
+      <br><br>The test comprised
+      two subtests for gross motor development - Locomotor and Object Control - each of which have six skills that
+      assess a different aspect of gross motor development. <br>* Locomotor skills - those that require fluid movements
+      of the body as the child
+      moves in one direction or the other - namely Run, Gallop, Hop, Leap, Horizontal Jump and Slide<br>* Object
+      control skills - those that demonstrate efficient throwing, striking, and catching movements - namely Striking a
+      ball, Dribble, Catch, Kick,
+      Overhand throw and underhand roll
+      <br> <br><b> These test results are merely observations, and not diagnosis. </b>They specify a performance level
+      at a given time under a particular situation, but they do not tell us why a person performed as he or she did.
+      The primary use of this
+      test is to assess the progress of your child?s gross motor skill development and identify areas to work on. <br><br>Name:
+      <b>{{studentName}}</b>; Date of Birth: <b>{{dob}}</b><br><br>Age: <b>{{studentAge}}</b> on test date <b>{{fitfestDate}}</b><br><br>Locomotor
+      - <b>{{locDescription}}</b><br>The tests placed <b>locomotor testing</b> at the <b>{{locperRank}}</b> percentile.
+      His skill was equivalent to children of <b>{{locAge}}</b> age (in years and months). <br><br>Object control - <b>{{objDescription}}</b><br>The
+      tests placed <b>object control testing</b> at the <b>{{objperRank}}</b> percentile. His skill was equivalent to
+      children of <b>{{objAge}}</b> age (in years and months).<br><br>GROSS MOTOR QUOTIENT - <b>{{gmqDesc}}</b><br>The
+      tests placed <b>GMQ</b> testing at the <b>{{perRank}}</b> percentile.<br><br>
+      <br>* The percentile rank refers to the percentage of children who are equal to or less <br>than your wards
+      score. Age equivalent provides a rough estimate of how your child fits into traditionally accepted developmental
+      ages - meaning your childs
+      <br>skills are equivalent to children of that age group. <br></font>
+  </div>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

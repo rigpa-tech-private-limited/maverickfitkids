@@ -1,0 +1,178 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="user-confirm-page">
+  <div class="existing-user-confirm-form">
+    <ion-list inset class="zero-margin zero-padding">
+      <h2 text-center class="KaushanScript-Regular top-title">Happy Day {{responseData?.studentName}} !</h2>
+      <ion-grid class="zero-margin zero-padding">
+        <ion-row class="zero-margin zero-padding">
+          <ion-col col-12>
+            <ion-avatar class="add-photo-circle" (click)="goPage('PlaylistPage')">
+              <img src="assets/imgs/playlist_icon.png" (click)="getMusicFromPhone()">
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Name</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.studentName}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>MFK id #</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.studentId}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>DOB</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.dob}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Email</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.mailId}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Gender</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{(responseData?.gender=="M")?"Male":"Female"}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>School</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.schoolName}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Standard</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.className}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Section</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.sectionName}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Regd. Since</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.registeredDate}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar class="zero-margin zero-padding">
+    <ion-row class="action-icons-holder">
+      <ion-col col-6>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="openModal('UserDeletePage')">Delete</button>
+      </ion-col>
+      <ion-col col-6>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="goPage('ChangePasswordPage')">Password</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

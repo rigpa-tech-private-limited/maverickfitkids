@@ -1,0 +1,98 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <nav class='menu'>
+    <input checked='checked' class='menu-toggler' id='menu-toggler' (click)="logOutFromHome()" type='checkbox'>
+    <label class="label-home" *ngIf="showMenuIcon"></label>
+    <label class="label-no-access" *ngIf="showNoAccessMsg">Sorry! This feature is available only for schools that use the Maverick Physical Literacy Curriculum</label>
+    <ul>
+      <li class='menu-item 1'>
+        <a class='fa' (click)="goPage('InsightPage')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Insights</p>
+      </li>
+      <li class='menu-item 2' *ngIf="showGuidesMenu">
+        <a class='fa' (click)="checkNoAccess('GuidesPage')"><img src="assets/imgs/circles/8_guides.png" /></a>
+        <p>Guides</p>
+      </li>
+      <li class='menu-item 2' *ngIf="showSessionMenu">
+        <a class='fa' (click)="checkNoAccess('SessionsPage')"><img src="assets/imgs/circles/8_session.png" /></a>
+        <p>Session</p>
+      </li>
+      <li class='menu-item 2' *ngIf="!showSessionMenu && !showGuidesMenu">
+        <a class='fa' (click)="checkNoAccess('')"><img src="assets/imgs/circles/0_empty.png" /></a>
+        <p>&nbsp;</p>
+      </li>
+      <li class='menu-item 3'>
+        <a class='fa' (click)="goPage('EverydayExercisePage')"><img src="assets/imgs/circles/1_everyday_exercise.png" /></a>
+        <p><span class="highlight-text">Everyday</span> Exercise</p>
+      </li>
+      <li class='menu-item 4' *ngIf="showGamesMenu">
+        <a class='fa' (click)="goPage('GamesPage')"><img src="assets/imgs/circles/2_games.png" /></a>
+        <p>Games &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      </li>
+      <li class='menu-item 4' *ngIf="showActiveTracksMenu">
+        <a class='fa' (click)="goPage('ActiveTrackPage')"><img src="assets/imgs/circles/2_active_tracks.png" /></a>
+        <p>Active Tracks</p>
+      </li>
+      <li class='menu-item 4' *ngIf="showSportSkillsMenu">
+        <a class='fa' (click)="goPage('SportSkillsPage')"><img src="assets/imgs/circles/2_sport_skills.jpg" /></a>
+        <p>Sport Skills</p>
+      </li>
+      <li class='menu-item 4' *ngIf="!showGamesMenu && !showActiveTracksMenu && !showSportSkillsMenu">
+        <a class='fa'><img src="assets/imgs/circles/0_empty.png" /></a>
+        <p>&nbsp;</p>
+      </li>
+      <li class='menu-item 5' *ngIf="showSportsMenu">
+        <a class='fa' (click)="checkNoAccess('SportsSelectPage')"><img src="assets/imgs/circles/3_sports.png" /></a>
+        <p>Sports</p>
+      </li>
+      <li class='menu-item 5' *ngIf="showQuizMenu">
+        <a class='fa' (click)="checkNoAccess('QuizQuestionsPage')"><img src="assets/imgs/circles/3_quiz.png" /></a>
+        <p>Quiz</p>
+      </li>
+      <li class='menu-item 5' *ngIf="!showSportsMenu && !showQuizMenu">
+        <a class='fa' (click)="checkNoAccess('')"><img src="assets/imgs/circles/0_empty.png" /></a>
+        <p>&nbsp;</p>
+      </li>
+      <li class='menu-item 6'>
+        <a class='fa' (click)="goPage('CoachPage')"><img src="assets/imgs/circles/4_coach.png" /></a>
+        <p>Coach</p>
+        <p class="coach-red-dot" *ngIf="redDotVisibleCoach"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 7'>
+        <a class='fa' (click)="goPage('MinutesPage')"><img src="assets/imgs/circles/5_maverick_minute.png" /></a>
+        <p><span class="highlight-text">Maverick</span> Minute</p>
+      </li>
+      <li class='menu-item 8' *ngIf="showChallengeMenu">
+        <a class='fa' (click)="goPage('ChallengePage')"><img src="assets/imgs/circles/6_challenge.png" /></a>
+        <p>Challenge</p>
+      </li>
+      <li class='menu-item 8' *ngIf="showTransformMenu">
+        <a class='fa' (click)="goPage('TransformPage')"><img src="assets/imgs/circles/6_transform.png" /></a>
+        <p>Transform</p>
+      </li>
+      <li class='menu-item 8' *ngIf="!showChallengeMenu && !showTransformMenu">
+        <a class='fa'><img src="assets/imgs/circles/0_empty.png" /></a>
+        <p>&nbsp;</p>
+      </li>
+    </ul>
+  </nav>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="settings-icon" (click)="goPage('SettingsPage')"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,46 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="playlist-upload">
+    <p>
+      Add music file to assign a specific playlist to Active Tracks / Games / Sports.
+    </p>
+    <p>(Please choose .mp3 file via the browse option. Max file size : 5 MB)</p>
+    <!-- The "Upload File" button in Android. The File Input element is jus hidden and the button calls the its .click() method -->
+    <div *ngIf="!isIOS">
+      <ion-row class="buttons-row">
+        <ion-col class="buttons-col">
+          <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="fileInput.click()">Upload</button>
+        </ion-col>
+      </ion-row>
+      <div hidden><input type="file" id="fileUpload" #fileInput (change)="onFileFromStorageChosen($event)" /></div>
+    </div>
+
+    <!-- The "Upload File" button in iOS. The File Input element displayed as transparent and overlayed on top of the button -->
+    <div *ngIf="isIOS">
+      <ion-row class="buttons-row">
+        <ion-col class="buttons-col">
+          <input type="file" accept="audio/*" id="fileUpload" class="ios-file-input" (change)="onFileFromStorageChosen($event)" />
+          <button class="submit-btn KaushanScript-Regular" ion-button color="danger">Upload</button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

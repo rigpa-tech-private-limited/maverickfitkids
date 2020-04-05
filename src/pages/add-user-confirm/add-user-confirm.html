@@ -1,0 +1,534 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="user-confirm-page">
+  <div class="existing-user-confirm-form" *ngIf="existing_user_confirm_form">
+    <form class="form" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+          <ion-row class="zero-margin zero-padding">
+            <ion-col col-12>
+              <ion-avatar class="add-photo-circle">
+                <img [src]="imgPreview" (click)="getPhoto()">
+                <!-- <img src={{imgPreview}} (click)="getPhoto()"> -->
+              </ion-avatar>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Name</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.studentName}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>MFK id #</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.studentId}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>DOB</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.dob}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Email</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.mailId}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Gender</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{(responseData?.gender=="M")?"Male":"Female"}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>School</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.schoolName}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Standard</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.className}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Section</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.sectionName}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Regd. Since</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.registeredDate}}</p>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+    </form>
+  </div>
+  <div class="new-user-confirm-form" *ngIf="new_user_confirm_form">
+    <form class="form" (ngSubmit)="goNewUserConfirm()" [formGroup]="validations_form_new_user_confirm" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+          <ion-row class="zero-margin zero-padding">
+            <ion-col col-12>
+              <ion-avatar class="add-photo-circle">
+                <img src="{{imgPreview}}" (click)="getPhoto()">
+              </ion-avatar>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Name</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.studentName}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>School Name</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.registeredSchoolName}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>School Code</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{responseData?.registeredSchoolCode}}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <ion-item class="form-input">
+                <ion-input text-center [(ngModel)]="loginData.parentname" formControlName="parentname" type="text" placeholder="Parent's Name"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages_new_user_confirm.parentname">
+                  <div text-center class="error-message" *ngIf="validations_form_new_user_confirm.get('parentname').hasError(validation.type) && (validations_form_new_user_confirm.get('parentname').dirty || validations_form_new_user_confirm.get('parentname').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <ion-item class="form-input">
+                <ion-input text-center [(ngModel)]="loginData.parentemail" formControlName="parentemail" type="email" placeholder="Parent's Email"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages_new_user_confirm.parentemail">
+                  <div text-center class="error-message" *ngIf="validations_form_new_user_confirm.get('parentemail').hasError(validation.type) && (validations_form_new_user_confirm.get('parentemail').dirty || validations_form_new_user_confirm.get('parentemail').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+                <div class="error-message" *ngIf="error_email">
+                  Email already exists.
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <ion-item class="form-input">
+                <ion-input text-center [(ngModel)]="loginData.parentmobile" formControlName="parentmobile" type="tel" maxlength="10" placeholder="Parent's Mobile Number"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages_new_user_confirm.parentmobile">
+                  <div text-center class="error-message" *ngIf="validations_form_new_user_confirm.get('parentmobile').hasError(validation.type) && (validations_form_new_user_confirm.get('parentmobile').dirty || validations_form_new_user_confirm.get('parentmobile').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+                <div class="error-message" *ngIf="error_phone">
+                  Mobile number already exists.
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <ion-item class="form-input">
+                <ion-datetime text-center [(ngModel)]="loginData.dob" formControlName="dob" min="{{minYear}}" max="{{currentYear}}" displayFormat="DD-MM-YYYY" placeholder="dd-mm-yyyy"></ion-datetime>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages_new_user_confirm.dob">
+                  <div text-center class="error-message" *ngIf="validations_form_new_user_confirm.get('dob').hasError(validation.type) && (validations_form_new_user_confirm.get('dob').dirty || validations_form_new_user_confirm.get('dob').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <ion-row class="gender-radio-group zero-margin zero-padding" radio-group [(ngModel)]="loginData.gender" formControlName="gender">
+                <ion-col col-6 class="zero-margin zero-padding">
+                  <ion-item>
+                    <ion-label text-end>M</ion-label>
+                    <ion-radio value="M" class="zero-padding"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6 class="zero-margin zero-padding">
+                  <ion-item>
+                    <ion-label text-end>F</ion-label>
+                    <ion-radio value="F" class="zero-padding"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <ion-item class="student_class">
+                <ion-select text-center [(ngModel)]="loginData.class" formControlName="class" cancelText="Cancel" okText="OK" placeholder="Choose Class">
+                  <ion-option [value]="class" *ngFor="let class of classes">{{class.className}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages_new_user_confirm.class">
+                  <div text-center class="error-message" *ngIf="validations_form_new_user_confirm.get('class').hasError(validation.type) && (validations_form_new_user_confirm.get('class').dirty || validations_form_new_user_confirm.get('class').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <ion-item class="form-input">
+                <ion-input text-center [(ngModel)]="loginData.section" formControlName="section" type="text" placeholder="Section"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages_new_user_confirm.section">
+                  <div text-center class="error-message" *ngIf="validations_form_new_user_confirm.get('section').hasError(validation.type) && (validations_form_new_user_confirm.get('section').dirty || validations_form_new_user_confirm.get('section').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+      <button type="submit" class="hiddenSubmitBtn"></button>
+    </form>
+  </div>
+  <div class="new-user-confirm-form-proceed" *ngIf="new_user_confirm_form_proceed">
+    <h2 text-center class="KaushanScript-Regular">Welcome {{loginData.studentname}} !</h2>
+    <form class="form" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+          <ion-row class="zero-margin zero-padding">
+            <ion-col col-12>
+              <ion-avatar class="add-photo-circle">
+                <img src="{{imgPreview}}">
+              </ion-avatar>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Name</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.studentname}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Password</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.school.code}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Parent's Name</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.parentname}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Parent's Email</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.parentemail}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Parent's Mobile</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.parentmobile}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>DOB</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.dob}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Gender</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.gender}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>School</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.school.name}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Standard</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.class.className}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-6>
+              <div>
+                <p class="float-left"><b>Section</b>
+                </p>
+                <p class="float-right">
+                  :
+                </p>
+              </div>
+            </ion-col>
+            <ion-col col-6>
+              <p>{{loginData.section}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-12>
+              <p>* A mail has been sent to your id!</p>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar class="zero-margin zero-padding">
+    <ion-row class="action-icons-holder" *ngIf="existing_user_confirm_form">
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="validExistingUserForm" (click)="goPage()">Confirm</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="action-icons-holder" *ngIf="new_user_confirm_form">
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_new_user_confirm.valid" (click)="goNewUserConfirm()">Register</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="action-icons-holder" *ngIf="new_user_confirm_form_proceed">
+      <ion-col col-6>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="goNewUserCorrect()">Correct</button>
+      </ion-col>
+      <ion-col col-6>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="saveGuestDetails()">Proceed</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder" *ngIf="showFooter">
+      <ion-col col-4>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

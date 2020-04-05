@@ -1,0 +1,131 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="textContent">
+    <ion-row class="zero-margin zero-padding text-image-icon">
+      <ion-col col-12 class="zero-margin zero-padding">
+        <h2 text-center class="highlight-text KaushanScript-Regular">Transform Challenge</h2>
+      </ion-col>
+      <ion-col col-12 class="zero-margin zero-padding">
+        <br />
+        <p text-center class="wellbeing-content KaushanScript-Regular" [innerHTML]="wellbeingContent"></p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="zero-margin zero-padding acceptancecode-form" *ngIf="!showReuslt">
+      <ion-col col-12 class="wellbeing-checkbox">
+        <label class="checkbox checkbox-label">
+         <input type = "checkbox" />
+        </label>
+      </ion-col>
+      <ion-col col-12 class="zero-margin zero-padding">
+        <p text-center class="KaushanScript-Regular">Today's Code</p>
+      </ion-col>
+      <ion-col col-12 class="zero-margin zero-padding">
+        <form class="form" (ngSubmit)="validateTodayAcceptanceCode()" [formGroup]="validations_form_acceptance_code" novalidate>
+          <ion-list inset>
+            <ion-item>
+              <ion-input text-center [(ngModel)]="acceptance_code" formControlName="acceptance_code" type="text"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages_acceptance_code.acceptance_code">
+                <div text-center class="error-message" *ngIf="validations_form_acceptance_code.get('acceptance_code').hasError(validation.type) && (validations_form_acceptance_code.get('acceptance_code').dirty || validations_form_acceptance_code.get('acceptance_code').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <button type="submit" class="hiddenSubmitBtn"></button>
+          </ion-list>
+        </form>
+      </ion-col>
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_acceptance_code.valid" (click)="validateTodayAcceptanceCode()">Submit</button>
+      </ion-col>
+      <ion-col col-12>
+        <p text-center class="highlight-text help-txt">
+          * Your parent needs to endorse with today’s code
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="zero-margin zero-padding acceptancecode-result" *ngIf="showReuslt">
+      <h2 text-center class="highlight-text KaushanScript-Regular">Congratulations !</h2>
+      <ion-col col-12>
+        <ion-avatar class="add-photo-circle">
+          <img src="{{imgPreview}}">
+        </ion-avatar>
+        <p class="user-star">+1</p>
+      </ion-col>
+      <ion-col col-12>
+        <p text-center class="highlight-text help-txt">
+          Continue with your transformation everyday to earn more stars...
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 class="progress">
+        <p text-center class="KaushanScript-Regular">
+          Your progress this week
+        </p>
+        <div class="progress-div">
+          <div class="progress-line" [style.width.%]="progressValue"> </div>
+        </div>
+      </ion-col>
+      <ion-col col-12 class="stars">
+        <div class="star-holder" *ngIf="starList">
+          <div class="day-star">
+            <img src="{{starValueImg1}}" />
+            <br />
+            <p>1</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg2}}" />
+            <br />
+            <p>2</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg3}}" />
+            <br />
+            <p>3</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg4}}" />
+            <br />
+            <p>4</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg5}}" />
+            <br />
+            <p>5</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg6}}" />
+            <br />
+            <p>6</p>
+          </div>
+          <div class="day-star">
+            <img src="{{starValueImg7}}" />
+            <br />
+            <p>7</p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

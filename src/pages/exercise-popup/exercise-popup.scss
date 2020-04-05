@@ -1,0 +1,38 @@
+page-exercise-popup {
+  .popup-icons-holder {
+    position: absolute;
+    width: 90%;
+    z-index: 2;
+    background: color($colors, primary, base) !important;
+    left: 0;
+    margin: 5%;
+    top: 10%;
+
+    img {
+      width: 30vw;
+      display: table;
+      margin: 0 auto;
+    }
+  }
+  @media screen and (min-width: 767px) {
+    .popup-icons-holder {
+      position: absolute;
+      width: 60%;
+      z-index: 2;
+      background: color($colors, primary, base) !important;
+      left: 15%;
+      margin: 5%;
+      top: 10%;
+      padding: 2% 10%;
+    }
+  }
+
+  .popup-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+    left: 0;
+  }
+}

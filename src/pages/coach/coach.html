@@ -1,0 +1,40 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="videoContent">
+    <ion-row class="zero-margin zero-padding text-image-icon">
+      <ion-col col-8 class="zero-margin zero-padding">
+        <h6 text-center>Life's greatest blessing</h6>
+        <h6 text-center>It is your responsibility & you can change it !</h6>
+        <h6 text-center>Life's biggest challenge,</h6>
+        <h6 text-center>It is <span class="highlight-text">ONLY</span> your responsibility &</h6>
+        <h6 text-center><span class="highlight-text">ONLY</span> you can change it !.</h6>
+        <p text-center class="name-txt">
+          <b>Gita Krishna Raj</b>
+        </p>
+      </ion-col>
+      <ion-col col-4 class="zero-margin zero-padding">
+        <img src="assets/imgs/circles/4_coach.png" />
+      </ion-col>
+    </ion-row>
+    <video #video playsinline poster="assets/imgs/video-loading.png" preload="auto" controls id="videos" loop controlsList="nodownload"></video>
+  </div>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

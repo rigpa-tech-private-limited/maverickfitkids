@@ -1,0 +1,87 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="textContent imageContent">
+    <audio class="playlist-music" #musicaudio controls></audio>
+    <ion-row class="zero-margin zero-padding">
+      <ion-col col-12 class="zero-margin zero-padding">
+        <p class="title" text-center [innerHTML]="sessionDescription"></p>
+        <div id="sessions-content"></div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="action-icons-holder">
+      <ion-col col-2 class="icon-holder">
+        <img [src]="music_icon" class="action-icon" (click)="playMusic()">
+        <p class="help-text">
+          Playlist
+        </p>
+      </ion-col>
+      <ion-col col-8>
+        <ion-row class="zero-margin zero-padding">
+          <ion-col col-12>
+            <p>
+              Your feedback this year on the <b>Maverick</b> sessions at school
+            </p>
+          </ion-col>
+          <ion-col col-1></ion-col>
+          <ion-col col-2>
+            <img class="sets-label" src="assets/imgs/similey/similey1.png">
+            <p class="sets-value" [innerHTML]="image1">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <img class="sets-label" src="assets/imgs/similey/similey2.png">
+            <p class="sets-value" [innerHTML]="image2">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <img class="sets-label" src="assets/imgs/similey/similey3.png">
+            <p class="sets-value" [innerHTML]="image3">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <img class="sets-label" src="assets/imgs/similey/similey4.png">
+            <p class="sets-value" [innerHTML]="image4">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-2>
+            <img class="sets-label" src="assets/imgs/similey/similey5.png">
+            <p class="sets-value" [innerHTML]="image5">
+              -
+            </p>
+          </ion-col>
+          <ion-col col-1></ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-2 (click)="finishSessions()" class="icon-holder">
+        <img src="assets/imgs/finish_icon.png" class="action-icon">
+        <p class="help-text">
+          Finish
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

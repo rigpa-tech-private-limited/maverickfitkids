@@ -1,0 +1,53 @@
+page-sessions {
+  h2 {
+    margin: 1.5rem 0 !important;
+  }
+
+  .textContent {
+    padding: 0 0 30px;
+  }
+
+  .text-image-icon img {
+    padding: 0;
+    max-width: 75%;
+    float: right;
+    margin: 10px !important;
+  }
+
+  .imageContent img {
+    display: table;
+    margin: 0 auto;
+  }
+
+  video {
+    width: 100%;
+  }
+
+  .playlist-music {
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+
+  #footer-container ion-col p {
+    color: #fff !important;
+  }
+
+  #footer-container .sets-label,
+  #footer-container p {
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0 !important;
+  }
+
+  #footer-container .icon-holder {
+    padding: 4vh 0;
+  }
+
+  #footer-container .sets-value {
+    padding: 0.5rem !important;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+}

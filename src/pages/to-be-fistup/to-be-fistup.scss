@@ -1,0 +1,95 @@
+page-to-be-fistup {
+  .popup-icons-holder {
+    position: absolute;
+    width: 90%;
+    z-index: 2;
+    background-image: url("../assets/imgs/endorse_bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    left: 0;
+    margin: 5%;
+    top: 25%;
+    min-height: 40%;
+    height: 40%;
+    overflow: scroll;
+    padding: 5%;
+
+    .fist {
+      position: absolute;
+      display: block;
+      width: 15vw;
+      height: 15vw;
+      top: -5vw;
+      left: 4vw;
+      right: 0;
+      bottom: 0;
+      background-image: url("../assets/imgs/fist_bg.png");
+      z-index: 2;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 4vw;
+      background-size: contain;
+    }
+
+    #x {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 10px;
+      margin: 0 auto !important;
+      background: transparent;
+      color: #000;
+    }
+
+    img {
+      width: 30vw;
+      height: 30vw;
+      display: table;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+
+    h4 {
+      color: #000;
+      font-size: 1.4rem;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      color: #fff;
+    }
+
+    p {
+      color: #fff;
+      line-height: 2rem;
+    }
+
+    button {
+      margin: 2rem auto !important;
+    }
+
+    .red-color {
+      color: #fb0421;
+    }
+  }
+  @media screen and (min-width: 767px) {
+    .popup-icons-holder {
+      position: absolute;
+      width: 60%;
+      left: 15%;
+      margin: 5%;
+      top: 25%;
+      padding: 5%;
+    }
+  }
+
+  .popup-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+    left: 0;
+  }
+}

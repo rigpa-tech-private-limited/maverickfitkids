@@ -1,0 +1,71 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-row class="zero-margin zero-padding text-image-icon">
+    <ion-col col-10>
+      <h2 text-center class="KaushanScript-Regular">Quiz # <span [innerHTML]="quizId"> # </span></h2>
+      <input type="hidden" name="QuizId" id="QuizId" value="{{quizId}}">
+    </ion-col>
+    <ion-col col-2>
+      <img src="assets/icon/history.png" (click)="showQuizHistory()">
+    </ion-col>
+  </ion-row>
+  <nav class='menu'>
+    <div class="user-image"></div>
+    <input checked='checked' class='menu-toggler' id='menu-toggler' type='checkbox'>
+    <label class="label-home"></label>
+    <p class="user-star">{{studentQuizStar}}</p>
+    <ul>
+      <li class='menu-item 1'>
+        <a class='fa' (click)="friendsStudentSelect('0')"><img src="{{friendsStudentImg1}}" /></a>
+        <p>{{friendsStudentName1}}</p>
+      </li>
+      <li class='menu-item 2'>
+        <a class='fa' (click)="friendsStudentSelect('1')"><img src="{{friendsStudentImg2}}" /></a>
+        <p>{{friendsStudentName2}}</p>
+      </li>
+      <li class='menu-item 3'>
+        <a class='fa' (click)="friendsStudentSelect('2')"><img src="{{friendsStudentImg3}}" /></a>
+        <p>{{friendsStudentName3}}</p>
+      </li>
+      <li class='menu-item 4'>
+        <a class='fa' (click)="friendsStudentSelect('3')"><img src="{{friendsStudentImg4}}" /></a>
+        <p>{{friendsStudentName4}}</p>
+      </li>
+      <li class='menu-item 5'>
+        <a class='fa' (click)="friendsStudentSelect('4')"><img src="{{friendsStudentImg5}}" /></a>
+        <p>{{friendsStudentName5}}</p>
+      </li>
+      <li class='menu-item 6'>
+        <a class='fa' (click)="friendsStudentSelect('5')"><img src="{{friendsStudentImg6}}" /></a>
+        <p>{{friendsStudentName6}}</p>
+      </li>
+      <li class='menu-item 7'>
+        <a class='fa' (click)="friendsStudentSelect('7')"><img src="{{friendsStudentImg7}}" /></a>
+        <p>{{friendsStudentName7}}</p>
+      </li>
+      <li class='menu-item 8'>
+        <a class='fa' (click)="friendsStudentSelect('6')"><img src="{{friendsStudentImg8}}" /></a>
+        <p>{{friendsStudentName8}}</p>
+      </li>
+    </ul>
+  </nav>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
