@@ -40,11 +40,64 @@ export class HomePage {
     public databaseprovider: DatabaseProvider,
     public dataService: DataProvider) {
     this.databaseprovider.getDatabaseState();
-
+    
     this.storage.get('userDetails')
       .then((res: any) => {
         if (res) {
           this.userDetails = res;
+          this.dataService.studentLoginFromDashboard(this.userDetails.studentName, this.userDetails.studentId).then((result) => {
+            this.responseData = result;
+            console.log(this.responseData);
+            if (this.responseData.returnStatus != 0) {
+              console.log('userDetailsfromStudentLogin', this.responseData);
+              if (res.coachFlag == "1") {
+                this.redDotVisibleCoach = true;
+              }
+              this.studentId = res.studentId;
+              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
+                this.showGamesMenu = true;
+              }
+              if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+                if((this.responseData.skillFlag == "1") && (res.className == "VI" || res.className == "VII" || res.className == "VIII")){
+                  this.showSportSkillsMenu = true;
+                } else {
+                  this.showActiveTracksMenu = true;
+                }
+                this.databaseprovider.updateUserSportSkills(this.responseData.studentId, this.responseData.skillFlag)
+                .then(data => {
+                  console.log('User sports skills updated to local db.');
+                }).catch(e => {
+                  console.log(e);
+                });
+              }
+    
+              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
+                this.showQuizMenu = true;
+              }
+              if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+                this.showSportsMenu = true;
+              }
+    
+              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
+                this.showTransformMenu = true;
+              }
+              if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+                this.showChallengeMenu = true;
+              }
+    
+              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
+                this.showSessionMenu = true;
+              }
+    
+              if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+                this.showGuidesMenu = true;
+              }
+            } else {
+              console.log('Student Login fail');
+            }
+          }, (err) => {
+            console.log(err);
+          });
           this.dataService.getStudentStar(this.userDetails).then((result) => {
             this.responseData = result;
             console.log(this.responseData);
@@ -57,42 +110,6 @@ export class HomePage {
                 });
             }
           });
-          if (res.coachFlag == "1") {
-            this.redDotVisibleCoach = true;
-          }
-          this.studentId = res.studentId;
-          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
-            this.showGamesMenu = true;
-          }
-          if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-            if((this.userDetails.skillFlag == "1") && (res.className == "VI" || res.className == "VII" || res.className == "VIII")){
-              this.showSportSkillsMenu = true;
-            } else {
-              this.showActiveTracksMenu = true;
-            }
-          }
-
-          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
-            this.showQuizMenu = true;
-          }
-          if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-            this.showSportsMenu = true;
-          }
-
-          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
-            this.showTransformMenu = true;
-          }
-          if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-            this.showChallengeMenu = true;
-          }
-
-          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
-            this.showSessionMenu = true;
-          }
-
-          if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-            this.showGuidesMenu = true;
-          }
         }
       });
   }

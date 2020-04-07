@@ -149,6 +149,17 @@ export class DatabaseProvider {
     });
   }
 
+  updateUserSportSkills(id, skillFlag) {
+    let data = [skillFlag, id];
+    console.log(data);
+    return this.database.executeSql("UPDATE users SET skillFlag=? WHERE studentId=?", data).then(data => {
+      return data;
+    }, err => {
+      console.log('Error: ', err);
+      return err;
+    });
+  }
+
 
   deleteUsersById(pmstudentId) {
     return this.database.executeSql('DELETE FROM users WHERE studentId=?', [pmstudentId]).then(data => {

@@ -27,6 +27,24 @@ export class DataProvider {
     });
   }
 
+  studentLoginFromDashboard(studentName, studentId) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentName": studentName,
+            "studentId": studentId
+          }
+        }, AppConfig.STUDENT_LOGIN)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   addPhoto(formData, encodeImg) {
     return new Promise((resolve, reject) => {
       this.authService.postData(
