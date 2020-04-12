@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { Storage } from '@ionic/storage';
 import { DatabaseProvider } from '../../providers/database/database';
@@ -36,66 +36,69 @@ export class HomePage {
     public platform: Platform,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     public storage: Storage,
     public databaseprovider: DatabaseProvider,
     public dataService: DataProvider) {
     this.databaseprovider.getDatabaseState();
-    
+
     this.storage.get('userDetails')
       .then((res: any) => {
         if (res) {
           this.userDetails = res;
-          this.dataService.studentLoginFromDashboard(this.userDetails.studentName, this.userDetails.studentId).then((result) => {
+          if (res.coachFlag == "1") {
+            this.redDotVisibleCoach = true;
+          }
+          this.studentId = res.studentId;
+          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
+            this.showGamesMenu = true;
+          }
+
+          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
+            this.showQuizMenu = true;
+          }
+          if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+            this.showSportsMenu = true;
+          }
+
+          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
+            this.showTransformMenu = true;
+          }
+          if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+            this.showChallengeMenu = true;
+          }
+
+          if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
+            this.showSessionMenu = true;
+          }
+
+          if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+            this.showGuidesMenu = true;
+          }
+          let loader = this.loadingCtrl.create({
+            spinner: 'ios',
+            content: ''
+          });
+          loader.present();
+          this.dataService.isCheckSportSkills(this.userDetails.schoolCode, this.userDetails.className).then((result) => {
             this.responseData = result;
-            console.log(this.responseData);
-            if (this.responseData.returnStatus != 0) {
-              console.log('userDetailsfromStudentLogin', this.responseData);
-              if (res.coachFlag == "1") {
-                this.redDotVisibleCoach = true;
+            loader.dismiss();
+            console.log('isCheckSportSkills', this.responseData);
+            if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
+              if ((this.responseData.skillFlag == "1") && (res.className == "VI" || res.className == "VII" || res.className == "VIII")) {
+                this.showSportSkillsMenu = true;
+              } else {
+                this.showActiveTracksMenu = true;
               }
-              this.studentId = res.studentId;
-              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
-                this.showGamesMenu = true;
-              }
-              if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-                if((this.responseData.skillFlag == "1") && (res.className == "VI" || res.className == "VII" || res.className == "VIII")){
-                  this.showSportSkillsMenu = true;
-                } else {
-                  this.showActiveTracksMenu = true;
-                }
-                this.databaseprovider.updateUserSportSkills(this.responseData.studentId, this.responseData.skillFlag)
+              this.databaseprovider.updateUserSportSkills(res.studentId, this.responseData.skillFlag)
                 .then(data => {
                   console.log('User sports skills updated to local db.');
                 }).catch(e => {
                   console.log(e);
                 });
-              }
-    
-              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
-                this.showQuizMenu = true;
-              }
-              if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-                this.showSportsMenu = true;
-              }
-    
-              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V") {
-                this.showTransformMenu = true;
-              }
-              if (res.className == "VI" || res.className == "VII" || res.className == "VIII" || res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-                this.showChallengeMenu = true;
-              }
-    
-              if (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII") {
-                this.showSessionMenu = true;
-              }
-    
-              if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
-                this.showGuidesMenu = true;
-              }
-            } else {
-              console.log('Student Login fail');
             }
           }, (err) => {
+            loader.dismiss();
             console.log(err);
           });
           this.dataService.getStudentStar(this.userDetails).then((result) => {

@@ -7,12 +7,12 @@
 </ion-header>
 <ion-content padding>
   <div class="everyday-exercise-container" style="opacity:0">
-    <audio #insaudio controls></audio>
-    <audio #musicaudio controls></audio>
+    <audio #insaudio controls preload="auto"></audio>
+    <audio #musicaudio controls preload="auto"></audio>
     <div id="slides">
       <div class="slider showing">
         <img *ngIf="!showVideoTag" src="{{exerciseList.exercisePath}}" />
-        <video #video playsinline poster="assets/imgs/video-loading.png" preload="auto" controls class="excercise-video"
+        <video #video playsinline poster="assets/imgs/video_preview.jpeg" preload="auto" controls class="excercise-video"
           id="videos" loop controlsList="nodownload"></video>
         <h4 text-center [innerHTML]="exerciseList.imageVideoName"></h4>
         <div class="content-inner" [innerHTML]="exerciseList.exerciseDescription"></div>
@@ -23,21 +23,27 @@
 <ion-footer no-border id="footer-container" class="zero-margin zero-padding" color="primary">
   <ion-toolbar class="zero-margin zero-padding" color="primary">
     <ion-row class="action-icons-holder">
+      <ion-col col-4 (click)="prevSlide()">
+        <img src="assets/imgs/previous_icon.png" class="videos-prev-btn action-icon">
+          <p class="videos-prev-btn help-text">
+            Previous
+          </p>
+      </ion-col>
+      <!-- <ion-col col-4 (click)="toggleAudio()">
+        <img src="assets/imgs/previous_icon.png" class="videos-prev-btn action-icon">
+          <p class="help-text">
+            Previous
+          </p>
+      </ion-col> -->
       <ion-col col-4 (click)="toggleTTS()">
         <img [src]="instruction_icon" class="action-icon">
         <p class="help-text">
           Instruction
         </p>
       </ion-col>
-      <ion-col col-4 (click)="toggleAudio()">
-        <img [src]="music_icon" class="action-icon">
-        <p class="help-text">
-          Music
-        </p>
-      </ion-col>
       <ion-col col-4 (click)="nextSlide()">
-        <img src="assets/imgs/next_icon.png" class="action-icon">
-        <p class="help-text">
+        <img src="assets/imgs/next_icon.png" class="videos-next-btn action-icon">
+        <p class="videos-next-btn help-text">
           Next
         </p>
       </ion-col>

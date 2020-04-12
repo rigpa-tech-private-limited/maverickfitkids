@@ -25,8 +25,6 @@ import {
   , ModalEnterZoomIn, ModalLeaveZoomIn
   , ModalEnterZoomOut, ModalLeaveZoomOut
 } from '../classes/ionic-modal-transition-pack';
-import { StreamingMedia } from '@ionic-native/streaming-media';
-import { NativeAudio } from '@ionic-native/native-audio';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { SafeHtmlPipe } from '../pipes/safe-html/safe-html';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
@@ -75,8 +73,6 @@ import { IOSFilePicker } from '@ionic-native/file-picker';
     AuthServiceProvider,
     DataProvider,
     AndroidPermissions,
-    StreamingMedia,
-    NativeAudio,
     HTTP,
     TextToSpeech,
     DocumentViewer,

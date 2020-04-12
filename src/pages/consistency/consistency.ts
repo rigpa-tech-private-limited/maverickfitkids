@@ -52,8 +52,8 @@ export class ConsistencyPage {
                 if (maxObj.starCount > 0) {
                   this.consistencyList.forEach(element => {
                     let percent = (element.starCount / maxObj.starCount) * 100;
-                    element.percent = percent;
-                    element.top = (100 - percent);
+                    element.percent = (percent<=100?percent:100);
+                    element.top = ((100 - percent)>=0?(100 - percent):0);
                     console.log(element.starCount, percent);
                   });
                 }

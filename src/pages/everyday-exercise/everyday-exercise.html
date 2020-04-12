@@ -7,12 +7,12 @@
 </ion-header>
 <ion-content padding>
   <div class="everyday-exercise-container" style="opacity:0">
-    <audio #insaudio controls></audio>
-    <audio #musicaudio controls></audio>
+    <audio #insaudio controls preload="auto"></audio>
+    <audio #musicaudio controls preload="auto"></audio>
     <div id="slides">
       <div class="slider showing">
         <img *ngIf="!showVideoTag" src="{{exerciseList.exercisePath}}" />
-        <video #video playsinline poster="assets/imgs/video-loading.png" preload="auto" controls class="excercise-video"
+        <video #video playsinline poster="assets/imgs/video_preview.jpeg" preload="auto" controls class="excercise-video"
           id="videos" loop controlsList="nodownload"></video>
         <h4 text-center [innerHTML]="exerciseList.imageVideoName"></h4>
         <div class="content-inner" [innerHTML]="exerciseList.exerciseDescription"></div>

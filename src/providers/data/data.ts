@@ -27,16 +27,16 @@ export class DataProvider {
     });
   }
 
-  studentLoginFromDashboard(studentName, studentId) {
+  isCheckSportSkills(schoolcode, classcode) {
     return new Promise((resolve, reject) => {
       this.authService.postData(
         {
           "content": {
             "applicationId": AppConfig.APP_ID,
-            "studentName": studentName,
-            "studentId": studentId
+            "schoolcode": schoolcode,
+            "classcode": classcode
           }
-        }, AppConfig.STUDENT_LOGIN)
+        }, AppConfig.CHECK_STUDENT_SPORT_SKILLS)
         .then(res => {
           resolve(res);
         }, (err) => {

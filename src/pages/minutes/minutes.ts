@@ -115,6 +115,16 @@ export class MinutesPage {
     }, false);
     videos.addEventListener('pause', () => {
     }, false);
+    document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+    document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
+    document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+    document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+
+    document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+    document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
+    document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+    document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
+
     this.initializeBackButtonCustomHandler();
   }
 
@@ -140,11 +150,19 @@ export class MinutesPage {
         document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:0.3;");
         document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
         document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:0.3;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:1;");
       } else {
         document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
         document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:1;");
         document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
         document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
       }
       if (this.coachVideoPathArr[(this.currentSlide + 1)] != null || this.coachVideoPathArr[(this.currentSlide + 1)] != "") {
         this.coachVideoPathStr = this.coachVideoPathArr[(this.currentSlide + 1)].replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
@@ -169,11 +187,19 @@ export class MinutesPage {
         document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
         document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
         document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
       } else {
         document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
         document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:1;");
         document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
         document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
       }
       if (this.coachVideoPathArr[(this.currentSlide - 1)] != null || this.coachVideoPathArr[(this.currentSlide - 1)] != "") {
         this.coachVideoPathStr = this.coachVideoPathArr[(this.currentSlide - 1)].replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');

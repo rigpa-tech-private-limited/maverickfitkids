@@ -131,7 +131,7 @@ export class SportSkillsPage {
                 }
               }
               this.exerciseList.imageVideoName = this.exerciseLists[0].imageVideoName;
-              if(this.exerciseLists[0].exerciseDescription!=null){
+              if (this.exerciseLists[0].exerciseDescription != null) {
                 this.exerciseList.exerciseDescription = (this.exerciseLists[0].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
               } else {
                 this.exerciseList.exerciseDescription = '';
@@ -277,6 +277,14 @@ export class SportSkillsPage {
       // this.stopAudio();
       // this.stopSpeak();
     }, false);
+    document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+    document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
+    document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+    document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+    document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+    document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
+    document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+    document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
     this.initializeBackButtonCustomHandler();
   }
 
@@ -296,6 +304,95 @@ export class SportSkillsPage {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  prevSlide() {
+    this.stopAudio();
+    this.stopSpeak();
+    this.videoPause();
+    this.exerciseList.exercisePath = "";
+    console.log((this.currentSlide - 1) + " == " + this.exerciseLists.length);
+    if ((this.currentSlide) == 0) {
+      console.log("Home Slide");
+    } else {
+      console.log("Curr", this.currentSlide - 1);
+      if ((this.currentSlide - 1) == 0) {
+        document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
+        document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
+      } else {
+        document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
+      }
+      if (this.exerciseLists[(this.currentSlide - 1)].insAudioPath != null && this.exerciseLists[(this.currentSlide - 1)].insAudioPath != '') {
+        this.exerciseList.insAudioPath = (this.exerciseLists[(this.currentSlide - 1)].insAudioPath).replace('/maverick/Directory/Music/', AppConfig.SITE_URL + 'maverick/Directory/Music/');
+        this.instruction_icon = 'assets/imgs/instruction_icon_play.png';
+      } else {
+        this.exerciseList.insAudioPath = "";
+        this.instruction_icon = 'assets/imgs/instruction_icon_gray.png';
+      }
+      this.insAudio = this.insaudio.nativeElement;
+      this.insAudio.src = this.exerciseList.insAudioPath;
+      if (this.exerciseLists[(this.currentSlide - 1)].audioPath != null && this.exerciseLists[(this.currentSlide - 1)].audioPath != '') {
+        this.exerciseList.audioPath = (this.exerciseLists[(this.currentSlide - 1)].audioPath).replace('/maverick/Directory/Music/', AppConfig.SITE_URL + 'maverick/Directory/Music/');
+        this.music_icon = 'assets/imgs/music_icon_play.png';
+      } else {
+        console.log("1--", this.exerciseLists[0].audioPath);
+        this.exerciseList.audioPath = "";
+        this.music_icon = 'assets/imgs/music_icon_gray.png';
+      }
+      console.log(this.music_icon);
+      this.musicAudio = this.musicaudio.nativeElement;
+      this.musicAudio.src = this.exerciseList.audioPath;
+      if (this.exerciseLists[(this.currentSlide - 1)].fileType == '2') {
+        if (this.exerciseLists[(this.currentSlide - 1)].exercisePath != null || this.exerciseLists[(this.currentSlide - 1)].exercisePath != "") {
+          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide - 1)].exercisePath).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+        } else {
+          this.exerciseList.exercisePath = "";
+        }
+        this.myVideo = this.video.nativeElement;
+        this.myVideo.src = this.exerciseList.exercisePath;
+        this.showVideoTag = true;
+        let cusid_ele = document.getElementsByClassName('excercise-video');
+        for (let i = 0; i < cusid_ele.length; ++i) {
+          let item = cusid_ele[i];
+          item.setAttribute("style", "visibility:visible;");
+        }
+      } else {
+        if (this.exerciseLists[(this.currentSlide - 1)].exercisePath != null || this.exerciseLists[(this.currentSlide - 1)].exercisePath != "") {
+          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide - 1)].exercisePath).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
+        } else {
+          this.exerciseList.exercisePath = "";
+        }
+        this.showVideoTag = false;
+        this.myVideo = this.video.nativeElement;
+        this.myVideo.src = this.exerciseList.exercisePath;
+        let cusid_ele = document.getElementsByClassName('excercise-video');
+        for (let i = 0; i < cusid_ele.length; ++i) {
+          let item = cusid_ele[i];
+          item.setAttribute("style", "visibility:hidden;height:0;");
+        }
+      }
+      this.exerciseList.imageVideoName = this.exerciseLists[(this.currentSlide - 1)].imageVideoName;
+      if (this.exerciseLists[(this.currentSlide - 1)].exerciseDescription != null) {
+        this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide - 1)].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
+      } else {
+        this.exerciseList.exerciseDescription = '';
+      }
+      this.goToSlide(this.currentSlide - 1);
+      this.videoPlay();
+    }
+  }
+
   nextSlide() {
     this.stopAudio();
     this.stopSpeak();
@@ -307,6 +404,22 @@ export class SportSkillsPage {
       this.openModal('ExercisePopupPage');
     } else {
       console.log("Curr", this.currentSlide + 1);
+      if ((this.currentSlide + 1) == (this.exerciseLists.length - 1)) {
+        console.log("Last slide");
+        // document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+        // document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:0.3;");
+        // document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+        // document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:1;");
+      } else {
+        document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
+      }
       if (this.exerciseLists[(this.currentSlide + 1)].insAudioPath != null && this.exerciseLists[(this.currentSlide + 1)].insAudioPath != '') {
         this.exerciseList.insAudioPath = (this.exerciseLists[(this.currentSlide + 1)].insAudioPath).replace('/maverick/Directory/Music/', AppConfig.SITE_URL + 'maverick/Directory/Music/');
         this.instruction_icon = 'assets/imgs/instruction_icon_play.png';
@@ -357,8 +470,8 @@ export class SportSkillsPage {
         }
       }
       this.exerciseList.imageVideoName = this.exerciseLists[(this.currentSlide + 1)].imageVideoName;
-      if(this.exerciseLists[(this.currentSlide + 1)].exerciseDescription!=null){
-      this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide + 1)].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
+      if (this.exerciseLists[(this.currentSlide + 1)].exerciseDescription != null) {
+        this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide + 1)].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
       } else {
         this.exerciseList.exerciseDescription = '';
       }
@@ -412,6 +525,14 @@ export class SportSkillsPage {
           alert.present();
         });
       } else if (data.slideAction == 'repeat') {
+        document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
+        document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+        document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
+        document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+        document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
         this.initializeBackButtonCustomHandler();
         if (this.exerciseLists[0].insAudioPath != null && this.exerciseLists[0].insAudioPath != '') {
           this.exerciseList.insAudioPath = (this.exerciseLists[0].insAudioPath).replace('/maverick/Directory/Music/', AppConfig.SITE_URL + 'maverick/Directory/Music/');
@@ -461,8 +582,8 @@ export class SportSkillsPage {
           }
         }
         this.exerciseList.imageVideoName = this.exerciseLists[0].imageVideoName;
-        if(this.exerciseLists[0].exerciseDescription!=null){
-        this.exerciseList.exerciseDescription = (this.exerciseLists[0].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
+        if (this.exerciseLists[0].exerciseDescription != null) {
+          this.exerciseList.exerciseDescription = (this.exerciseLists[0].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
         } else {
           this.exerciseList.exerciseDescription = '';
         }

@@ -72,4 +72,6 @@ export class AppConfig {
   public static GET_STUDENT_3A_REVIEW = 'getStudent3AReview';
   public static GET_STUDENT_STAR = 'getStudentStar';
   public static GET_STUDENT_SPORT_SKILLS_DETAILS = 'getSportsSkills';
+  public static CHECK_STUDENT_SPORT_SKILLS = 'isCheckSportSkills';
+  
 }
