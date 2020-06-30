@@ -113,17 +113,18 @@ export class QuizResultsPage {
 
             } else if (this.responseData.returnStatus == 0) {
               console.log('returnStatus=>0');
-              const alert = this.alertCtrl.create({
-                message: this.responseData.returnMessage,
-                buttons: [{
-                  text: 'Ok',
-                  handler: () => {
-                    //this.goHome();
-                  }
-                }],
-                enableBackdropDismiss: false
-              });
-              alert.present();
+              this.studentQuizStar = this.responseData.studentQuizStar;
+              // const alert = this.alertCtrl.create({
+              //   message: this.responseData.returnMessage,
+              //   buttons: [{
+              //     text: 'Ok',
+              //     handler: () => {
+              //       //this.goHome();
+              //     }
+              //   }],
+              //   enableBackdropDismiss: false
+              // });
+              // alert.present();
             }
           }, (err) => {
             console.log(err);

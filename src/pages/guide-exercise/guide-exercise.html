@@ -10,7 +10,7 @@
     <div class="slider showing">
       <h5 class="heading-exercise" text-center [innerHTML]="exerciseType"></h5>
       <img *ngIf="!showVideoTag" src="{{exerciseList.exercisePath}}" />
-      <video #video playsinline preload="auto" poster="assets/imgs/video-loading.png" controls class="excercise-video" id="videos" loop controlsList="nodownload"></video>
+      <video #video playsinline preload="auto" poster="assets/imgs/video_preview.jpeg" controls class="excercise-video" id="videos" loop controlsList="nodownload"></video>
       <h6 text-center [innerHTML]="exerciseList.imageVideoName"></h6>
       <div [innerHTML]="exerciseList.exerciseDescription"></div>
       <h6 text-center>Guidelines</h6>

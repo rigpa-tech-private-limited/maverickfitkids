@@ -18,7 +18,9 @@ export class StarRatingPage {
     public navParams: NavParams,
     public platform: Platform,
     public storage: Storage) {
-    this.starList = this.navParams.get('starList');
+    if (this.navParams.get('starList')) {
+      this.starList = this.navParams.get('starList');
+    }
     this.storage.get('userDetails')
       .then((res: any) => {
         if (res) {

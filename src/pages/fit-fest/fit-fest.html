@@ -254,21 +254,21 @@
           </ion-col>
         </ion-row>
 
-        <ion-row *ngFor="let listtesting of fitfestListtesting; let i = index;">
+        <ion-row *ngFor="let listtesting of preFitfestListtesting; let i = index;">
           <ion-col *ngIf="(preFitfestList.length>0)" col-3 class="zero-margin fitfest-heads">
-            <p text-right>
-              {{listtesting?.testingName}}
+            <p text-right *ngIf="listtesting?.preTestingName">
+              {{listtesting?.preTestingName}}
             </p>
           </ion-col>
           <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin pre-fitfest-list">
-            <img *ngIf="(preFitfestListtesting[i]?.actionName=='A')" src="assets/icon/healthy.png" />
-            <img *ngIf="(preFitfestListtesting[i]?.actionName=='B')" src="assets/icon/can_improve.png" />
-            <img *ngIf="(preFitfestListtesting[i]?.actionName=='C')" src="assets/icon/must_improve.png" />
-            <p [style.color]='((preFitfestListtesting?.actionName=="A")?"#228B22":((preFitfestListtesting?.actionName=="B")?"#FF9966":((preFitfestListtesting?.actionName=="C")?"#FF0000":((preFitfestListtesting?.actionName=="Not Applicable")?"#021337":"#021337"))))'>
-              {{((preFitfestListtesting[i]?.actionName=="A")?"Healthy Fitness
-              Zone":((preFitfestListtesting[i]?.actionName=="B")?"Can
-              Improve":((preFitfestListtesting[i]?.actionName=="C")?"Must
-              Improve":((preFitfestListtesting[i]?.actionName=="Not Applicable")?"Not
+            <img *ngIf="(preFitfestListtesting[i]?.preActionName=='A')" src="assets/icon/healthy.png" />
+            <img *ngIf="(preFitfestListtesting[i]?.preActionName=='B')" src="assets/icon/can_improve.png" />
+            <img *ngIf="(preFitfestListtesting[i]?.preActionName=='C')" src="assets/icon/must_improve.png" />
+            <p [style.color]='((preFitfestListtesting?.preActionName=="A")?"#228B22":((preFitfestListtesting?.preActionName=="B")?"#FF9966":((preFitfestListtesting?.preActionName=="C")?"#FF0000":((preFitfestListtesting?.preActionName=="Not Applicable")?"#021337":"#021337"))))'>
+              {{((preFitfestListtesting[i]?.preActionName=="A")?"Healthy Fitness
+              Zone":((preFitfestListtesting[i]?.preActionName=="B")?"Can
+              Improve":((preFitfestListtesting[i]?.preActionName=="C")?"Must
+              Improve":((preFitfestListtesting[i]?.preActionName=="Not Applicable")?"Not
               Applicable":"-"))))}}
             </p>
           </ion-col>
@@ -279,9 +279,8 @@
             </p>
           </ion-col>
           <ion-col *ngIf="(preFitfestList.length>0)" col-9 class="zero-margin pre-fitfest-list">
-
             <p class="action-msg">
-              {{preFitfestListtesting?.actionPlan}}
+              {{preFitfestListtesting?.preActionPlan}}
             </p>
           </ion-col>
         </ion-row>

@@ -1,0 +1,59 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="textContent">
+    <ion-row class="zero-margin zero-padding acceptancecode-form" *ngIf="!showReuslt">
+      <!-- <ion-col col-12 class="wellbeing-checkbox">
+        <label class="checkbox checkbox-label">
+         <input type = "checkbox" />
+        </label>
+      </ion-col> -->
+      <ion-col col-12 class="zero-margin zero-padding">
+        <p text-center class="KaushanScript-Regular">Today's Code</p>
+      </ion-col>
+      <ion-col col-12 class="zero-margin zero-padding">
+        <form class="form" (ngSubmit)="validateTodayAcceptanceCode()" [formGroup]="validations_form_acceptance_code" novalidate>
+          <ion-list inset>
+            <ion-item>
+              <ion-input text-center [(ngModel)]="acceptance_code" formControlName="acceptance_code" type="text"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages_acceptance_code.acceptance_code">
+                <div text-center class="error-message" *ngIf="validations_form_acceptance_code.get('acceptance_code').hasError(validation.type) && (validations_form_acceptance_code.get('acceptance_code').dirty || validations_form_acceptance_code.get('acceptance_code').touched)">
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <button type="submit" class="hiddenSubmitBtn"></button>
+          </ion-list>
+        </form>
+      </ion-col>
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_acceptance_code.valid" (click)="validateTodayAcceptanceCode()">Submit</button>
+      </ion-col>
+      <ion-col col-12>
+        <p text-center class="highlight-text help-txt">
+          * Your parent needs to endorse with today’s code
+        </p>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="home-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, ModalController, IonicPage, NavController, AlertController, NavParams, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { DatabaseProvider } from '../../providers/database/database';
-
+import { DataProvider } from '../../providers/data/data';
 @IonicPage()
 @Component({
   selector: 'page-users',
@@ -53,11 +53,14 @@ export class UsersPage {
   userLockStatus4: any = '0';
   loader1: any;
   showUsersList: boolean = false;
+  responseData1: any;
+  loginData = { "existing_student_name": "", "existing_student_mfk_id": "", "new_student_name": "", "school_access_code": "" };
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public navParams: NavParams,
     public platform: Platform,
+    public dataService: DataProvider,
     public modalCtrl: ModalController,
     public databaseprovider: DatabaseProvider,
     public storage: Storage) {
@@ -341,10 +344,54 @@ export class UsersPage {
         this.userList = await this.databaseprovider.selectUserById(pmUserId).then(res => res);
         console.log(this.userList);
         if (this.userList) {
-          this.storage.set('loggedInUser', "yes");
-          this.storage.set('userDetails', this.userList[0]);
-          this.storage.set('imgPreview', this.userList[0].studentImage);
-          this.navCtrl.setRoot("HomePage");
+          this.loginData.existing_student_name = this.userList[0].studentName;
+          this.loginData.existing_student_mfk_id = this.userList[0].password;
+          this.loginData.new_student_name = null;
+          this.loginData.school_access_code = null;
+          let loader = this.loadingCtrl.create({
+            spinner: 'ios',
+            content: ''
+          });
+          loader.present();
+          this.dataService.studentLogin(this.loginData).then((result) => {
+            this.responseData = result;
+            loader.dismiss();
+            console.log(this.responseData);
+            if (this.responseData.returnStatus != 0) {
+              this.responseData.password = this.loginData.existing_student_mfk_id;
+              console.log('Register success');
+              this.dataService.getStudentStar(this.responseData).then(async (result) => {
+                this.responseData1 = result;
+                console.log(this.responseData1);
+                if (this.responseData1.returnStatus != 0) {
+                  this.responseData.starCount = this.responseData1.starCount;
+                } else {
+                  this.responseData.starCount = "0";
+                }
+                this.databaseprovider.updateUser(this.responseData)
+                  .then(data => {
+                    console.log('Users updated to local db.');
+                    this.databaseprovider.updateOtherUserLockStatus(this.responseData.studentId)
+                      .then(data => {
+                        console.log('User status updated to local db.');
+                      }).catch(e => {
+                        console.log(e);
+                      });
+                  }).catch(e => {
+                    console.log(e);
+                  });
+                this.storage.set('loggedInUser', "yes");
+                this.storage.set('userDetails', this.userList[0]);
+                this.storage.set('imgPreview', this.userList[0].studentImage);
+                this.navCtrl.setRoot("HomePage");
+              });
+            } else {
+              console.log('Register fail');
+            }
+          }, (err) => {
+            console.log(err);
+            loader.dismiss();
+          });
         }
       } else {
         console.log("Locked");

@@ -48,6 +48,9 @@ export class ActiveTrackPage {
             if (this.responseData.returnStatus != 0) {
               console.log(this.responseData.gameContent);
               this.gameContent = (this.responseData.gameContent).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+              this.gameContent = (this.gameContent).replace(/\/maverick\/Directory\/Video\//g, AppConfig.SITE_URL + 'maverick/Directory/Video/');
+              this.gameContent = (this.gameContent).replace(/<video /g, '<video loop controls controlslist="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" preload="auto" ');
+
               var strMessage1 = document.getElementById("sessions-content");
               strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
             } else if (this.responseData.returnStatus == 0) {

@@ -80,7 +80,7 @@ export class HomePage {
             content: ''
           });
           loader.present();
-          this.dataService.isCheckSportSkills(this.userDetails.schoolCode, this.userDetails.className).then((result) => {
+          this.dataService.isCheckSportSkills(this.userDetails.schoolCode, this.userDetails.classCode).then((result) => {
             this.responseData = result;
             loader.dismiss();
             console.log('isCheckSportSkills', this.responseData);

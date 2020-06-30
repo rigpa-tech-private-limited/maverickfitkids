@@ -1,4 +1,5 @@
 page-query {
+
   .question-answer,
   .textContent {
     float: left;
@@ -14,10 +15,11 @@ page-query {
     background: #d4d2d2;
     text-align: right;
     width: 80%;
-    padding: 3vw;
+    padding: 2vw;
     margin: 1vw;
     line-height: 2.5rem;
     border: 1px solid #000;
+    display: flex;
   }
 
   .answer {
@@ -25,10 +27,34 @@ page-query {
     background: #d4d2d2;
     text-align: left;
     width: 80%;
-    padding: 3vw;
+    padding: 2vw;
     margin: 1vw;
     line-height: 2.5rem;
     border: 1px solid #000;
+    display: flex;
+  }
+
+  .question-img {
+    display: flex;
+    align-items: center;
+    padding: 0 5px 0 0;
+  }
+
+  .question-message {
+    flex-grow: 1;
+  }
+
+  .answer-img {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 5px;
+  }
+  .date-p{
+    font-size: 1.2rem;
+    }
+
+  .answer-message {
+    flex-grow: 1;
   }
 
   button {
@@ -77,17 +103,18 @@ page-query {
 
   .admin-avatar,
   .user-avatar {
-    width: 9vw;
-    height: 9vw;
-    -webkit-border-radius: 9vw;
+    width: 15vw;
+    height: 15vw;
+    -webkit-border-radius: 15vw;
     -webkit-background-clip: padding-box;
-    -moz-border-radius: 9vw;
+    -moz-border-radius: 15vw;
     -moz-background-clip: padding;
-    border-radius: 9vw;
+    border-radius: 15vw;
     background-clip: padding-box;
     margin: 1.5vw 2vw;
-    background-size: cover;
-    background-position: center center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .user-avatar {
@@ -99,7 +126,9 @@ page-query {
     background-color: #ff7c00;
     float: right;
   }
+
   @media screen and (min-width : 767px) {
+
     .scroll-content,
     ion-content {
       padding: 0 20% !important;

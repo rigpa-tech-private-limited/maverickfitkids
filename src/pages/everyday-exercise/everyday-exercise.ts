@@ -389,7 +389,7 @@ export class EverydayExercisePage {
           this.responseData = result;
           console.log(this.responseData.starList);
           if (this.responseData.returnStatus != 0) {
-            this.navCtrl.setRoot("StarRatingPage", { "starList": this.responseData.starList });
+            this.navCtrl.setRoot("AcceptanceCodePage", { "starList": this.responseData.starList,"fromPage":"exercise" });
           } else if (this.responseData.returnStatus == 0) {
             console.log('returnStatus=>0');
             const alert = this.alertCtrl.create({

@@ -299,6 +299,7 @@ export class TransformPage {
       this.goHome();
     });
   }
+  
   goPage(pmPage) {
     this.navCtrl.setRoot(pmPage);
   }

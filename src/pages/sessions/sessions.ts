@@ -67,7 +67,7 @@ export class SessionsPage {
                   const regMusic = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Music/', 'g');
                   const videoTag = new RegExp('<video ', 'g');
                   const audioTag = new RegExp('<audio ', 'g');
-                  this.sessionsContent = await ((((((this.responseData.unitTemplateContent).replace(regImg, AppConfig.SITE_URL + 'maverick/Directory/Image/'))).replace(regMusic, AppConfig.SITE_URL + 'maverick/Directory/Music/')).replace(regVideo, AppConfig.SITE_URL + 'maverick/Directory/Video/')).replace(videoTag, '<video controlsList="nodownload" playsinline poster="assets/imgs/video-loading.png" ')).replace(audioTag, '<audio controlsList="nodownload" ');
+                  this.sessionsContent = await ((((((this.responseData.unitTemplateContent).replace(regImg, AppConfig.SITE_URL + 'maverick/Directory/Image/'))).replace(regMusic, AppConfig.SITE_URL + 'maverick/Directory/Music/')).replace(regVideo, AppConfig.SITE_URL + 'maverick/Directory/Video/')).replace(videoTag, '<video controlsList="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" ')).replace(audioTag, '<audio controlsList="nodownload" ');
 
                   //console.log(this.sessionsContent);
                   var strMessage1 = document.getElementById("sessions-content");
@@ -200,7 +200,8 @@ export class SessionsPage {
       this.responseData = result;
       console.log(this.responseData.starList);
       if (this.responseData.returnStatus != 0) {
-        this.navCtrl.setRoot("StarRatingPage", { "starList": this.responseData.starList });
+        // this.navCtrl.setRoot("StarRatingPage", { "starList": this.responseData.starList });
+        this.navCtrl.setRoot("AcceptanceCodePage", { "starList": this.responseData.starList,"fromPage":"sessions" });
       } else if (this.responseData.returnStatus == 0) {
         console.log('returnStatus=>0');
         const alert = this.alertCtrl.create({
