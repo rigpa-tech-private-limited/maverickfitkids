@@ -300,13 +300,33 @@ export class DataProvider {
     });
   }
 
-  getGuideImplementationType(pmextypecode) {
+  getFitSpotTitle(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      console.log(aData.classCode);
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "classcode": aData.classCode,
+          }
+        }, AppConfig.GET_FIT_SPOT_TITLE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getGuideImplementationType(formData, pmextypecode) {
     return new Promise((resolve, reject) => {
       this.authService.postData(
         {
           "content": {
             "applicationId": AppConfig.APP_ID,
             "extypecode": pmextypecode,
+            "classcode": formData.classCode
           }
         }, AppConfig.GET_GUIDE_IMPLEMENTATION_TYPE)
         .then(res => {
@@ -339,6 +359,25 @@ export class DataProvider {
         {
           "content": postData
         }, AppConfig.GET_STUDENT_GUIDE_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getFitSpotDetails(formData, pmExercise) {
+    return new Promise((resolve, reject) => {
+      
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "fitspotCode": pmExercise,
+            "classcode": formData.classCode,
+          }
+        }, AppConfig.GET_FIT_SPOT_DETAILS)
         .then(res => {
           resolve(res);
         }, (err) => {

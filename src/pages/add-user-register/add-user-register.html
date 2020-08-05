@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding text-center class="user-register-page">
-  <h2 text-center class="sub-heading KaushanScript-Regular">Existing User</h2>
-  <p text-center class="inner-txt">Please enter your details as registered with us through your school to activate your account.</p>
+  <h2 text-center class="sub-heading KaushanScript-Regular">User Login</h2>
+  <p text-center class="inner-txt">Please enter your details as registered with us to activate your account.</p>
   <form class="form" (ngSubmit)="signIn()" [formGroup]="validations_form_existing_user" novalidate>
     <ion-list inset>
       <ion-item>
@@ -32,42 +32,31 @@
       </div>
       <button type="submit" class="hiddenSubmitBtn"></button>
     </ion-list>
+    <ion-row class="action-icons-holder">
+      <ion-col col-12>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="signIn()">Submit</button>
+      </ion-col>
+    </ion-row>
   </form>
-  <h2 text-center class="sub-heading KaushanScript-Regular">New User</h2>
-  <p text-center>If you are not yet registered please enter the code given by your school to begin.</p>
-  <form class="form" (ngSubmit)="signIn()" [formGroup]="validations_form_new_user" novalidate>
-    <ion-list inset>
-      <ion-item>
-        <ion-input text-center [(ngModel)]="loginData.new_student_name" (keyup)="onKeyupNewUser()" formControlName="new_student_name" type="text" placeholder="Student's Name"></ion-input>
-      </ion-item>
-      <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages_new_user.new_student_name">
-          <div text-center class="error-message" *ngIf="validations_form_new_user.get('new_student_name').hasError(validation.type) && (validations_form_new_user.get('new_student_name').dirty || validations_form_new_user.get('new_student_name').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
-      <ion-item>
-        <ion-input text-center [(ngModel)]="loginData.school_access_code" (keyup)="onKeyupNewUser()" formControlName="school_access_code" type="password" placeholder="School Access Code"></ion-input>
-      </ion-item>
-      <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages_new_user.school_access_code">
-          <div text-center class="error-message" *ngIf="validations_form_new_user.get('school_access_code').hasError(validation.type) && (validations_form_new_user.get('school_access_code').dirty || validations_form_new_user.get('school_access_code').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
-    </ion-list>
-    <button type="submit" class="hiddenSubmitBtn"></button>
+  <br />
+  <h2 text-center class="sub-heading KaushanScript-Regular">New Registrations</h2>
+  <p text-center>To enrol a new student and / or buy a Fit Kids Kit.</p>
+  <form class="form">
+    <ion-row class="action-icons-holder">
+      <ion-col col-12>
+        <a class="submit-btn KaushanScript-Regular" ion-button color="danger" onclick="window.open('http://www.maverickfitkids.net', '_system', 'location=yes'); return false;" href="#">Register</a>
+        <!-- <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="signUpLink()">Register</button> -->
+      </ion-col>
+    </ion-row>
   </form>
 </ion-content>
 <ion-footer no-border id="footer-container" class="zero-margin zero-padding">
   <ion-toolbar class="zero-margin zero-padding">
-    <ion-row class="action-icons-holder">
+    <!-- <ion-row class="action-icons-holder">
       <ion-col col-12>
         <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!enable_btn" (click)="signIn()">Submit</button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row *ngIf="showFooter" class="footer-icons-holder">
       <ion-col col-4>
         <div class="back-icon" (click)="goHome()"></div>

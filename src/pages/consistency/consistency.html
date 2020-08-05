@@ -16,7 +16,11 @@
         <p class="user-star">{{totalStarCount}}</p>
       </ion-col>
     </ion-row>
-
+    <ion-row>
+      <ion-col col-12>
+        <p>Here are your stars earned! Remember, fitness cannot be stored! The key to fitness is consistency...</p>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col col-12>
         <div *ngIf="maxStarCount>0" class="container vertical flat">
@@ -41,9 +45,16 @@
 </ion-content>
 <ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
   <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-helptxt-holder">
+      <div class="help-txt">
+        <p>Here are your stars earned! Remember, fitness cannot be stored! The key to fitness is consistency...</p>
+      </div>
+    </ion-row>
     <ion-row class="footer-icons-holder">
       <ion-col col-4>
-        <div class="back-icon" (click)="goHome()"></div>
+        <div class="profile-avatar share-icon" (click)="sharePage()"></div>
+        <div class="settings-icon website-icon"
+          onclick="window.open('http://www.maverickfitkids.net', '_system', 'location=yes'); return false;"></div>
       </ion-col>
       <ion-col col-8>
         <img src="assets/imgs/maverick_logo.png" class="logo-img">

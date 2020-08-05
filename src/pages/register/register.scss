@@ -31,5 +31,9 @@ page-register {
   .footer-icons-holder,
   .footer-icons-holder ion-col {
     background: #021337 !important;
-  }
+    min-height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 }

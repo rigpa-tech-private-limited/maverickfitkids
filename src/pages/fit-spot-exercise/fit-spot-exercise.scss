@@ -1,0 +1,61 @@
+page-fit-spot-exercise {
+  #slides {
+    position: relative;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .heading-exercise {
+    margin-top: 20px !important;
+  }
+
+  h5,
+  h6 {
+    font-weight: bold;
+  }
+
+  .slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+  }
+
+  .showing {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .content-inner {
+    padding: 0 0 30px;
+  }
+
+  ion-app.ios [padding] .scroll-content {
+    padding: 0 16px !important;
+  }
+
+  #footer-container ion-col p {
+    color: #fff !important;
+  }
+
+  audio {
+    visibility: hidden;
+    height: 0;
+    float: left;
+    width: 0;
+  }
+
+  video {
+    width: 100%;
+    height: 30vh;
+  }
+}

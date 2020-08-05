@@ -22,8 +22,10 @@ export class HomePage {
   showSportsMenu: boolean = false; //Sports (Class 9 to 12)
   showTransformMenu: boolean = false;  //Transform (class 1 to 5)
   showChallengeMenu: boolean = false; //Challenge (class 8 to 12)
+  showFitSpotMenu: boolean = false; //Challenge (class 1 to 8)
   showSessionMenu: boolean = false; //Session (class 1 to 8)
   showGuidesMenu: boolean = false; //Guides (Class 9 to 12)
+  showFitSpotSessionIcon: boolean = false;
   showMenuIcon: boolean = true;
   showNoAccessMsg: boolean = false;
   studentId: any;
@@ -75,6 +77,14 @@ export class HomePage {
           if (res.className == "IX" || res.className == "X" || res.className == "XI" || res.className == "XII") {
             this.showGuidesMenu = true;
           }
+
+          if (res.fitzoneFlag == "1" && (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII")) {
+            this.showFitSpotMenu = true;
+          }
+          if (res.fitzoneFlag == "1"){
+            this.showFitSpotSessionIcon = true;
+          }
+          
           let loader = this.loadingCtrl.create({
             spinner: 'ios',
             content: ''

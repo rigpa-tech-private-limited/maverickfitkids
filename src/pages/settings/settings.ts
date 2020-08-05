@@ -67,24 +67,25 @@ export class SettingsPage {
           zoom: 'no'
         }
         const browser = this.iab.create('https://docs.google.com/gview?embedded=true&url=' + this.reviewPath, '_blank', options);
-        //const browser = this.iab.create(this.reviewPath, '_blank', { location: 'no' });
-        // const options: DocumentViewerOptions = {
-        //   title: "3A Review"
-        // }
-        // this.document.viewDocument('https://docs.google.com/gview?embedded=true&url=' + this.reviewPath, 'application/pdf', options);
+        console.log(browser);
       } else if (this.responseData.returnStatus == 0) {
         console.log('returnStatus=>0');
-        const alert = this.alertCtrl.create({
-          message: this.responseData.returnMessage,
-          buttons: [{
-            text: 'Ok',
-            handler: () => {
-              //this.goHome();
-            }
-          }],
-          enableBackdropDismiss: false
+        let modal = this.modalCtrl.create("ReviewPopupPage", {}, {
+          cssClass: 'exercise-modal',
+          enableBackdropDismiss: true
         });
-        alert.present();
+        modal.present();
+        // const alert = this.alertCtrl.create({
+        //   message: this.responseData.returnMessage,
+        //   buttons: [{
+        //     text: 'Ok',
+        //     handler: () => {
+        //       //this.goHome();
+        //     }
+        //   }],
+        //   enableBackdropDismiss: false
+        // });
+        // alert.present();
       }
     }, (err) => {
       console.log(err);

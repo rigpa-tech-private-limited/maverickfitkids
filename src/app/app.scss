@@ -195,7 +195,8 @@ ion-header ion-navbar {
 .footer-icons-holder .back-icon,
 .footer-icons-holder .home-icon,
 .footer-icons-holder .profile-avatar,
-.footer-icons-holder .settings-icon {
+.footer-icons-holder .settings-icon,
+.footer-icons-holder .share-icon {
   width: 9vw;
   height: 9vw;
   -webkit-border-radius: 9vw;
@@ -222,6 +223,14 @@ ion-header ion-navbar {
   background-image: url("../assets/imgs/back_icon.png");
 }
 
+.footer-icons-holder .website-icon {
+  background-image: url("../assets/icon/web.png");
+}
+
+.footer-icons-holder .share-icon {
+  background-image: url("../assets/icon/share.png");
+}ß
+
 .user-confirm-page ion-col {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -236,23 +245,27 @@ ion-header ion-navbar {
   font-size: 1rem;
 }
 
-.vertical-align-content > * {
-  display: flex!important;
-  align-content: center!important;
-  align-items: center!important;
+.vertical-align-content>* {
+  display: flex !important;
+  align-content: center !important;
+  align-items: center !important;
 }
+
 @media screen and (min-width : 767px) {
+
   .scroll-content,
   ion-content {
     padding: 0 20% !important;
   }
 }
+
 //iPhone 5s/SE
 @media screen and (min-height: 320px) and (max-height : 480px) {
   html {
     font-size: 50% !important;
   }
 }
+
 //iPhone 5s/SE
 @media screen and (min-width: 767px) {
   html {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform, ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+
 @IonicPage()
 @Component({
   selector: 'page-guides',

@@ -94,6 +94,10 @@ export class ConsistencyPage {
     this.navCtrl.setRoot("SettingsPage");
   }
 
+  sharePage(){
+    console.log("share");
+  }
+  
   ionViewDidLoad() {
     this.storage.get('imgPreview')
       .then((res: any) => {

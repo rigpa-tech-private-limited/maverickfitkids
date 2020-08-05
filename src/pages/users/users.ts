@@ -509,6 +509,10 @@ export class UsersPage {
     modal.present();
   }
 
+  sharePage(){
+    console.log("share");
+  }
+  
   ionViewDidLoad() {
     this.storage.get('imgPreview')
       .then((res: any) => {

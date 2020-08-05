@@ -46,13 +46,19 @@
       </li>
       <li class='menu-item 8'>
         <a class='fa' (click)="openModal('EndorserPage')"><img src="assets/imgs/settings/endorser.png" /></a>
-        <p>Endorser</p>
+        <p>Endorser&nbsp;&nbsp;</p>
       </li>
     </ul>
   </nav>
 </ion-content>
 <ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
   <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <ion-row class="footer-helptxt-holder">
+      <div class="help-txt">
+        <p>* Click on your photo to change the user</p>
+        <p>* Use the Home icon to return to main page...</p>
+      </div>
+    </ion-row>
     <ion-row class="footer-icons-holder">
       <ion-col col-4>
         <div class="profile-avatar" (click)="goPage('UsersPage')"></div>

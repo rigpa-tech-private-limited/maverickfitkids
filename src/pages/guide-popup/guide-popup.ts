@@ -146,7 +146,7 @@ export class GuidePopupPage {
 
   onSelectChange(selectedValue: any) {
     console.log(selectedValue);
-    this.dataService.getGuideImplementationType(selectedValue).then((result) => {
+    this.dataService.getGuideImplementationType(this.userDetails,selectedValue).then((result) => {
       //loader.dismiss();
       this.responseData = result;
       console.log(this.responseData);

@@ -28,7 +28,7 @@ export class AboutGuidePopupPage {
   }
 
   ionViewWillLeave() {
-    console.log('HomePage Leave-->');
+    console.log('AboutGuidePopupPage Leave-->');
     this.unregisterBackButtonAction && this.unregisterBackButtonAction();
   }
 

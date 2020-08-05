@@ -22,6 +22,7 @@ export class ExercisePopupPage {
   finishSlide() {
     this.viewCtrl.dismiss({ slideAction: 'finish' });
   }
+  
   ionViewDidLoad() {
     this.initializeBackButtonCustomHandler();
   }

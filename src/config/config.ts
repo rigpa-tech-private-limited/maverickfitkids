@@ -73,5 +73,6 @@ export class AppConfig {
   public static GET_STUDENT_STAR = 'getStudentStar';
   public static GET_STUDENT_SPORT_SKILLS_DETAILS = 'getSportsSkills';
   public static CHECK_STUDENT_SPORT_SKILLS = 'isCheckSportSkills';
-  
+  public static GET_FIT_SPOT_TITLE = 'getFitSpotTitle';
+  public static GET_FIT_SPOT_DETAILS = 'getFitSpotDetails';  
 }

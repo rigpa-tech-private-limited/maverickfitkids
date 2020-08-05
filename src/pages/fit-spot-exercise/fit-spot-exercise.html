@@ -1,0 +1,53 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div id="slides">
+    <div class="slider showing">
+      <h5 class="heading-exercise" text-center [innerHTML]="exerciseType"></h5>
+      <img *ngIf="!showVideoTag" src="{{exerciseList.exercisePath}}" />
+      <video #video playsinline preload="auto" poster="assets/imgs/video_preview.jpeg" controls class="excercise-video" id="videos" loop controlsList="nodownload"></video>
+      <h6 text-center [innerHTML]="exerciseList.imageVideoName"></h6>
+      <div [innerHTML]="exerciseList.exerciseDescription"></div>
+      <h6 text-center>Guidelines</h6>
+      <div class="content-inner" [innerHTML]="exerciseList.workoutId"></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding" color="primary">
+  <ion-toolbar class="zero-margin zero-padding" color="primary">
+    <ion-row class="action-icons-holder">
+      <ion-col col-4 (click)="onSearch()" class="searchIcon">
+        <img src="assets/imgs/repeat_icon.png" class="action-icon">
+        <p class="help-text">
+          Search
+        </p>
+      </ion-col>
+      <ion-col col-4 (click)="showAbout()">
+        <img src="assets/imgs/instruction_icon.png" class="action-icon">
+        <p class="help-text">
+          About
+        </p>
+      </ion-col>
+      <ion-col col-4 (click)="onFinish()" class="finishIcon">
+        <img src="assets/imgs/finish_icon.png" class="action-icon">
+        <p class="help-text">
+          Finish
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

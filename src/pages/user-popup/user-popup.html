@@ -3,12 +3,12 @@
   <div class="popup-icons-holder" color="primary">
     <form class="form" [formGroup]="validations_form_user" novalidate>
       <ion-list inset class="zero-margin zero-padding">
-        <ion-grid class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding grid-holder">
 
           <ion-row class="select-row">
             <ion-col col-12>
               <ion-item class="user-item">
-                <ion-input text-center [(ngModel)]="loginData.username" formControlName="username" type="text" placeholder="Username"></ion-input>
+                <ion-input text-center [(ngModel)]="loginData.username" formControlName="username" type="text" placeholder="Username / Name"></ion-input>
               </ion-item>
               <div class="validation-errors">
                 <ng-container *ngFor="let validation of validation_messages.username">
@@ -23,7 +23,7 @@
           <ion-row class="select-row">
             <ion-col col-12>
               <ion-item class="user-item">
-                <ion-input text-center [(ngModel)]="loginData.password" formControlName="password" type="password" placeholder="Password"></ion-input>
+                <ion-input text-center [(ngModel)]="loginData.password" formControlName="password" type="password" placeholder="Password / MFK id#"></ion-input>
               </ion-item>
               <div class="validation-errors">
                 <ng-container *ngFor="let validation of validation_messages.password">

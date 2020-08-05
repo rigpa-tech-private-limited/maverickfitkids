@@ -29,4 +29,28 @@ page-insight {
     line-height: 2rem;
     white-space: pre-wrap;
   }
+
+  .footer .toolbar-background {
+    border: none !important;
+  }
+
+  .footer-helptxt-holder {
+    background: #fff;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .help-txt {
+    width: 100%;
+    padding: 5px 15px;
+    text-align: center;
+  }
+
+  .help-txt p {
+    font-size: 1.2rem;
+    color: #021337;
+    text-align: justify;
+  }
 }

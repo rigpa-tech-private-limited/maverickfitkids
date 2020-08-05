@@ -1,0 +1,79 @@
+page-review-popup {
+    .popup-icons-holder {
+        position: absolute;
+        width: 90%;
+        z-index: 2;
+        background-image: url("../assets/imgs/orange_bg.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        left: 0;
+        margin: 2% 5%;
+        top: 24%;
+        min-height: 50%;
+        height: 50%;
+        overflow: scroll;
+        padding: 2%;
+        display: flex;
+        align-items: center;
+    
+        #x {
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding: 10px;
+          background: transparent;
+          color: #fff;
+          z-index: 10;
+        }
+    
+        img {
+          width: auto;
+          display: table;
+          margin: 0 auto;
+        }
+    
+        b {
+          color: #021337;
+        }
+    
+        .right {
+          float: right;
+          margin: 0 0 0 10px;
+          width: 25vw;
+        }
+    
+        a {
+          float: right;
+        }
+    
+        h2,
+        p {
+          color: #fff;
+          margin: 1rem 0 !important;
+          text-align: justify;
+          line-height: 2rem;
+        }
+      }
+      @media screen and (min-width: 767px) {
+        .popup-icons-holder {
+          position: absolute;
+          width: 80%;
+          left: 5%;
+          margin: 5%;
+          top: 15%;
+          min-height: 50%;
+          height: 50%;
+          padding: 2% 5%;
+        }
+      }
+    
+      .popup-backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: transparent;
+        left: 0;
+      }
+}

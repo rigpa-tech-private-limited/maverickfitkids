@@ -14,6 +14,12 @@ page-user-popup {
       display: table;
       margin: 0 auto;
     }
+    .grid-holder{
+      margin-top: 10px !important;
+    }
+    .user-item{
+      min-height: 4rem !important;
+  }
   }
   @media screen and (min-width: 767px) {
     .popup-icons-holder {

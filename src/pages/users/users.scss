@@ -33,7 +33,7 @@ page-users {
     float: left;
   }
 
-  .lockunlock-switch{
+  .lockunlock-switch {
     justify-content: flex-end;
   }
 
@@ -100,121 +100,135 @@ page-users {
 
   /*Create ripple effec*/
 
-.ripple1 {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
+  .ripple1 {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
 
-.ripple1:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform .5s, opacity 1s;
-}
+  .ripple1:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
 
-.ripple1:active:after {
-  transform: scale(0, 0);
-  opacity: .3;
-  transition: 0s;
-}
+  .ripple1:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+  }
 
-.ripple2 {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
+  .ripple2 {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
 
-.ripple2:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform .5s, opacity 1s;
-}
+  .ripple2:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
 
-.ripple2:active:after {
-  transform: scale(0, 0);
-  opacity: .3;
-  transition: 0s;
-}
+  .ripple2:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+  }
 
-.ripple3 {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
+  .ripple3 {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
 
-.ripple3:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform .5s, opacity 1s;
-}
+  .ripple3:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
 
-.ripple3:active:after {
-  transform: scale(0, 0);
-  opacity: .3;
-  transition: 0s;
-}
+  .ripple3:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+  }
 
-.ripple4 {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
+  .ripple4 {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
 
-.ripple4:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform .5s, opacity 1s;
-}
+  .ripple4:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, gray 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
 
-.ripple4:active:after {
-  transform: scale(0, 0);
-  opacity: .3;
-  transition: 0s;
-}
+  .ripple4:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+  }
+
+  .p-head {
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    margin-top: 20px !important;
+  }
+
+  .p-sub {
+    font-size: 1.4rem;
+    padding: 5px 0;
+    text-align: justify;
+  }
 
   //iPad Pro
   @media screen and (min-width : 768px) {

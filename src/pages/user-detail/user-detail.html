@@ -152,6 +152,15 @@
             <p>{{responseData?.registeredDate}}</p>
           </ion-col>
         </ion-row>
+        <ion-row>
+          <div>
+            <br />
+            <p>Click on the icon above to add your favourite playlist.
+              To change any of your personal details, contact us via
+              WhatsApp to +91 91761 00222 with your name as registered
+              and your Maverick id#</p>
+          </div>
+        </ion-row>
       </ion-grid>
     </ion-list>
   </div>
@@ -160,10 +169,12 @@
   <ion-toolbar class="zero-margin zero-padding">
     <ion-row class="action-icons-holder">
       <ion-col col-6>
-        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="openModal('UserDeletePage')">Delete</button>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger"
+          (click)="openModal('UserDeletePage')">Delete</button>
       </ion-col>
       <ion-col col-6>
-        <button class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="goPage('ChangePasswordPage')">Password</button>
+        <button class="submit-btn KaushanScript-Regular" ion-button color="danger"
+          (click)="goPage('ChangePasswordPage')">Password</button>
       </ion-col>
     </ion-row>
     <ion-row class="footer-icons-holder">
