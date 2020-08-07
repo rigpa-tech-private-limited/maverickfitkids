@@ -333,7 +333,7 @@ export class FitSpotExercisePage {
   }
 
   onFinish(){
-    this.dataService.markStarForStudent(this.userDetails, 12).then((result) => {
+    this.dataService.markStarForStudent(this.userDetails, 13).then((result) => {
       this.responseData = result;
       console.log(this.responseData.starList);
 

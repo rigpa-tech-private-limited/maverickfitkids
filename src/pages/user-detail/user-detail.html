@@ -78,6 +78,21 @@
           </ion-col>
         </ion-row>
 
+        <ion-row *ngIf="responseData?.mobile">
+          <ion-col col-6>
+            <div>
+              <p class="float-left"><b>Mobile</b>
+              </p>
+              <p class="float-right">
+                :
+              </p>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p>{{responseData?.mobile}}</p>
+          </ion-col>
+        </ion-row>
+
         <ion-row>
           <ion-col col-6>
             <div>
@@ -93,7 +108,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row *ngIf="!fitSpotFlag">
           <ion-col col-6>
             <div>
               <p class="float-left"><b>School</b>
@@ -123,7 +138,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row *ngIf="!fitSpotFlag">
           <ion-col col-6>
             <div>
               <p class="float-left"><b>Section</b>

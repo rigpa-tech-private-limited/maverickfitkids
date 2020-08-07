@@ -13,6 +13,7 @@ export class UserDetailPage {
   unregisterBackButtonAction: any;
   imgPreview = 'assets/imgs/no_image.png';
   responseData: any;
+  fitSpotFlag:boolean = false;
   constructor(public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -24,6 +25,9 @@ export class UserDetailPage {
     this.storage.get('userDetails')
       .then((res: any) => {
         if (res) {
+          if(res.fitzoneFlag == "1"){
+            this.fitSpotFlag = true;
+          }
           this.responseData = res;
         }
       });

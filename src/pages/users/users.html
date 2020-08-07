@@ -15,7 +15,7 @@
           (click)="updateUserStatus(userId1,userStatus1)">
         <img *ngIf="(userStatus1=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
           (click)="updateUserStatus(userId1,userStatus1)">
-        <div class="user-profile-avatar profile-avatar1" (click)="selectUser(userId1,1)"></div>
+        <div class="user-profile-avatar profile-avatar1" (click)="getPhoto(0)"></div>
       </ion-col>
       <ion-col col-4 class="user-label zero-margin zero-padding"
         (click)="selectUser(userId1,1,redDotVisible1,userStatus1)">
@@ -41,7 +41,7 @@
           (click)="updateUserStatus(userId2,userStatus2)">
         <img *ngIf="(userStatus2=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
           (click)="updateUserStatus(userId2,userStatus2)">
-        <div class="user-profile-avatar profile-avatar2" (click)="selectUser(userId2,2)"></div>
+        <div class="user-profile-avatar profile-avatar2" (click)="getPhoto(1)"></div>
       </ion-col>
       <ion-col col-4 class="user-label zero-margin zero-padding"
         (click)="selectUser(userId2,2,redDotVisible2,userStatus2)">
@@ -67,7 +67,7 @@
           (click)="updateUserStatus(userId3,userStatus3)">
         <img *ngIf="(userStatus3=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
           (click)="updateUserStatus(userId3,userStatus3)">
-        <div class="user-profile-avatar profile-avatar3" (click)="selectUser(userId3,3)"></div>
+        <div class="user-profile-avatar profile-avatar3" (click)="getPhoto(2)"></div>
       </ion-col>
       <ion-col col-4 class="user-label zero-margin zero-padding"
         (click)="selectUser(userId3,3,redDotVisible3,userStatus3)">
@@ -93,7 +93,7 @@
           (click)="updateUserStatus(userId4,userStatus4)">
         <img *ngIf="(userStatus4=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
           (click)="updateUserStatus(userId4,userStatus4)">
-        <div class="user-profile-avatar profile-avatar4" (click)="selectUser(userId4,4)"></div>
+        <div class="user-profile-avatar profile-avatar4" (click)="getPhoto(3)"></div>
       </ion-col>
       <ion-col col-4 class="user-label zero-margin zero-padding"
         (click)="selectUser(userId4,4,redDotVisible4,userStatus4)">

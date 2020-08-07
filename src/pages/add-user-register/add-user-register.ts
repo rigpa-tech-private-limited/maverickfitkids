@@ -16,6 +16,7 @@ declare var window: any;
   templateUrl: 'add-user-register.html',
 })
 export class AddUserRegisterPage {
+  isFormSubmitted: boolean = false;
   showFooter: boolean = true;
   unregisterBackButtonAction: any;
   showedAlert: boolean;
@@ -152,15 +153,14 @@ export class AddUserRegisterPage {
   }
 
   signIn() {
-
-    if (this.validations_form_existing_user.valid) {
+    if (!this.isFormSubmitted) {
+      this.isFormSubmitted = true;
       if (this.loginData.existing_student_name != '' && this.loginData.existing_student_mfk_id != '') {
         if (this.loginData.existing_student_name != this.currentStudentName) {
           var listStudentname = this.loginData.existing_student_name;
           var isPresent = this.usersList.some(function(el) { return el.studentName === listStudentname });
           console.log(this.loginData.existing_student_name, listStudentname, isPresent);
           if (!isPresent) {
-
             console.log("ExistingUser==>" + this.validations_form_existing_user.valid);
             let loader = this.loadingCtrl.create({
               spinner: 'ios',
@@ -171,6 +171,7 @@ export class AddUserRegisterPage {
               this.responseData = result;
               loader.dismiss();
               console.log(this.responseData);
+              this.isFormSubmitted = false;
               if (this.responseData.returnStatus != 0) {
                 this.responseData.password = this.loginData.existing_student_mfk_id;
                 console.log('Register success');
@@ -233,6 +234,7 @@ export class AddUserRegisterPage {
                 alert.present();
               }
             }, (err) => {
+              this.isFormSubmitted = false;
               console.log(err);
               loader.dismiss();
               const alert = this.alertCtrl.create({
@@ -269,11 +271,10 @@ export class AddUserRegisterPage {
           });
           alert.present();
         }
-
       }
     }
 
-    if (this.validations_form_new_user.valid) {
+    /*if (this.validations_form_new_user.valid) {
       if (this.loginData.new_student_name != '' && this.loginData.school_access_code != '') {
         console.log("NewUser==>" + this.validations_form_new_user.valid);
         let loader = this.loadingCtrl.create({
@@ -323,7 +324,7 @@ export class AddUserRegisterPage {
           alert.present();
         });
       }
-    }
+    }*/
 
   }
 

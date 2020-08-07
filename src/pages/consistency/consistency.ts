@@ -3,6 +3,9 @@ import { Platform, IonicPage, NavController, NavParams, AlertController, Loading
 import { AppConfig } from '../../config/config';
 import { DataProvider } from '../../providers/data/data';
 import { Storage } from '@ionic/storage';
+import * as moment from 'moment';
+import { Screenshot } from '@ionic-native/screenshot';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage()
 @Component({
@@ -11,7 +14,7 @@ import { Storage } from '@ionic/storage';
 })
 export class ConsistencyPage {
   unregisterBackButtonAction: any;
-  consistencyList: any;
+  consistencyList: any = [];
   responseData: any;
   userDetails: any;
   imgPreview = 'assets/imgs/no_image.png';
@@ -24,7 +27,9 @@ export class ConsistencyPage {
     public navParams: NavParams,
     public storage: Storage,
     public platform: Platform,
-    public dataService: DataProvider) {
+    public dataService: DataProvider,
+    private screenshot: Screenshot,
+    private socialSharing: SocialSharing) {
     this.storage.get('userDetails')
       .then((res: any) => {
         if (res) {
@@ -35,26 +40,26 @@ export class ConsistencyPage {
             content: ''
           });
           loader.present();
-          this.dataService.getStudentConsistency(this.userDetails).then((result) => {
+          this.dataService.getWeeklyStudentConsistency(this.userDetails).then((result) => {
             loader.dismiss();
             this.responseData = result;
             console.log(this.responseData);
             if (this.responseData.returnStatus != 0) {
               if (this.responseData.consistencyList) {
-                this.consistencyList = (this.responseData.consistencyList).reverse();
+                this.consistencyList = (this.responseData.consistencyList);
                 this.totalStarCount = this.responseData.totalStar;
 
                 var maxObj = this.consistencyList.reduce(function(max, obj) {
-                  return obj.starCount > max.starCount ? obj : max;
+                  return obj.star > max.star ? obj : max;
                 });
 
-                this.maxStarCount = (maxObj.starCount);
-                if (maxObj.starCount > 0) {
+                this.maxStarCount = (maxObj.star);
+                if (maxObj.star > 0) {
                   this.consistencyList.forEach(element => {
-                    let percent = (element.starCount / maxObj.starCount) * 100;
-                    element.percent = (percent<=100?percent:100);
-                    element.top = ((100 - percent)>=0?(100 - percent):0);
-                    console.log(element.starCount, percent);
+                    let percent = (element.star / maxObj.star) * 100;
+                    element.percent = (percent <= 100 ? percent : 100);
+                    element.top = ((100 - percent) >= 0 ? (100 - percent) : 0);
+                    console.log(element.star, percent);
                   });
                 }
                 console.log(this.consistencyList);
@@ -94,10 +99,13 @@ export class ConsistencyPage {
     this.navCtrl.setRoot("SettingsPage");
   }
 
-  sharePage(){
+  sharePage() {
     console.log("share");
+    if (this.consistencyList.length > 0) {
+      this.navCtrl.setRoot("ConsistencySharePage", { "consistencyList": this.consistencyList, "maxStarCount": this.maxStarCount, "userDetails": this.userDetails });
+    }
   }
-  
+
   ionViewDidLoad() {
     this.storage.get('imgPreview')
       .then((res: any) => {

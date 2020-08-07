@@ -5,6 +5,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AppConfig } from '../../config/config';
 import { DataProvider } from '../../providers/data/data';
 import { PasswordValidator } from '../../validators/password.validator';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @IonicPage()
 @Component({
@@ -44,6 +45,7 @@ export class ChangePasswordPage {
     public formBuilder: FormBuilder,
     public platform: Platform,
     public storage: Storage,
+    public databaseprovider: DatabaseProvider,
     public dataService: DataProvider,
     public viewCtrl: ViewController) {
     this.storage.get('userDetails')
@@ -101,13 +103,35 @@ export class ChangePasswordPage {
                   buttons: [{
                     text: 'Ok',
                     handler: () => {
-
                       if (this.responseData.returnStatus != 0) {
                         console.log('success');
-                        this.goHome();
+                        this.databaseprovider.updateUserPassword(this.userDetails.studentId, this.passwordData.newpassword)
+                          .then(data => {
+                            console.log('User Password updated to local db.');
+                            this.goHome();
+                          }).catch(e => {
+                            console.log(e);
+                            const alert = this.alertCtrl.create({
+                              message: "Password not updated",
+                              buttons: [{
+                                text: 'Ok',
+                                handler: () => { }
+                              }],
+                              enableBackdropDismiss: false
+                            });
+                            alert.present();
+                          });
                       } else {
                         console.log('returnStatus=>0');
-
+                        const alert = this.alertCtrl.create({
+                          message: this.responseData.returnMessage,
+                          buttons: [{
+                            text: 'Ok',
+                            handler: () => { }
+                          }],
+                          enableBackdropDismiss: false
+                        });
+                        alert.present();
                       }
                     }
                   }],

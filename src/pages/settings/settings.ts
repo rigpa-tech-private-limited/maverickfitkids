@@ -146,7 +146,7 @@ export class SettingsPage {
   checkNoAccess(pmPage) {
     this.storage.get('userDetails')
       .then((res: any) => {
-        if (res.studentAccessLevel == "2" && pmPage == 'QueryPage') {
+        if ((res.studentAccessLevel == "2" && pmPage == 'QueryPage') || (res.fitzoneFlag == "1" && pmPage == 'ReviewPage') || (res.fitzoneFlag == "1" && pmPage == 'FitFestPage')) {
           console.log(res.studentAccessLevel);
           this.showMenuIcon = false;
           this.showNoAccessMsg = true;

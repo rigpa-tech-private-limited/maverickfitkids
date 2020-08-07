@@ -1220,6 +1220,47 @@ export class DataProvider {
     });
   }
 
+  getWeeklyStudentConsistency(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId
+          }
+        }
+        //{ "content": { "applicationId": "MFK", "studentid": "MFK012790" } }
+        , AppConfig.GET_WEEK_STUDENT_CONSISTENCY)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  addConsistencyPhoto(formData,imageUri,imageName) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "image":imageUri,
+            "imagename":imageName
+          }
+        }
+        , AppConfig.GET_CONSISTENCY_PHOTO)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   getStudent3AReview(formData) {
     return new Promise((resolve, reject) => {
       let aData = formData;

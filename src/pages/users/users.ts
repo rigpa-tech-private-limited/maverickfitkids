@@ -3,6 +3,7 @@ import { Platform, ModalController, IonicPage, NavController, AlertController, N
 import { Storage } from '@ionic/storage';
 import { DatabaseProvider } from '../../providers/database/database';
 import { DataProvider } from '../../providers/data/data';
+import { Camera } from '@ionic-native/camera';
 @IonicPage()
 @Component({
   selector: 'page-users',
@@ -63,6 +64,7 @@ export class UsersPage {
     public dataService: DataProvider,
     public modalCtrl: ModalController,
     public databaseprovider: DatabaseProvider,
+    private camera: Camera,
     public storage: Storage) {
     this.databaseprovider.getDatabaseState();
     this.loader1 = this.loadingCtrl.create({
@@ -315,10 +317,66 @@ export class UsersPage {
     this.navCtrl.setRoot(pmPage);
   }
 
+  async getPhoto(pmIndex) {
+    console.log(pmIndex);
+    const alert = this.alertCtrl.create({
+      message: "As this app allows multiple users, photo is used to indicate the user.",
+      buttons: [{
+        text: 'Ok',
+        handler: () => {
+          this.getPhotoFromDevice(pmIndex);
+        }
+      }]
+    });
+    alert.present();
+  }
 
+  getPhotoFromDevice(pmIndex) {
+    const options = {
+      quality: 10
+      , destinationType: this.camera.DestinationType.DATA_URL
+      , mediaType: this.camera.MediaType.PICTURE
+      // Optional , correctOrientation: true
+      , sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      // Optional , saveToPhotoAlbum: true
+    };
+    console.log(pmIndex,this.usersList[pmIndex]);
+    this.camera.getPicture(options).then(imagePath => {
+      let txtForImage = `data:image/jpeg;base64,` + imagePath;
+      this.imgPreview = txtForImage;
+      this.dataService.addPhoto(this.usersList[pmIndex], this.imgPreview).then((result) => {
+        console.log(result);
+        this.responseData = result;
+        if (this.responseData.returnStatus != 0) {
+          this.databaseprovider.updateUserImage(this.usersList[pmIndex].studentId, this.imgPreview)
+            .then(data => {
+              console.log('User status updated to local db.');
+              const alert = this.alertCtrl.create({
+                message: this.responseData.returnMessage,
+                buttons: [{
+                  text: 'Ok',
+                  handler: () => {
+                    this.navCtrl.setRoot("UsersPage");
+                  }
+                }],
+                enableBackdropDismiss: false
+              });
+              alert.present();
+            }).catch(e => {
+              console.log(e);
+            });
+        }
+      }, (err) => {
+        console.log(err);
+      });
+    })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 
   async selectUser(pmUserId, index, enableflag, userStatus) {
-
+    console.log(pmUserId, index, enableflag, userStatus);
     if (pmUserId == "0") {
       if (this.usersList) {
         this.navCtrl.setRoot("AddUserRegisterPage", { "currentStudentName": this.studentName, "usersList": this.usersList });
@@ -509,10 +567,10 @@ export class UsersPage {
     modal.present();
   }
 
-  sharePage(){
+  sharePage() {
     console.log("share");
   }
-  
+
   ionViewDidLoad() {
     this.storage.get('imgPreview')
       .then((res: any) => {

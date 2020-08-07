@@ -20,8 +20,9 @@ page-add-user-register {
     margin: 0.8rem 0;
   }
 
-  .inner-txt {
-    margin-top: 10px !important;
+  .inner-txt,.reg-txt {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
   }
 
   #footer-container ion-col {
@@ -31,5 +32,10 @@ page-add-user-register {
   .footer-icons-holder,
   .footer-icons-holder ion-col {
     background: #021337 !important;
+  }
+
+  .note-txt {
+    font-size: 1.3rem;
+    font-style: italic;
   }
 }

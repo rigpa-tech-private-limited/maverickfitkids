@@ -78,9 +78,10 @@ export class HomePage {
             this.showGuidesMenu = true;
           }
 
-          if (res.fitzoneFlag == "1" && (res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII")) {
+          if ((res.className == "Pre KG" || res.className == "LKG" || res.className == "UKG" || res.className == "I" || res.className == "II" || res.className == "III" || res.className == "IV" || res.className == "V" || res.className == "VI" || res.className == "VII" || res.className == "VIII")) {
             this.showFitSpotMenu = true;
           }
+          
           if (res.fitzoneFlag == "1"){
             this.showFitSpotSessionIcon = true;
           }

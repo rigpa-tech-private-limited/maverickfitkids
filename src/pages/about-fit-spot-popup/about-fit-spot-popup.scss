@@ -6,11 +6,20 @@ page-about-fit-spot-popup {
     background: #fff !important;
     left: 0;
     margin: 5%;
-    top: 5%;
-    min-height: 74%;
+    top: 15%;
+    min-height: 60%;
     height: 60%;
     overflow: scroll;
     padding: 2% 5%;
+
+    .fitspot-desc {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
 
     #x {
       position: absolute;

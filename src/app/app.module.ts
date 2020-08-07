@@ -34,8 +34,10 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from "@ionic-native/file-path";
 import { File } from "@ionic-native/file";
 import { Camera } from '@ionic-native/camera';
+import { Screenshot } from '@ionic-native/screenshot';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { IOSFilePicker } from '@ionic-native/file-picker';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -84,8 +86,10 @@ import { IOSFilePicker } from '@ionic-native/file-picker';
     File,
     FilePath,
     Camera,
+    Screenshot,
     InAppBrowser,
-    IOSFilePicker
+    IOSFilePicker,
+    SocialSharing
   ]
 })
 export class AppModule {

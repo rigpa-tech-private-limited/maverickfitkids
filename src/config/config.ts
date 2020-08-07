@@ -69,10 +69,12 @@ export class AppConfig {
   public static SAVE_ENDORSER_OPTION = 'saveEndorserOption';
   public static SEND_TRANSFORM_CODE = 'sendTransformCode';
   public static GET_STUDENT_CONSISTENCY = 'getStudentConsistency';
+  public static GET_WEEK_STUDENT_CONSISTENCY = 'getWeeklyStudentConsistency';
   public static GET_STUDENT_3A_REVIEW = 'getStudent3AReview';
   public static GET_STUDENT_STAR = 'getStudentStar';
   public static GET_STUDENT_SPORT_SKILLS_DETAILS = 'getSportsSkills';
   public static CHECK_STUDENT_SPORT_SKILLS = 'isCheckSportSkills';
   public static GET_FIT_SPOT_TITLE = 'getFitSpotTitle';
-  public static GET_FIT_SPOT_DETAILS = 'getFitSpotDetails';  
+  public static GET_FIT_SPOT_DETAILS = 'getFitSpotDetails';
+  public static GET_CONSISTENCY_PHOTO = 'addConsistencyPhoto';
 }

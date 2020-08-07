@@ -446,7 +446,6 @@ export class AddUserConfirmPage {
       console.log();
     })
       .catch(error => {
-        alert("Error: " + error);
         console.error(error);
       });
   }

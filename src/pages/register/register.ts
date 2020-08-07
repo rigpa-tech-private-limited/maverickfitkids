@@ -16,6 +16,7 @@ declare var window: any;
   templateUrl: 'register.html'
 })
 export class RegisterPage {
+  isFormSubmitted: boolean = false;
   showFooter: boolean = true;
   unregisterBackButtonAction: any;
   showedAlert: boolean;
@@ -168,113 +169,117 @@ export class RegisterPage {
   }
 
   async signIn() {
-
-    //if (this.validations_form_existing_user.valid) {
-    if (this.loginData.existing_student_name && this.loginData.existing_student_name != '' && this.loginData.existing_student_mfk_id && this.loginData.existing_student_mfk_id != '') {
-      console.log("ExistingUser==>" + this.validations_form_existing_user.valid);
-      let loader = this.loadingCtrl.create({
-        spinner: 'ios',
-        content: ''
-      });
-      loader.present();
-      this.usersList = await this.databaseprovider.getUserDetails().then(res => res);
-      console.log(this.usersList);
-      if (this.usersList.length > 4) {
-        loader.dismiss();
-        const alert = this.alertCtrl.create({
-          message: 'More than four students not allowed to use this app',
-          buttons: [{
-            text: 'Ok',
-            handler: () => { }
-          }]
+    if (!this.isFormSubmitted) {
+      this.isFormSubmitted = true;
+      if (this.loginData.existing_student_name && this.loginData.existing_student_name != '' && this.loginData.existing_student_mfk_id && this.loginData.existing_student_mfk_id != '') {
+        console.log("ExistingUser==>" + this.validations_form_existing_user.valid);
+        let loader = this.loadingCtrl.create({
+          spinner: 'ios',
+          content: ''
         });
-        alert.present();
-      } else {
-        this.dataService.studentLogin(this.loginData).then((result) => {
-          this.responseData = result;
-          loader.dismiss();
-          console.log(this.responseData);
-          if (this.responseData.returnStatus != 0) {
-            this.responseData.password = this.loginData.existing_student_mfk_id;
-            console.log('Register success');
-            this.storage.set('loggedInUser', "yes");
-            this.storage.set('userDetails', this.responseData);
-
-            this.dataService.getStudentStar(this.responseData).then(async (result) => {
-              this.responseData1 = result;
-              console.log(this.responseData1);
-              if (this.responseData1.returnStatus != 0) {
-                this.responseData.starCount = this.responseData1.starCount;
-              } else {
-                this.responseData.starCount = "0";
-              }
-              this.userList = await this.databaseprovider.selectUserById(this.responseData.studentId).then(res => res);
-              if (this.userList.length == 0) {
-                this.databaseprovider.addUser(this.responseData)
-                  .then(data => {
-                    console.log('Users added to local db.');
-                    this.databaseprovider.updateOtherUserLockStatus(this.responseData.studentId)
-                      .then(data => {
-                        console.log('User status updated to local db.');
-                      }).catch(e => {
-                        console.log(e);
-                      });
-                  }).catch(e => {
-                    console.log(e);
-                  });
-              } else {
-                this.databaseprovider.updateUser(this.responseData)
-                  .then(data => {
-                    console.log('Users updated to local db.');
-                    this.databaseprovider.updateOtherUserLockStatus(this.responseData.studentId)
-                      .then(data => {
-                        console.log('User status updated to local db.');
-                      }).catch(e => {
-                        console.log(e);
-                      });
-                  }).catch(e => {
-                    console.log(e);
-                  });
-              }
-              this.navCtrl.push("UserConfirmPage", { "userType": "old", "responseData": this.responseData });
-            });
-
-          } else {
-            console.log('Register fail');
-            const alert = this.alertCtrl.create({
-              message: AppConfig.ERROR_MESSAGES.register,
-              buttons: [{
-                text: 'Ok',
-                handler: () => {
-                  this.loginData.new_student_name = null;
-                  this.loginData.school_access_code = null;
-                  this.validations_form_new_user.reset({ new_student_name: this.loginData.new_student_name, school_access_code: this.loginData.school_access_code });
-                  this.loginData.existing_student_name = null;
-                  this.loginData.existing_student_mfk_id = null;
-                  this.validations_form_existing_user.reset({ existing_student_name: this.loginData.existing_student_name, existing_student_mfk_id: this.loginData.existing_student_mfk_id });
-                }
-              }]
-            });
-            alert.present();
-          }
-        }, (err) => {
-          console.log(err);
+        loader.present();
+        this.usersList = await this.databaseprovider.getUserDetails().then(res => res);
+        console.log(this.usersList);
+        if (this.usersList.length > 4) {
           loader.dismiss();
           const alert = this.alertCtrl.create({
-            message: AppConfig.API_ERROR,
+            message: 'More than four students not allowed to use this app',
             buttons: [{
               text: 'Ok',
-              handler: () => { }
+              handler: () => {
+                this.isFormSubmitted = false;
+              }
             }]
           });
           alert.present();
-        });
+        } else {
+          this.dataService.studentLogin(this.loginData).then((result) => {
+            this.responseData = result;
+            loader.dismiss();
+            console.log(this.responseData);
+            this.isFormSubmitted = false;
+            if (this.responseData.returnStatus != 0) {
+              this.responseData.password = this.loginData.existing_student_mfk_id;
+              console.log('Register success');
+              this.storage.set('loggedInUser', "yes");
+              this.storage.set('userDetails', this.responseData);
+
+              this.dataService.getStudentStar(this.responseData).then(async (result) => {
+                this.responseData1 = result;
+                console.log(this.responseData1);
+                if (this.responseData1.returnStatus != 0) {
+                  this.responseData.starCount = this.responseData1.starCount;
+                } else {
+                  this.responseData.starCount = "0";
+                }
+                this.userList = await this.databaseprovider.selectUserById(this.responseData.studentId).then(res => res);
+                if (this.userList.length == 0) {
+                  this.databaseprovider.addUser(this.responseData)
+                    .then(data => {
+                      console.log('Users added to local db.');
+                      this.databaseprovider.updateOtherUserLockStatus(this.responseData.studentId)
+                        .then(data => {
+                          console.log('User status updated to local db.');
+                        }).catch(e => {
+                          console.log(e);
+                        });
+                    }).catch(e => {
+                      console.log(e);
+                    });
+                } else {
+                  this.databaseprovider.updateUser(this.responseData)
+                    .then(data => {
+                      console.log('Users updated to local db.');
+                      this.databaseprovider.updateOtherUserLockStatus(this.responseData.studentId)
+                        .then(data => {
+                          console.log('User status updated to local db.');
+                        }).catch(e => {
+                          console.log(e);
+                        });
+                    }).catch(e => {
+                      console.log(e);
+                    });
+                }
+                this.navCtrl.push("UserConfirmPage", { "userType": "old", "responseData": this.responseData });
+              });
+
+            } else {
+              console.log('Register fail');
+              const alert = this.alertCtrl.create({
+                message: AppConfig.ERROR_MESSAGES.register,
+                buttons: [{
+                  text: 'Ok',
+                  handler: () => {
+                    this.loginData.new_student_name = null;
+                    this.loginData.school_access_code = null;
+                    this.validations_form_new_user.reset({ new_student_name: this.loginData.new_student_name, school_access_code: this.loginData.school_access_code });
+                    this.loginData.existing_student_name = null;
+                    this.loginData.existing_student_mfk_id = null;
+                    this.validations_form_existing_user.reset({ existing_student_name: this.loginData.existing_student_name, existing_student_mfk_id: this.loginData.existing_student_mfk_id });
+                  }
+                }]
+              });
+              alert.present();
+            }
+          }, (err) => {
+            this.isFormSubmitted = false;
+            console.log(err);
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+              message: AppConfig.API_ERROR,
+              buttons: [{
+                text: 'Ok',
+                handler: () => { }
+              }]
+            });
+            alert.present();
+          });
+        }
       }
     }
-    //  }
 
     //if (this.validations_form_new_user.valid) {
-    if (this.loginData.new_student_name && this.loginData.new_student_name != '' && this.loginData.school_access_code && this.loginData.school_access_code != '') {
+    /*if (this.loginData.new_student_name && this.loginData.new_student_name != '' && this.loginData.school_access_code && this.loginData.school_access_code != '') {
       console.log("NewUser==>" + this.validations_form_new_user.valid);
       let loader = this.loadingCtrl.create({
         spinner: 'ios',
@@ -322,7 +327,7 @@ export class RegisterPage {
         });
         alert.present();
       });
-    }
+    }*/
     //}
 
   }
