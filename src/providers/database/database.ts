@@ -51,8 +51,8 @@ export class DatabaseProvider {
   }
 
   addUser(userDetails) {
-    let data = [userDetails.academicYear, userDetails.areviewFlag, userDetails.audioPath, userDetails.classCode, userDetails.className, userDetails.coachFlag, userDetails.dob, userDetails.fitFestFlag, userDetails.fitzoneFlag, userDetails.skillFlag, userDetails.gender, userDetails.mailId, userDetails.passwordChanged, userDetails.prqStatus, userDetails.queryFlag, userDetails.registeredDate, userDetails.returnMessage, userDetails.returnStatus, userDetails.schoolCode, userDetails.schoolName, userDetails.sectionName, userDetails.studentAccessLevel, userDetails.studentAge, userDetails.studentId, userDetails.studentImage, userDetails.studentName, "1", userDetails.password, userDetails.starCount, "","1"];
-    return this.database.executeSql("INSERT INTO users (academicYear,areviewFlag,audioPath,classCode,className,coachFlag,dob,fitFestFlag,fitzoneFlag,skillFlag,gender,mailId,passwordChanged,prqStatus,queryFlag,registeredDate,returnMessage,returnStatus,schoolCode,schoolName,sectionName,studentAccessLevel,studentAge,studentId,studentImage,studentName,status,password,starcount,playlist,lockStatus) VALUES (?,?,?,?,?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", data).then(data => {
+    let data = [userDetails.academicYear, userDetails.areviewFlag, userDetails.audioPath, userDetails.classCode, userDetails.className, userDetails.coachFlag, userDetails.dob, userDetails.fitFestFlag, userDetails.fitzoneFlag, userDetails.skillFlag, userDetails.gender, userDetails.mailId, userDetails.mobile, userDetails.passwordChanged, userDetails.prqStatus, userDetails.queryFlag, userDetails.registeredDate, userDetails.returnMessage, userDetails.returnStatus, userDetails.schoolCode, userDetails.schoolName, userDetails.sectionName, userDetails.studentAccessLevel, userDetails.studentAge, userDetails.studentId, userDetails.studentImage, userDetails.studentName, "1", userDetails.password, userDetails.starCount, "","1"];
+    return this.database.executeSql("INSERT INTO users (academicYear,areviewFlag,audioPath,classCode,className,coachFlag,dob,fitFestFlag,fitzoneFlag,skillFlag,gender,mailId,mobile,passwordChanged,prqStatus,queryFlag,registeredDate,returnMessage,returnStatus,schoolCode,schoolName,sectionName,studentAccessLevel,studentAge,studentId,studentImage,studentName,status,password,starcount,playlist,lockStatus) VALUES (?,?,?,?,?, ?,?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", data).then(data => {
       return data;
     }, err => {
       console.log('Error: ', err);
@@ -62,7 +62,7 @@ export class DatabaseProvider {
 
   addUserImage(userId, userImg) {
     let data = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", userId, userImg, "", "1", userId, "0", "","0"];
-    return this.database.executeSql("INSERT INTO users (academicYear,areviewFlag,audioPath,classCode,className,coachFlag,dob,fitFestFlag,fitzoneFlag,skillFlag,gender,mailId,passwordChanged,prqStatus,queryFlag,registeredDate,returnMessage,returnStatus,schoolCode,schoolName,sectionName,studentAccessLevel,studentAge,studentId,studentImage,studentName,status,password,starcount,playlist,lockStatus) VALUES (?,?,?,?,?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)", data).then(data => {
+    return this.database.executeSql("INSERT INTO users (academicYear,areviewFlag,audioPath,classCode,className,coachFlag,dob,fitFestFlag,fitzoneFlag,skillFlag,gender,mailId,mobile,passwordChanged,prqStatus,queryFlag,registeredDate,returnMessage,returnStatus,schoolCode,schoolName,sectionName,studentAccessLevel,studentAge,studentId,studentImage,studentName,status,password,starcount,playlist,lockStatus) VALUES (?,?,?,?,?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)", data).then(data => {
       return data;
     }, err => {
       console.log('Error: ', err);
@@ -71,8 +71,8 @@ export class DatabaseProvider {
   }
 
   updateUser(userDetails) {
-    let data = [userDetails.academicYear, userDetails.areviewFlag, userDetails.audioPath, userDetails.classCode, userDetails.className, userDetails.coachFlag, userDetails.dob, userDetails.fitFestFlag, userDetails.fitzoneFlag, userDetails.skillFlag, userDetails.gender, userDetails.mailId, userDetails.passwordChanged, userDetails.prqStatus, userDetails.queryFlag, userDetails.registeredDate, userDetails.returnMessage, userDetails.returnStatus, userDetails.schoolCode, userDetails.schoolName, userDetails.sectionName, userDetails.studentAccessLevel, userDetails.studentAge, userDetails.studentId, userDetails.studentName, "1", userDetails.password, userDetails.starCount, "","1", userDetails.studentId];
-    return this.database.executeSql("UPDATE users SET academicYear=?,areviewFlag=?,audioPath=?,classCode=?,className=?,coachFlag=?,dob=?,fitFestFlag=?,fitzoneFlag=?,skillFlag=?,gender=?,mailId=?,passwordChanged=?,prqStatus=?,queryFlag=?,registeredDate=?,returnMessage=?,returnStatus=?,schoolCode=?,schoolName=?,sectionName=?,studentAccessLevel=?,studentAge=?,studentId=?,studentName=?,status=?,password=?,starcount=?,playlist=?,lockStatus=? WHERE studentId=?", data).then(data => {
+    let data = [userDetails.academicYear, userDetails.areviewFlag, userDetails.audioPath, userDetails.classCode, userDetails.className, userDetails.coachFlag, userDetails.dob, userDetails.fitFestFlag, userDetails.fitzoneFlag, userDetails.skillFlag, userDetails.gender, userDetails.mailId, userDetails.mobile, userDetails.passwordChanged, userDetails.prqStatus, userDetails.queryFlag, userDetails.registeredDate, userDetails.returnMessage, userDetails.returnStatus, userDetails.schoolCode, userDetails.schoolName, userDetails.sectionName, userDetails.studentAccessLevel, userDetails.studentAge, userDetails.studentId, userDetails.studentName, "1", userDetails.password, userDetails.starCount, "","1", userDetails.studentId];
+    return this.database.executeSql("UPDATE users SET academicYear=?,areviewFlag=?,audioPath=?,classCode=?,className=?,coachFlag=?,dob=?,fitFestFlag=?,fitzoneFlag=?,skillFlag=?,gender=?,mailId=?,mobile=?,passwordChanged=?,prqStatus=?,queryFlag=?,registeredDate=?,returnMessage=?,returnStatus=?,schoolCode=?,schoolName=?,sectionName=?,studentAccessLevel=?,studentAge=?,studentId=?,studentName=?,status=?,password=?,starcount=?,playlist=?,lockStatus=? WHERE studentId=?", data).then(data => {
       return data;
     }, err => {
       console.log('Error: ', err);
@@ -199,6 +199,7 @@ export class DatabaseProvider {
             skillFlag: data.rows.item(i).skillFlag,
             gender: data.rows.item(i).gender,
             mailId: data.rows.item(i).mailId,
+            mobile: data.rows.item(i).mobile,
             password: data.rows.item(i).password,
             passwordChanged: data.rows.item(i).passwordChanged,
             prqStatus: data.rows.item(i).prqStatus,

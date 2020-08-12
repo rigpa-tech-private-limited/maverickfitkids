@@ -102,7 +102,7 @@ export class ConsistencyPage {
   sharePage() {
     console.log("share");
     if (this.consistencyList.length > 0) {
-      this.navCtrl.setRoot("ConsistencySharePage", { "consistencyList": this.consistencyList, "maxStarCount": this.maxStarCount, "userDetails": this.userDetails });
+      this.navCtrl.setRoot("ConsistencySharePage", { "consistencyList": this.consistencyList, "maxStarCount": this.maxStarCount, "userDetails": this.userDetails, "totalStarCount": this.totalStarCount, "fromPage":"consistency" });
     }
   }
 

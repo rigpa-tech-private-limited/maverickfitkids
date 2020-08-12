@@ -20,6 +20,7 @@ export class ConsistencySharePage {
   imgPreview = 'assets/imgs/no_image.png';
   totalStarCount: any;
   maxStarCount: any;
+  fromPage: any;
 
   constructor(public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -30,10 +31,15 @@ export class ConsistencySharePage {
     public dataService: DataProvider,
     private screenshot: Screenshot,
     private socialSharing: SocialSharing) {
+    if (this.navParams.get('fromPage')) {
+      this.fromPage = this.navParams.get('fromPage');
+    }
     if (this.navParams.get('consistencyList')) {
       this.consistencyList = this.navParams.get('consistencyList');
       this.maxStarCount = this.navParams.get('maxStarCount');
       this.userDetails = this.navParams.get('userDetails');
+      this.totalStarCount = this.navParams.get('totalStarCount');
+
       setTimeout(() => {
         this.screenshot.URI(100).then((data) => {
           console.log("data_screenshot");
@@ -53,29 +59,33 @@ export class ConsistencySharePage {
             if (this.responseData.returnStatus != 0 && this.responseData.returnURL != "") {
               this.socialSharing.share("The key to fitness is consistency. The Maverick team applauds your sense of responsibility and celebrates your commitment to your wellbeing!", null, this.responseData.returnURL, null).then(() => {
                 console.log("share facebook Success!");// Success!
-                this.navCtrl.setRoot("SettingsPage");
+                this.goHome();
               }).catch(() => {
                 console.log("share facebook Error!");// Error!
-                this.navCtrl.setRoot("SettingsPage");
+                this.goHome();
               });
             } else {
-              this.navCtrl.setRoot("SettingsPage");
+              this.goHome();
             }
           }, (err) => {
             loader.dismiss();
             console.log(err);
-            this.navCtrl.setRoot("SettingsPage");
+            this.goHome();
           });
         }, (err) => {
           console.log("err_screenshot" + err);
-          this.navCtrl.setRoot("SettingsPage");
+          this.goHome();
         });
       }, 2000);
     }
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    if (this.fromPage == 'consistency') {
+      this.navCtrl.setRoot("SettingsPage");
+    } else {
+      this.navCtrl.setRoot("UsersPage");
+    }
   }
 
   ionViewDidLoad() {

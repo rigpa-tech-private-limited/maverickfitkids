@@ -56,6 +56,12 @@ export class UsersPage {
   showUsersList: boolean = false;
   responseData1: any;
   loginData = { "existing_student_name": "", "existing_student_mfk_id": "", "new_student_name": "", "school_access_code": "" };
+  selectedUserIndex: any;
+  consistencyList: any = [];
+  responseDataConsis: any;
+  userDetailsConsis: any;
+  totalStarCount: any;
+  maxStarCount: any;
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -115,6 +121,7 @@ export class UsersPage {
           this.userStatus1 = element.status;
           this.userLockStatus1 = element.lockStatus;
           if (element.lockStatus == "1") {
+            this.selectedUserIndex = 0;
             this.redDotVisible1 = true;
             // if (this.platform.is('ios')) {
             //   setTimeout(() => {
@@ -150,6 +157,7 @@ export class UsersPage {
           this.userStatus2 = element.status;
           this.userLockStatus2 = element.lockStatus;
           if (element.lockStatus == "1") {
+            this.selectedUserIndex = 1;
             this.redDotVisible2 = true;
             // if (this.platform.is('ios')) {
             //   setTimeout(() => {
@@ -185,6 +193,7 @@ export class UsersPage {
           this.userStatus3 = element.status;
           this.userLockStatus3 = element.lockStatus;
           if (element.lockStatus == "1") {
+            this.selectedUserIndex = 2;
             this.redDotVisible3 = true;
             // if (this.platform.is('ios')) {
             //   setTimeout(() => {
@@ -220,6 +229,7 @@ export class UsersPage {
           this.userStatus4 = element.status;
           this.userLockStatus4 = element.lockStatus;
           if (element.lockStatus == "1") {
+            this.selectedUserIndex = 3;
             this.redDotVisible4 = true;
             // if (this.platform.is('ios')) {
             //   setTimeout(() => {
@@ -340,7 +350,7 @@ export class UsersPage {
       , sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
       // Optional , saveToPhotoAlbum: true
     };
-    console.log(pmIndex,this.usersList[pmIndex]);
+    console.log(pmIndex, this.usersList[pmIndex]);
     this.camera.getPicture(options).then(imagePath => {
       let txtForImage = `data:image/jpeg;base64,` + imagePath;
       this.imgPreview = txtForImage;
@@ -501,6 +511,7 @@ export class UsersPage {
         .then(data => {
           console.log('User status updated to local db.');
           this.navCtrl.setRoot("UsersPage");
+          this.selectedUserIndex = index;
         }).catch(e => {
           console.log(e);
         });
@@ -567,8 +578,51 @@ export class UsersPage {
     modal.present();
   }
 
-  sharePage() {
+  async sharePage(pmSelectedIndex) {
     console.log("share");
+    if (this.usersList.length > 0) {
+      this.userDetailsConsis = this.usersList[pmSelectedIndex];
+      console.log(this.userDetailsConsis);
+      let loader = this.loadingCtrl.create({
+        spinner: 'ios',
+        content: ''
+      });
+      loader.present();
+      this.dataService.getWeeklyStudentConsistency(this.userDetailsConsis).then((result) => {
+        loader.dismiss();
+        this.responseDataConsis = result;
+        console.log(this.responseDataConsis);
+        if (this.responseDataConsis.returnStatus != 0) {
+          if (this.responseDataConsis.consistencyList) {
+            this.consistencyList = (this.responseDataConsis.consistencyList);
+            this.totalStarCount = this.responseDataConsis.totalStar;
+
+            var maxObj = this.consistencyList.reduce(function(max, obj) {
+              return obj.star > max.star ? obj : max;
+            });
+
+            this.maxStarCount = (maxObj.star);
+            if (maxObj.star > 0) {
+              this.consistencyList.forEach(element => {
+                let percent = (element.star / maxObj.star) * 100;
+                element.percent = (percent <= 100 ? percent : 100);
+                element.top = ((100 - percent) >= 0 ? (100 - percent) : 0);
+                console.log(element.star, percent);
+              });
+            }
+            console.log(this.consistencyList);
+            if (this.consistencyList.length > 0) {
+              this.navCtrl.setRoot("ConsistencySharePage", { "consistencyList": this.consistencyList, "maxStarCount": this.maxStarCount, "userDetails": this.userDetailsConsis, "totalStarCount": this.totalStarCount, "fromPage": "users" });
+            }
+          }
+        } else if (this.responseDataConsis.returnStatus == 0) {
+          console.log('returnStatus=>0');
+        }
+      }, (err) => {
+        console.log(err);
+        loader.dismiss();
+      });
+    }
   }
 
   ionViewDidLoad() {

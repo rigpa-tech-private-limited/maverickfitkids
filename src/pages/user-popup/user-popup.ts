@@ -30,6 +30,7 @@ export class UserPopupPage {
   userId: any;
   statusValue: any;
   userData: any;
+  userloginData = { "existing_student_name": "", "existing_student_mfk_id": "", "new_student_name": "", "school_access_code": "" };
   constructor(public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -59,37 +60,68 @@ export class UserPopupPage {
   }
 
   async checkUserDetails() {
-
-    this.userData = await this.databaseprovider.getVerifiedUser(this.loginData.username, this.loginData.password).then(res => res);
-    console.log("verifiedContacts=>", this.userData);
-    if (this.userData.length > 0) {
-      this.databaseprovider.updateUserStatus(this.userId, this.statusValue)
-        .then(data => {
-          console.log('User status updated to local db.');
-          if(this.statusValue=='2'){
-            this.databaseprovider.updateUserLockStatus(this.userId, '0')
+    if (this.loginData.username != '' && this.loginData.password != '') {
+      this.userloginData.existing_student_name = this.loginData.username;
+      this.userloginData.existing_student_mfk_id = this.loginData.password;
+      this.userloginData.new_student_name = null;
+      this.userloginData.school_access_code = null;
+      let loader = this.loadingCtrl.create({
+        spinner: 'ios',
+        content: ''
+      });
+      loader.present();
+      this.dataService.studentLogin(this.userloginData).then(async (result) => {
+        this.responseData = result;
+        loader.dismiss();
+        console.log(this.responseData);
+        if (this.responseData.returnStatus != 0) {
+          console.log('Register success');
+          this.databaseprovider.updateUserPassword(this.userId, this.loginData.password)
+            .then(data => {
+              console.log('User Password updated to local db.');
+              this.databaseprovider.updateUserStatus(this.userId, this.statusValue)
                 .then(data => {
                   console.log('User status updated to local db.');
-                  this.navCtrl.setRoot("UsersPage");
+                  if (this.statusValue == '2') {
+                    this.databaseprovider.updateUserLockStatus(this.userId, '0')
+                      .then(data => {
+                        console.log('User status updated to local db.');
+                        this.navCtrl.setRoot("UsersPage");
+                      }).catch(e => {
+                        console.log(e);
+                      });
+                  } else {
+                    this.navCtrl.setRoot("UsersPage");
+                  }
                 }).catch(e => {
                   console.log(e);
                 });
-          } else {
-            this.navCtrl.setRoot("UsersPage");
-          }
-        }).catch(e => {
-          console.log(e);
+            }).catch(e => {
+              console.log(e);
+            });
+        } else {
+          console.log('Register fail');
+          const alert = this.alertCtrl.create({
+            message: "Wrong Username or Password",
+            buttons: [{
+              text: 'Ok',
+              handler: () => { }
+            }]
+          });
+          alert.present();
+        }
+      }, (err) => {
+        console.log(err);
+        loader.dismiss();
+        const alert = this.alertCtrl.create({
+          message: "Wrong Username or Password",
+          buttons: [{
+            text: 'Ok',
+            handler: () => { }
+          }]
         });
-      
-    } else {
-      const alert = this.alertCtrl.create({
-        message: "Wrong Username or Password",
-        buttons: [{
-          text: 'Ok',
-          handler: () => { }
-        }]
+        alert.present();
       });
-      alert.present();
     }
   }
 
