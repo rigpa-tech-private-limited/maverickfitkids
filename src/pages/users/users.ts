@@ -611,7 +611,7 @@ export class UsersPage {
               });
             }
             console.log(this.consistencyList);
-            if (this.consistencyList.length > 0) {
+            if (this.totalStarCount > 0) {
               this.navCtrl.setRoot("ConsistencySharePage", { "consistencyList": this.consistencyList, "maxStarCount": this.maxStarCount, "userDetails": this.userDetailsConsis, "totalStarCount": this.totalStarCount, "fromPage": "users" });
             }
           }
@@ -652,5 +652,14 @@ export class UsersPage {
       console.log('Prevent Back Button Page Change-->');
       this.goHome();
     });
+  }
+
+  openExternalLink(pmLink, fromPage) {
+    if (this.platform.is('ios')) {
+    this.navCtrl.setRoot('ParentGatePage', { "externalLink": pmLink, "fromPage": fromPage });
+    } else {
+      window.open(pmLink, '_system', 'location=yes');
+      return false;
+    }
   }
 }

@@ -10,10 +10,10 @@ page-consistency {
     margin: 10px !important;
   }
 
-  .scroll-support {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+  // .scroll-support {
+  //   overflow-x: auto;
+  //   white-space: nowrap;
+  // }
 
   .container {
     float: left;
@@ -153,5 +153,27 @@ page-consistency {
     font-size: 1.2rem;
     color: #021337;
     text-align: justify;
+  }
+
+  .student_class .item-inner {
+    margin: 5px 0 !important;
+    padding: 0 !important;
+  }
+
+  .student_class ion-select {
+    border: 1px solid #031337 !important;
+    background: #D4D2D3 !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 !important;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .top-title {
+    margin: 0;
   }
 }

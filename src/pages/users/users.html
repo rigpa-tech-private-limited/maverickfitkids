@@ -116,9 +116,10 @@
         <p class="p-head">Welcome to the Maverick experience!</p>
         <p class="p-sub">Use the slide button next to the name to select the current user.
           Click on the selected user’s name to begin your exploration.
+          Click on the photo to change profile pic.
           Use the lock icon on the left to lock/unlock the user profile</p>
         <p class="p-sub">To acquire your personal Maverick Fit Kids Kit to workout at
-          home, please visit our website <a onclick="window.open('http://www.maverickfitkids.net', '_system', 'location=yes'); return false;"><u><b>www.maverickfitkids.net</b></u></a></p>
+          home, please visit our website <a (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"><u><b>www.maverickfitkids.net</b></u></a></p>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -148,7 +149,7 @@
     <ion-row class="footer-icons-holder">
       <ion-col col-4>
         <div class="share-icon" (click)="sharePage(selectedUserIndex)"></div>
-        <div class="settings-icon website-icon"  onclick="window.open('http://www.maverickfitkids.net', '_system', 'location=yes'); return false;"></div>
+        <div class="settings-icon website-icon" (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"></div>
       </ion-col>
       <ion-col col-8>
         <img src="assets/imgs/maverick_logo.png" class="logo-img">

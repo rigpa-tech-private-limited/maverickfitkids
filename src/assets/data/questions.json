@@ -1,0 +1,172 @@
+{
+	"questions": [
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "8 * 9 = ?",
+			"answers": [
+				{"answer": "88", "correct": false, "selected": false},
+				{"answer": "56", "correct": false, "selected": false},
+				{"answer": "74", "correct": false, "selected": false},
+				{"answer": "72", "correct": true, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "3 * 8 = ?",
+			"answers": [
+				{"answer": "34", "correct": false, "selected": false},
+				{"answer": "24", "correct": true, "selected": false},
+				{"answer": "27", "correct": false, "selected": false},
+				{"answer": "43", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "7 * 8 = ?",
+			"answers": [
+				{"answer": "46", "correct": false, "selected": false},
+				{"answer": "54", "correct": false, "selected": false},
+				{"answer": "56", "correct": true, "selected": false},
+				{"answer": "64", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "12 * 7 = ?",
+			"answers": [
+				{"answer": "56", "correct": false, "selected": false},
+				{"answer": "78", "correct": false, "selected": false},
+				{"answer": "84", "correct": true, "selected": false},
+				{"answer": "44", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "33 * 8 = ?",
+			"answers": [
+				{"answer": "234", "correct": false, "selected": false},
+				{"answer": "344", "correct": false, "selected": false},
+				{"answer": "264", "correct": true, "selected": false},
+				{"answer": "564", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "71 * 8 = ?",
+			"answers": [
+				{"answer": "468", "correct": false, "selected": false},
+				{"answer": "548", "correct": false, "selected": false},
+				{"answer": "568", "correct": true, "selected": false},
+				{"answer": "648", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "24 * 9 = ?",
+			"answers": [
+				{"answer": "436", "correct": false, "selected": false},
+				{"answer": "316", "correct": false, "selected": false},
+				{"answer": "216", "correct": true, "selected": false},
+				{"answer": "264", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "66 * 32 = ?",
+			"answers": [
+				{"answer": "4226", "correct": false, "selected": false},
+				{"answer": "5214", "correct": false, "selected": false},
+				{"answer": "2112", "correct": true, "selected": false},
+				{"answer": "2364", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "12 * 32 = ?",
+			"answers": [
+				{"answer": "334", "correct": false, "selected": false},
+				{"answer": "324", "correct": false, "selected": false},
+				{"answer": "384", "correct": true, "selected": false},
+				{"answer": "376", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "88 * 48 = ?",
+			"answers": [
+				{"answer": "4424", "correct": false, "selected": false},
+				{"answer": "2244", "correct": false, "selected": false},
+				{"answer": "4224", "correct": true, "selected": false},
+				{"answer": "2424", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "32 * 88 = ?",
+			"answers": [
+				{"answer": "4567", "correct": false, "selected": false},
+				{"answer": "2768", "correct": false, "selected": false},
+				{"answer": "2816", "correct": true, "selected": false},
+				{"answer": "2456", "correct": false, "selected": false}
+			]
+		},
+		{
+			"flashCardFront": "<img src='assets/imgs/video_preview.jpeg' />",
+			"flashCardCorrect": "<img src='assets/icon/correct.png' />",
+			"flashCardInCorrect": "<img src='assets/icon/incorrect.png' />",
+			"flashCardState": "0",
+			"flashCardFlipped": false,
+			"questionText": "16 * 45 = ?",
+			"answers": [
+				{"answer": "456", "correct": false, "selected": false},
+				{"answer": "540", "correct": false, "selected": false},
+				{"answer": "720", "correct": true, "selected": false},
+				{"answer": "670", "correct": false, "selected": false}
+			]
+		}
+	]
+}

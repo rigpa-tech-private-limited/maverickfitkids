@@ -1,0 +1,107 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding text-center class="user-register-page">
+  <h2 text-center class="sub-heading KaushanScript-Regular">Register</h2>
+  <!-- <p text-center class="inner-txt">Please enter your details as registered with us to activate your account.</p> -->
+  <form class="form" (ngSubmit)="signUp()" [formGroup]="validations_form_signup" novalidate>
+    <ion-list inset>
+      <ion-item>
+        <ion-input text-center [(ngModel)]="signupData.student_name" formControlName="student_name" type="text" placeholder="* Name"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages_signup.student_name">
+          <div text-center class="error-message" *ngIf="validations_form_signup.get('student_name').hasError(validation.type) && (validations_form_signup.get('student_name').dirty || validations_form_signup.get('student_name').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-input text-center [(ngModel)]="signupData.email" formControlName="email" type="text" placeholder="* Email Address"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages_signup.email">
+          <div text-center class="error-message" *ngIf="validations_form_signup.get('email').hasError(validation.type) && (validations_form_signup.get('email').dirty || validations_form_signup.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-input text-center [(ngModel)]="signupData.mobile" formControlName="mobile" type="text" placeholder="* Mobile Number"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages_signup.mobile">
+          <div text-center class="error-message" *ngIf="validations_form_signup.get('mobile').hasError(validation.type) && (validations_form_signup.get('mobile').dirty || validations_form_signup.get('mobile').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      
+      <ion-item class="form-item">
+        <ion-datetime max="{{maxDate}}" text-center [(ngModel)]="signupData.dob" formControlName="dob" displayFormat="DD-MM-YYYY" placeholder="* Date of birth"></ion-datetime>
+      </ion-item>
+      
+      <ion-row class="bottom-border">
+        <ion-col col-12>
+          <ion-list class="gender-list form-item">
+            <ion-label>
+              <p text-left>* Gender</p>
+            </ion-label>
+            <ion-row class="gender-list-row" radio-group formControlName="gender">
+              <ion-col class="gender-list-col" col-12>
+                <div class="gender-container">
+                  <div class="container-outer">
+                    <div class="container-inner">
+                      <ion-item class="gender-radio-group">
+                        <ion-label text-start>Male</ion-label>
+                        <ion-radio value="M" class="zero-padding" (ionSelect)="selectRadioBox('Male','M')"></ion-radio>
+                      </ion-item>
+                      <ion-item class="gender-radio-group">
+                        <ion-label text-start>Female</ion-label>
+                        <ion-radio value="F" class="zero-padding" (ionSelect)="selectRadioBox('Female','F')"></ion-radio>
+                      </ion-item>
+                    </div>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-item class="student_class">
+        <ion-select text-center [(ngModel)]="signupData.classname" formControlName="classname" cancelText="Cancel" okText="OK" placeholder="Choose Class">
+          <ion-option [value]="class.className" *ngFor="let class of classes">{{class.className}}</ion-option>
+        </ion-select>
+      </ion-item>
+      
+      <button type="submit" class="hiddenSubmitBtn"></button>
+    </ion-list>
+    <ion-row class="action-icons-holder">
+      <ion-col col-12>
+        <a class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="signUp()">Submit</a>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar class="zero-margin zero-padding">
+    <ion-row *ngIf="showFooter" class="footer-icons-holder">
+      <ion-col col-2>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-2>
+        &nbsp;
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

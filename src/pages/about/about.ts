@@ -39,4 +39,13 @@ export class AboutPage {
       this.closeModal();
     });
   }
+
+  openExternalLink(pmLink, fromPage) {
+    if (this.platform.is('ios')) {
+    this.navCtrl.setRoot('ParentGatePage', { "externalLink": pmLink, "fromPage": fromPage });
+    } else {
+      window.open(pmLink, '_system', 'location=yes');
+      return false;
+    }
+  }
 }

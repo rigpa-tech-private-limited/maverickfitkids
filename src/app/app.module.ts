@@ -38,6 +38,7 @@ import { Screenshot } from '@ionic-native/screenshot';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { IOSFilePicker } from '@ionic-native/file-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { FlashCardModule } from '../components/flash-card/flash-card-module';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
       }
     }),
     ValidatorsModule,
+    FlashCardModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

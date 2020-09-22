@@ -332,6 +332,11 @@ export class RegisterPage {
 
   }
 
+  goRegisterPage() {
+    console.log("goRegisterPage");
+    this.navCtrl.setRoot("SignupPage");
+  }
+  
   goHome() {
     console.log("goHome");
   }

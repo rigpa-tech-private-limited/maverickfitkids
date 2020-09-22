@@ -13,35 +13,56 @@
         <ion-avatar class="add-photo-circle">
           <img src="{{imgPreview}}">
         </ion-avatar>
-        <p class="user-star">{{totalStarCount}}</p>
+        <p class="user-star">{{totalCount}}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-12>
         <br/>
-        <h4 class="KaushanScript-Regular top-title" text-center="">Your Consistency Weekly Tracker</h4>
+        <ion-item class="student_class">
+          <ion-select text-center [(ngModel)]="selectMonth" (ionChange)="onSelectChange($event)" cancelText="Cancel" okText="OK" placeholder="Choose Month">
+            <ion-option value="01">Jan {{currYear}}</ion-option>
+            <ion-option value="02">Feb {{currYear}}</ion-option>
+            <ion-option value="03">Mar {{currYear}}</ion-option>
+            <ion-option value="04">Apr {{currYear}}</ion-option>
+            <ion-option value="05">May {{currYear}}</ion-option>
+            <ion-option value="06">Jun {{currYear}}</ion-option>
+            <ion-option value="07">Jul {{currYear}}</ion-option>
+            <ion-option value="08">Aug {{currYear}}</ion-option>
+            <ion-option value="09">Sep {{currYear}}</ion-option>
+            <ion-option value="10">Oct {{currYear}}</ion-option>
+            <ion-option value="11">Nov {{currYear}}</ion-option>
+            <ion-option value="12">Dec {{currYear}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <h4 class="KaushanScript-Regular top-title" text-center="">Your Consistency Monthly Tracker</h4>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col col-12 class="scroll-support">
-        <div *ngIf="maxStarCount>0" class="container vertical flat">
-          <div class="progress-bar" *ngFor="let consistency of consistencyList; let i = index;">
-            <div class="progress-track">
-              <div class="progress-fill" [style.height.%]="consistency.percent" [style.top.%]="consistency.top">
-                <span>{{consistency.star}}</span>
+    <ion-slides pager *ngIf="weekList.length>0" (ionSlideDidChange)="slideChanged()">
+      <ion-slide *ngFor="let week of weekList; let j = index;">
+        <h4 class="KaushanScript-Regular top-title" text-center="">Week {{j+1}}</h4>
+        <ion-row>
+          <ion-col col-12 class="scroll-support">
+            <div *ngIf="maxStarCount[j]>0" class="container vertical flat">
+              <div class="progress-bar" *ngFor="let consistency of consistencyList[j]; let i = index;">
+                <div class="progress-track">
+                  <div class="progress-fill" [style.height.%]="consistency.percent" [style.top.%]="consistency.top">
+                    <span>{{consistency.star}}</span>
+                  </div>
+                </div>
+                <div class="year-div">{{consistency.starDay}}</div>
               </div>
             </div>
-            <div class="year-div">{{consistency.starDay}}</div>
-          </div>
-        </div>
-        <div text-center *ngIf="maxStarCount==0">
-          <p class="no-data">
-            No data found.
-          </p>
-        </div>
-      </ion-col>
-    </ion-row>
-
+            <div text-center *ngIf="maxStarCount[j]==0">
+              <p class="no-data">
+                No data found.
+              </p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <br>
+      </ion-slide>
+    </ion-slides>
   </ion-grid>
 </ion-content>
 <ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
@@ -54,8 +75,7 @@
     <ion-row class="footer-icons-holder">
       <ion-col col-4>
         <div class="share-icon" (click)="sharePage()"></div>
-        <div class="settings-icon website-icon"
-          onclick="window.open('http://www.maverickfitkids.net', '_system', 'location=yes'); return false;"></div>
+        <div class="settings-icon website-icon" (click)="openExternalLink('https://maverickfitkids.net/store/', 'SettingsPage')"></div>
       </ion-col>
       <ion-col col-8>
         <img src="assets/imgs/maverick_logo.png" class="logo-img">

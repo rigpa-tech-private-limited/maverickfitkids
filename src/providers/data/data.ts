@@ -3,11 +3,28 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { AppConfig } from '../../config/config';
 import { AuthServiceProvider } from '../../providers/auth/auth';
-
+import { Http } from '@angular/http';
 @Injectable()
 export class DataProvider {
+  data: any;
+  constructor(public authService: AuthServiceProvider, public http: Http) { }
 
-  constructor(public authService: AuthServiceProvider) { }
+  loadQuestions() {
+
+    if (this.data) {
+      return Promise.resolve(this.data);
+    }
+
+    return new Promise(resolve => {
+
+      this.http.get('assets/data/questions.json').map(res => res.json()).subscribe(data => {
+        this.data = data.questions;
+        resolve(this.data);
+      });
+
+    });
+
+  }
 
   studentLogin(formData) {
     return new Promise((resolve, reject) => {
@@ -19,6 +36,28 @@ export class DataProvider {
             "studentId": formData.existing_student_mfk_id
           }
         }, AppConfig.STUDENT_LOGIN)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  studentSignup(formData) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentname": formData.student_name,
+            "dob": formData.dob,
+            "gender": formData.gender,
+            "mobile": formData.mobile,
+            "emailid": formData.email,
+            "classname": formData.classname,
+          }
+        }, AppConfig.STUDENT_SIGNUP)
         .then(res => {
           resolve(res);
         }, (err) => {
@@ -369,7 +408,7 @@ export class DataProvider {
 
   getFitSpotDetails(formData, pmExercise) {
     return new Promise((resolve, reject) => {
-      
+
       this.authService.postData(
         {
           "content": {
@@ -1240,7 +1279,7 @@ export class DataProvider {
     });
   }
 
-  addConsistencyPhoto(formData,imageUri,imageName) {
+  getMonthlyStudentConsistency(formData, month) {
     return new Promise((resolve, reject) => {
       let aData = formData;
       this.authService.postData(
@@ -1248,8 +1287,29 @@ export class DataProvider {
           "content": {
             "applicationId": AppConfig.APP_ID,
             "studentid": aData.studentId,
-            "image":imageUri,
-            "imagename":imageName
+            "month": month
+          }
+        }
+        //{ "content": { "applicationId": "MFK", "studentid": "MFK012790" } }
+        , AppConfig.GET_WEEK_STUDENT_CONSISTENCY)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  addConsistencyPhoto(formData, imageUri, imageName) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": aData.studentId,
+            "image": imageUri,
+            "imagename": imageName
           }
         }
         , AppConfig.GET_CONSISTENCY_PHOTO)

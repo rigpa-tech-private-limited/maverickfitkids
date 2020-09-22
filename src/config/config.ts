@@ -14,6 +14,7 @@ export class AppConfig {
     { classCode: '0003', className: 'UKG' }
   ];
   public static STUDENT_LOGIN = 'studentLogin';
+  public static STUDENT_SIGNUP = 'insertEnrolledStudentDetails';
   public static ADD_PHOTO = 'addPhoto';
   public static VALIDATE_PROMO_CODE = 'validatePromotionCode';
   public static GET_CLASS = 'getClass';

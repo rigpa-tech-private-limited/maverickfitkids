@@ -328,6 +328,11 @@ export class AddUserRegisterPage {
 
   }
 
+  goRegisterPage() {
+    console.log("goRegisterPage");
+    this.navCtrl.setRoot("AddUserSignupPage");
+  }
+
   goHome() {
     console.log("goHome");
     this.navCtrl.setRoot("UsersPage");
