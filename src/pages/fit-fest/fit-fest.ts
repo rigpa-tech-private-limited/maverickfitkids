@@ -167,7 +167,7 @@ export class FitFestPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("UserDetailPage");
   }
 
   showAboutOrResult(pmFlag) {

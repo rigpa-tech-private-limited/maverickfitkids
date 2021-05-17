@@ -16,9 +16,14 @@
         <a class='fa' (click)="goPage('ConsistencyPage')"><img src="assets/imgs/settings/consistency.png" /></a>
         <p>Consistency</p>
       </li>
-      <li class='menu-item 2'>
+      <!-- <li class='menu-item 2'>
         <a class='fa' (click)="checkNoAccess('ReviewPage')"><img src="assets/imgs/settings/3a_review.png" /></a>
         <p>3A’s review</p>
+        <p class="review-red-dot" *ngIf="redDotVisibleReview"><img src="assets/imgs/red_dot.png"></p>
+      </li> -->
+      <li class='menu-item 2'>
+        <a class='fa' (click)="checkNoAccess('MinutesPage')"><img src="assets/imgs/circles/5_maverick_minute.png" /></a>
+        <p><span class="highlight-text">Maverick</span> Minute</p>
         <p class="review-red-dot" *ngIf="redDotVisibleReview"><img src="assets/imgs/red_dot.png"></p>
       </li>
       <li class='menu-item 3'>

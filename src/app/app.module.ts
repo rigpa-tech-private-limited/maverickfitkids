@@ -18,14 +18,12 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP } from '@ionic-native/http';
-import { DocumentViewer } from '@ionic-native/document-viewer';
 import {
   ModalEnterDirect, ModalLeaveDirect
   , ModalEnterFadeIn, ModalLeaveFadeOut
   , ModalEnterZoomIn, ModalLeaveZoomIn
   , ModalEnterZoomOut, ModalLeaveZoomOut
 } from '../classes/ionic-modal-transition-pack';
-import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { SafeHtmlPipe } from '../pipes/safe-html/safe-html';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite } from '@ionic-native/sqlite';
@@ -38,6 +36,7 @@ import { Screenshot } from '@ionic-native/screenshot';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { IOSFilePicker } from '@ionic-native/file-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Toast } from '@ionic-native/toast';
 import { FlashCardModule } from '../components/flash-card/flash-card-module';
 
 @NgModule({
@@ -78,8 +77,6 @@ import { FlashCardModule } from '../components/flash-card/flash-card-module';
     DataProvider,
     AndroidPermissions,
     HTTP,
-    TextToSpeech,
-    DocumentViewer,
     DatePipe,
     DatabaseProvider,
     SQLitePorter,
@@ -91,7 +88,8 @@ import { FlashCardModule } from '../components/flash-card/flash-card-module';
     Screenshot,
     InAppBrowser,
     IOSFilePicker,
-    SocialSharing
+    SocialSharing,
+    Toast
   ]
 })
 export class AppModule {

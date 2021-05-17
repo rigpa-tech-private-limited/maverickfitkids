@@ -8,15 +8,15 @@
 
       <ion-slide *ngFor="let question of questions; let j = index;">
 
-          <h3>Ask your parents</h3>
+          <p>Ask your parents</p>
 
-          <flash-card [isFlipped]="question.flashCardFlipped">
+          <!-- <flash-card [isFlipped]="question.flashCardFlipped">
               <div class="flash-card-front" [innerHTML]="question.flashCardFront"></div>
               <div *ngIf="(question.flashCardState=='1')" class="flash-card-back" [innerHTML]="question.flashCardCorrect"></div>
               <div *ngIf="(question.flashCardState=='-1')" class="flash-card-back" [innerHTML]="question.flashCardInCorrect"></div>
-          </flash-card>
+          </flash-card> -->
 
-          <h3>{{question.questionText}}</h3>
+          <p>{{question.questionText}}</p>
 
           <ion-list no-lines class="gender-list form-item">
             <ion-row class="gender-list-row" radio-group>

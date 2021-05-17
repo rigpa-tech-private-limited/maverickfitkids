@@ -70,6 +70,23 @@ export class ParentGatePage {
       question.flashCardState = "-1";
     }
     setTimeout(() => {
+      let radioIcon = document.getElementsByClassName('radio-icon');
+      for (let i = 0; i < radioIcon.length; ++i) {
+        let item = radioIcon[i];
+        item.setAttribute("style", "border-color: #828282 !important;background-color: #fff !important;");
+      }
+      let radioBox = document.getElementsByClassName('radio-checked');
+      for (let i = 0; i < radioBox.length; ++i) {
+        let item = radioBox[i];
+        item.setAttribute("style", "border-color: #031337 !important;background-color: #FFF !important;");
+      }
+      let radioInner = document.querySelectorAll('.radio-checked .radio-inner');
+      for (let i = 0; i < radioInner.length; ++i) {
+        let item = radioInner[i];
+        item.setAttribute("style", "background-color: #031337 !important;");
+      }
+    }, 200);
+    setTimeout(() => {
 
       this.hasAnswered = false;
       answer.selected = false;

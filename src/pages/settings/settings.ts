@@ -3,7 +3,6 @@ import { Platform, IonicPage, ModalController, NavController, NavParams, AlertCo
 import { DataProvider } from '../../providers/data/data';
 import { Storage } from '@ionic/storage';
 import { AppConfig } from '../../config/config';
-import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer';
 import { InAppBrowser, InAppBrowserOptions } from "@ionic-native/in-app-browser";
 
 @IonicPage()
@@ -23,12 +22,13 @@ export class SettingsPage {
   redDotVisibleFitZone: boolean = false;
   redDotVisibleQuery: boolean = false;
   redDotVisibleReview: boolean = false;
-  constructor(private iab: InAppBrowser, public navCtrl: NavController, public modalCtrl: ModalController,
+  constructor(private iab: InAppBrowser, 
+    public navCtrl: NavController, 
+    public modalCtrl: ModalController,
     public platform: Platform,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private document: DocumentViewer,
     public storage: Storage,
     public dataService: DataProvider) {
 

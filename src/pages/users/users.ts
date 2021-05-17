@@ -60,8 +60,8 @@ export class UsersPage {
   consistencyList: any = [];
   responseDataConsis: any;
   userDetailsConsis: any;
-  totalStarCount: any;
-  maxStarCount: any;
+  totalStarCount: any = 0;
+  maxStarCount: any = 0;
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,

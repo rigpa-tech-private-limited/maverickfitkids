@@ -158,7 +158,7 @@ page-parent-gate {
   ion-item {
     margin-bottom: 5px;
     font-size: 1.2em;
-    background-color: map-get($colors, primary);
+    background-color: #fff;
   }
 
   flash-card {
@@ -178,6 +178,9 @@ page-parent-gate {
       font-size: 1.3em;
       font-weight: bold;
     }
+  }
+  p{
+    color: #323232 !important;
   }
 
 }

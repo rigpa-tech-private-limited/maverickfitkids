@@ -233,7 +233,7 @@ export class MinutesPage {
 
   goHome() {
     this.videoPause();
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("SettingsPage");
   }
 
   showAbout() {

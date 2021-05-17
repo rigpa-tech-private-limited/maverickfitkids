@@ -11,9 +11,19 @@
       <h2 text-center class="KaushanScript-Regular top-title">Happy Day {{responseData?.studentName}} !</h2>
       <ion-grid class="zero-margin zero-padding">
         <ion-row class="zero-margin zero-padding">
-          <ion-col col-12>
+          <ion-col col-4>
+            <ion-avatar class="add-photo-circle" (click)="checkNoAccess('ReviewPage')">
+              <img src="assets/imgs/settings/3a_review.png" />
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-4>
             <ion-avatar class="add-photo-circle" (click)="goPage('PlaylistPage')">
-              <img src="assets/imgs/playlist_icon.png" (click)="getMusicFromPhone()">
+              <img src="assets/imgs/playlist_icon.png" />
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-4>
+            <ion-avatar class="add-photo-circle" (click)="checkNoAccess('FitFestPage')">
+              <img src="assets/imgs/settings/fit_fest.png" />
             </ion-avatar>
           </ion-col>
         </ion-row>
