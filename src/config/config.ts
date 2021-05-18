@@ -78,4 +78,7 @@ export class AppConfig {
   public static GET_FIT_SPOT_TITLE = 'getFitSpotTitle';
   public static GET_FIT_SPOT_DETAILS = 'getFitSpotDetails';
   public static GET_CONSISTENCY_PHOTO = 'addConsistencyPhoto';
+  public static GET_DIGITAL_CERTIFICATE = 'getStudentdigitalCertificateStatus';
+  public static GET_PL_TITLE = 'getPhysicalLiteracytitle';
+  public static GET_PL_DETAILS = 'getPhysicalLiteracydetails';
 }

@@ -1,0 +1,31 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <form class="form" [formGroup]="validations_form_select_type" novalidate>
+      <ion-list inset class="zero-margin zero-padding">
+        <ion-grid class="zero-margin zero-padding">
+
+          <ion-row class="select-row">
+            <ion-col col-12>
+              <ion-item class="student_class">
+                <ion-select text-center [(ngModel)]="tutorialData.tutorialCode" formControlName="tutorialCode" cancelText="Cancel" okText="OK" placeholder="Select Tutorial">
+                  <ion-option [value]="tutorial.tutorialCode" *ngFor="let tutorial of tutorials">{{tutorial.tutorialTitle}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.tutorialCode">
+                  <div text-center class="error-message" *ngIf="validations_form_select_type.get('tutorialCode').hasError(validation.type) && (validations_form_select_type.get('tutorialCode').dirty || validations_form_select_type.get('tutorialCode').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-list>
+      <button type="submit" class="hiddenSubmitBtn"></button>
+    </form>
+    <button class="submit-btn KaushanScript-Regular" ion-button color="danger" [disabled]="!validations_form_select_type.valid" (click)="getPhysicalLiteracydetails()">Submit</button>
+  </div>
+</ion-content>

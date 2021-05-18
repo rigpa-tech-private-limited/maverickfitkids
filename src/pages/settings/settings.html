@@ -26,10 +26,14 @@
         <p><span class="highlight-text">Maverick</span> Minute</p>
         <p class="review-red-dot" *ngIf="redDotVisibleReview"><img src="assets/imgs/red_dot.png"></p>
       </li>
-      <li class='menu-item 3'>
+      <!-- <li class='menu-item 3'>
         <a class='fa' (click)="checkNoAccess('FitFestPage')"><img src="assets/imgs/settings/fit_fest.png" /></a>
         <p>Fit Fest</p>
         <p class="fitfest-red-dot" *ngIf="redDotVisibleFitFest"><img src="assets/imgs/red_dot.png"></p>
+      </li> -->
+      <li class='menu-item 3'>
+        <a class='fa' (click)="openModal('PhysicalTitlePopupPage')"><img src="assets/imgs/settings/physical_literacy.png" /></a>
+        <p>Physical Literacy</p>
       </li>
       <li class='menu-item 4'>
         <a class='fa' (click)="goPage('FitZonePage')"><img src="assets/imgs/settings/fit_zone.png" /></a>

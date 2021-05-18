@@ -1341,4 +1341,64 @@ export class DataProvider {
         });
     });
   }
+
+  getStudentdigitalCertificateStatus(formData, month, year) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "schoolcode": aData.schoolCode,
+            "studentid": aData.studentId,
+            "month": month,
+            "year": year
+          }
+        }, AppConfig.GET_DIGITAL_CERTIFICATE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getPhysicalLiteracytitle(formData) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "schoolcode": aData.schoolCode,
+            "classcode": aData.classCode
+          }
+        }, AppConfig.GET_PL_TITLE)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getPhysicalLiteracydetails(formData,tutorialcode) {
+    return new Promise((resolve, reject) => {
+      let aData = formData;
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "schoolcode": aData.schoolCode,
+            "classcode": aData.classCode,
+            "tutorialcode": tutorialcode
+          }
+        }, AppConfig.GET_PL_DETAILS)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }
