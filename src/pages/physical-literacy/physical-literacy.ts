@@ -20,9 +20,13 @@ export class PhysicalLiteracyPage {
   responseData: any;
   userDetails: any;
   exerciseLists: any;
-  exerciseList: any = { "insAudioPath": "", "audioPath": "", "exercisePath": "", "imageVideoName": "", "exerciseDescription": ""};
+  exerciseList: any = { "insAudioPath": "", "audioPath": "", "exercisePath": "", "imageVideoName": "", "exerciseDescription": "" };
   @ViewChild('video') video: ElementRef;
   private myVideo: HTMLVideoElement;
+  tutorialData = {
+    "tutorialCode": ""
+  }
+  tutorials: any = [];
   constructor(public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -35,8 +39,161 @@ export class PhysicalLiteracyPage {
       .then((res: any) => {
         if (res) {
           this.userDetails = res;
+          let loader = this.loadingCtrl.create({
+            spinner: 'ios',
+            content: ''
+          });
+          loader.present();
+          this.dataService.getPhysicalLiteracytitle(this.userDetails).then((result) => {
+            loader.dismiss();
+            this.responseData = result;
+            console.log(this.responseData);
+            if (this.responseData.returnStatus != 0) {
+              if (this.responseData.physicalLiteracyTitleList.length > 0) {
+                this.tutorials = this.responseData.physicalLiteracyTitleList;
+                this.tutorialData.tutorialCode = this.tutorials[0]['tutorialCode'];
+                this.getPhysicalLiteracydetails();
+              }
+            } else if (this.responseData.returnStatus == 0) {
+              console.log('returnStatus=>0');
+              const alert = this.alertCtrl.create({
+                message: this.responseData.returnMessage,
+                buttons: [{
+                  text: 'Ok',
+                  handler: () => {
+                    //this.navCtrl.pop();
+                  }
+                }],
+                enableBackdropDismiss: false
+              });
+              alert.present();
+            }
+          }, (err) => {
+            console.log(err);
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+              message: AppConfig.API_ERROR,
+              buttons: [{
+                text: 'Ok',
+                handler: () => { }
+              }]
+            });
+            alert.present();
+          });
         }
       });
+  }
+
+  onSelectTutorial(selectedval) {
+    console.log('selectedval', selectedval);
+    this.tutorialData.tutorialCode = selectedval;
+    this.getPhysicalLiteracydetails();
+  }
+
+  getPhysicalLiteracydetails() {
+    let loader = this.loadingCtrl.create({
+      spinner: 'ios',
+      content: ''
+    });
+    loader.present();
+    this.dataService.getPhysicalLiteracydetails(this.userDetails, this.tutorialData.tutorialCode).then((result) => {
+
+      this.responseData = result;
+      console.log(this.responseData);
+      if (this.responseData.returnStatus != 0) {
+        if (this.responseData.physicalLiteracyList) {
+          loader.dismiss();
+          this.exerciseLists = this.responseData.physicalLiteracyList;
+          console.log(this.exerciseLists);
+          if (this.exerciseLists) {
+            if (this.exerciseLists.length > 1) {
+              let previousIcon = document.getElementsByClassName('previousIcon');
+              for (let i = 0; i < previousIcon.length; ++i) {
+                let item = previousIcon[i];
+                item.setAttribute("style", "opacity:0.3;");
+              }
+              let nextIcon = document.getElementsByClassName('nextIcon');
+              for (let i = 0; i < nextIcon.length; ++i) {
+                let item = nextIcon[i];
+                item.setAttribute("style", "opacity:1;");
+              }
+            } else {
+              let previousIcon = document.getElementsByClassName('previousIcon');
+              for (let i = 0; i < previousIcon.length; ++i) {
+                let item = previousIcon[i];
+                item.setAttribute("style", "opacity:0.3;");
+              }
+              let nextIcon = document.getElementsByClassName('nextIcon');
+              for (let i = 0; i < nextIcon.length; ++i) {
+                let item = nextIcon[i];
+                item.setAttribute("style", "opacity:0.3;");
+              }
+            }
+            if (this.exerciseLists[0].fileType == '2') {
+              if (this.exerciseLists[0].exercisePath != null || this.exerciseLists[0].exercisePath != "") {
+                this.exerciseList.exercisePath = (this.exerciseLists[0].exercisePath).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+              } else {
+                this.exerciseList.exercisePath = "";
+              }
+              this.myVideo = this.video.nativeElement;
+              this.myVideo.src = this.exerciseList.exercisePath;
+              this.showVideoTag = true;
+              let cusid_ele = document.getElementsByClassName('excercise-video');
+              for (let i = 0; i < cusid_ele.length; ++i) {
+                let item = cusid_ele[i];
+                item.setAttribute("style", "visibility:visible;");
+              }
+            } else {
+              if (this.exerciseLists[0].exercisePath != null || this.exerciseLists[0].exercisePath != "") {
+                this.exerciseList.exercisePath = (this.exerciseLists[0].exercisePath).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
+              } else {
+                this.exerciseList.exercisePath = "";
+              }
+              this.showVideoTag = false;
+              this.myVideo = this.video.nativeElement;
+              this.myVideo.src = this.exerciseList.exercisePath;
+              let cusid_ele = document.getElementsByClassName('excercise-video');
+              for (let i = 0; i < cusid_ele.length; ++i) {
+                let item = cusid_ele[i];
+                item.setAttribute("style", "visibility:hidden;height:0;");
+              }
+            }
+            this.exerciseList.imageVideoName = this.exerciseLists[0].imageVideoName;
+            if ((this.exerciseLists[0].description) != null && (this.exerciseLists[0].description) != "") {
+              this.exerciseList.exerciseDescription = (this.exerciseLists[0].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
+            } else {
+              this.exerciseList.exerciseDescription = "";
+            }
+            this.videoPlay();
+          }
+        }
+      } else if (this.responseData.returnStatus == 0) {
+        console.log('returnStatus=>0');
+        loader.dismiss();
+        const alert = this.alertCtrl.create({
+          message: this.responseData.returnMessage,
+          buttons: [{
+            text: 'Ok',
+            handler: () => {
+              //this.navCtrl.pop();
+            }
+          }],
+          enableBackdropDismiss: false
+        });
+        alert.present();
+      }
+    }, (err) => {
+      console.log(err);
+      loader.dismiss();
+      const alert = this.alertCtrl.create({
+        message: AppConfig.API_ERROR,
+        buttons: [{
+          text: 'Ok',
+          handler: () => { }
+        }]
+      });
+      alert.present();
+    });
   }
 
   videoPlay() {
@@ -80,69 +237,6 @@ export class PhysicalLiteracyPage {
     }, false);
     videos.addEventListener('pause', () => {
     }, false);
-    this.exerciseLists = this.navParams.get('physicalLiteracyList');
-    console.log(this.exerciseLists);
-    if (this.exerciseLists) {
-      if (this.exerciseLists.length > 1) {
-        let previousIcon = document.getElementsByClassName('previousIcon');
-        for (let i = 0; i < previousIcon.length; ++i) {
-          let item = previousIcon[i];
-          item.setAttribute("style", "opacity:0.3;");
-        }
-        let nextIcon = document.getElementsByClassName('nextIcon');
-        for (let i = 0; i < nextIcon.length; ++i) {
-          let item = nextIcon[i];
-          item.setAttribute("style", "opacity:1;");
-        }
-      } else {
-        let previousIcon = document.getElementsByClassName('previousIcon');
-        for (let i = 0; i < previousIcon.length; ++i) {
-          let item = previousIcon[i];
-          item.setAttribute("style", "opacity:0.3;");
-        }
-        let nextIcon = document.getElementsByClassName('nextIcon');
-        for (let i = 0; i < nextIcon.length; ++i) {
-          let item = nextIcon[i];
-          item.setAttribute("style", "opacity:0.3;");
-        }
-      }
-      if (this.exerciseLists[0].fileType == '2') {
-        if (this.exerciseLists[1].exercisePath != null || this.exerciseLists[1].exercisePath != "") {
-          this.exerciseList.exercisePath = (this.exerciseLists[1].exercisePath).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
-        } else {
-          this.exerciseList.exercisePath = "";
-        }
-        this.myVideo = this.video.nativeElement;
-        this.myVideo.src = this.exerciseList.exercisePath;
-        this.showVideoTag = true;
-        let cusid_ele = document.getElementsByClassName('excercise-video');
-        for (let i = 0; i < cusid_ele.length; ++i) {
-          let item = cusid_ele[i];
-          item.setAttribute("style", "visibility:visible;");
-        }
-      } else {
-        if (this.exerciseLists[1].exercisePath != null || this.exerciseLists[1].exercisePath != "") {
-          this.exerciseList.exercisePath = (this.exerciseLists[1].exercisePath).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
-        } else {
-          this.exerciseList.exercisePath = "";
-        }
-        this.showVideoTag = false;
-        this.myVideo = this.video.nativeElement;
-        this.myVideo.src = this.exerciseList.exercisePath;
-        let cusid_ele = document.getElementsByClassName('excercise-video');
-        for (let i = 0; i < cusid_ele.length; ++i) {
-          let item = cusid_ele[i];
-          item.setAttribute("style", "visibility:hidden;height:0;");
-        }
-      }
-      this.exerciseList.imageVideoName = this.exerciseLists[0].imageVideoName;
-      if ((this.exerciseLists[0].description) != null && (this.exerciseLists[0].description) != "") {
-        this.exerciseList.exerciseDescription = (this.exerciseLists[0].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
-      } else {
-        this.exerciseList.exerciseDescription = "";
-      }
-      this.videoPlay();
-    }
     this.initializeBackButtonCustomHandler();
   }
 

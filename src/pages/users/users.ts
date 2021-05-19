@@ -436,7 +436,7 @@ export class UsersPage {
                 } else {
                   this.responseData.starCount = "0";
                 }
-                this.databaseprovider.updateUser(this.responseData)
+                await this.databaseprovider.updateUser(this.responseData)
                   .then(data => {
                     console.log('Users updated to local db.');
                     this.databaseprovider.updateOtherUserLockStatus(this.responseData.studentId)
@@ -448,6 +448,7 @@ export class UsersPage {
                   }).catch(e => {
                     console.log(e);
                   });
+                this.userList = await this.databaseprovider.selectUserById(pmUserId).then(res => res);
                 this.storage.set('loggedInUser', "yes");
                 this.storage.set('userDetails', this.userList[0]);
                 this.storage.set('imgPreview', this.userList[0].studentImage);
