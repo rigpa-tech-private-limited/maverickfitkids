@@ -91,4 +91,21 @@ page-fitzone-discontinue-popup {
   .user-item {
     border-radius: 5vw !important;
   }
+
+  .friends-student-avatar {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20vw;
+    background-clip: padding-box;
+    margin: 1.5vw 2vw;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+  }
+  
+  .friends-student-avatar-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

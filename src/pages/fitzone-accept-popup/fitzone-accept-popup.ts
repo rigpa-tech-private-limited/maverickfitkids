@@ -15,6 +15,7 @@ export class FitzoneAcceptPopupPage {
   userDetails: any;
   responseData: any;
   imgPreview = 'assets/imgs/no_image.png';
+  friendsStudentImg = 'assets/imgs/no_image.png';
   fitzoneCode: any;
   constructor(public modalCtrl: ModalController,
     public navCtrl: NavController,
@@ -30,6 +31,15 @@ export class FitzoneAcceptPopupPage {
         if (res) {
           this.userDetails = res;
           console.log(this.userDetails);
+          if (this.navParams.get('friendsStudentImg')) {
+            this.friendsStudentImg = this.navParams.get('friendsStudentImg');
+            console.log(this.friendsStudentImg);
+            let cusid_ele = document.getElementsByClassName('friends-student-avatar');
+            for (let i = 0; i < cusid_ele.length; ++i) {
+              let item = cusid_ele[i];
+              item.setAttribute("style", "background-image: url(" + this.friendsStudentImg + ");");
+            }
+          }
         }
       });
     if (this.navParams.get('fitzoneCode')) {

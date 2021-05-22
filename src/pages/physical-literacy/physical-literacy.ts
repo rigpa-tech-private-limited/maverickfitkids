@@ -20,7 +20,7 @@ export class PhysicalLiteracyPage {
   responseData: any;
   userDetails: any;
   exerciseLists: any;
-  exerciseList: any = { "insAudioPath": "", "audioPath": "", "exercisePath": "", "imageVideoName": "", "exerciseDescription": "" };
+  exerciseList: any = { "insAudioPath": "", "audioPath": "", "exercisePath": "", "imageVideoName": "", "exerciseDescription": "", "tutorialTitle": "", "tutorialCode": "" };
   @ViewChild('video') video: ElementRef;
   private myVideo: HTMLVideoElement;
   tutorialData = {
@@ -39,47 +39,7 @@ export class PhysicalLiteracyPage {
       .then((res: any) => {
         if (res) {
           this.userDetails = res;
-          let loader = this.loadingCtrl.create({
-            spinner: 'ios',
-            content: ''
-          });
-          loader.present();
-          this.dataService.getPhysicalLiteracytitle(this.userDetails).then((result) => {
-            loader.dismiss();
-            this.responseData = result;
-            console.log(this.responseData);
-            if (this.responseData.returnStatus != 0) {
-              if (this.responseData.physicalLiteracyTitleList.length > 0) {
-                this.tutorials = this.responseData.physicalLiteracyTitleList;
-                this.tutorialData.tutorialCode = this.tutorials[0]['tutorialCode'];
-                this.getPhysicalLiteracydetails();
-              }
-            } else if (this.responseData.returnStatus == 0) {
-              console.log('returnStatus=>0');
-              const alert = this.alertCtrl.create({
-                message: this.responseData.returnMessage,
-                buttons: [{
-                  text: 'Ok',
-                  handler: () => {
-                    //this.navCtrl.pop();
-                  }
-                }],
-                enableBackdropDismiss: false
-              });
-              alert.present();
-            }
-          }, (err) => {
-            console.log(err);
-            loader.dismiss();
-            const alert = this.alertCtrl.create({
-              message: AppConfig.API_ERROR,
-              buttons: [{
-                text: 'Ok',
-                handler: () => { }
-              }]
-            });
-            alert.present();
-          });
+          this.getPhysicalLiteracydetails();
         }
       });
   }
@@ -96,7 +56,7 @@ export class PhysicalLiteracyPage {
       content: ''
     });
     loader.present();
-    this.dataService.getPhysicalLiteracydetails(this.userDetails, this.tutorialData.tutorialCode).then((result) => {
+    this.dataService.getPhysicalLiteracydetails(this.userDetails).then((result) => {
 
       this.responseData = result;
       console.log(this.responseData);
@@ -163,6 +123,16 @@ export class PhysicalLiteracyPage {
               this.exerciseList.exerciseDescription = (this.exerciseLists[0].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
             } else {
               this.exerciseList.exerciseDescription = "";
+            }
+            if (this.exerciseLists[0].tutorialTitle != null || this.exerciseLists[0].tutorialTitle != "") {
+              this.exerciseList.tutorialTitle = (this.exerciseLists[0].tutorialTitle);
+            } else {
+              this.exerciseList.tutorialTitle = "";
+            }
+            if (this.exerciseLists[0].tutorialCode != null || this.exerciseLists[0].tutorialCode != "") {
+              this.exerciseList.tutorialCode = (this.exerciseLists[0].tutorialCode);
+            } else {
+              this.exerciseList.tutorialCode = "";
             }
             this.videoPlay();
           }
@@ -328,6 +298,16 @@ export class PhysicalLiteracyPage {
       } else {
         this.exerciseList.exerciseDescription = "";
       }
+      if (this.exerciseLists[(this.currentSlide + 1)].tutorialTitle != null || this.exerciseLists[(this.currentSlide + 1)].tutorialTitle != "") {
+        this.exerciseList.tutorialTitle = (this.exerciseLists[(this.currentSlide + 1)].tutorialTitle);
+      } else {
+        this.exerciseList.tutorialTitle = "";
+      }
+      if (this.exerciseLists[(this.currentSlide + 1)].tutorialCode != null || this.exerciseLists[(this.currentSlide + 1)].tutorialCode != "") {
+        this.exerciseList.tutorialCode = (this.exerciseLists[(this.currentSlide + 1)].tutorialCode);
+      } else {
+        this.exerciseList.tutorialCode = "";
+      }
       this.goToSlide(this.currentSlide + 1);
       this.videoPlay();
     }
@@ -397,6 +377,16 @@ export class PhysicalLiteracyPage {
         this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide - 1)].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
       } else {
         this.exerciseList.exerciseDescription = "";
+      }
+      if (this.exerciseLists[(this.currentSlide - 1)].tutorialTitle != null || this.exerciseLists[(this.currentSlide - 1)].tutorialTitle != "") {
+        this.exerciseList.tutorialTitle = (this.exerciseLists[(this.currentSlide - 1)].tutorialTitle);
+      } else {
+        this.exerciseList.tutorialTitle = "";
+      }
+      if (this.exerciseLists[(this.currentSlide - 1)].tutorialCode != null || this.exerciseLists[(this.currentSlide - 1)].tutorialCode != "") {
+        this.exerciseList.tutorialCode = (this.exerciseLists[(this.currentSlide - 1)].tutorialCode);
+      } else {
+        this.exerciseList.tutorialCode = "";
       }
       this.goToSlide(this.currentSlide - 1);
       this.videoPlay();
@@ -489,6 +479,16 @@ export class PhysicalLiteracyPage {
           this.exerciseList.exerciseDescription = (this.exerciseLists[0].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
         } else {
           this.exerciseList.exerciseDescription = "";
+        }
+        if (this.exerciseLists[0].tutorialTitle != null || this.exerciseLists[0].tutorialTitle != "") {
+          this.exerciseList.tutorialTitle = (this.exerciseLists[0].tutorialTitle);
+        } else {
+          this.exerciseList.tutorialTitle = "";
+        }
+        if (this.exerciseLists[0].tutorialCode != null || this.exerciseLists[0].tutorialCode != "") {
+          this.exerciseList.tutorialCode = (this.exerciseLists[0].tutorialCode);
+        } else {
+          this.exerciseList.tutorialCode = "";
         }
         this.goToSlide(this.currentSlide + 1);
         this.videoPlay();

@@ -47,4 +47,34 @@ page-user-detail {
   .float-left{
     margin-left: 15px !important;
   }
+
+  .user-detail-menu-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .user-detail-menu{
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20vw;
+    background-clip: padding-box;
+    margin: 1.5vw 2vw;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+  }
+
+  .user-detail-3areview-menu{
+    background-image: url("../assets/imgs/settings/3a_review.png");
+  }
+
+  .user-detail-playlist-menu{
+    background-image: url("../assets/imgs/playlist_icon.png");
+  }
+
+  .user-detail-fitfest-menu{
+    background-image: url("../assets/imgs/settings/fit_fest.png");
+  }
 }

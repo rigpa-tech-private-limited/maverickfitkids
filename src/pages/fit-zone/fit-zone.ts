@@ -521,7 +521,7 @@ export class FitZonePage {
 
   openModal(pageName, pmfriendsStudentCode, pmfriendsZoneCode, friendStarCount, friendsStudentImg) {
     console.log("==>" + pageName + "--" + pmfriendsStudentCode);
-    let modal = this.modalCtrl.create(pageName, ((pageName == 'FitzoneAcceptPopupPage') ? { "fitzoneCode": pmfriendsZoneCode, "mfkID": pmfriendsStudentCode } : ((pageName == 'FitzoneDiscontinuePopupPage') ? { "fitzoneCode": pmfriendsZoneCode, "mfkID": pmfriendsStudentCode, "friendStarCount": friendStarCount, "friendsStudentImg": friendsStudentImg } : ((pageName == 'FitZoneLikePage') ? { "mfkID": pmfriendsStudentCode, "intendItem": pmfriendsZoneCode, "quote": friendStarCount, "img": friendsStudentImg } : null))), {
+    let modal = this.modalCtrl.create(pageName, ((pageName == 'FitzoneAcceptPopupPage') ? { "fitzoneCode": pmfriendsZoneCode, "mfkID": pmfriendsStudentCode, "friendsStudentImg": friendsStudentImg } : ((pageName == 'FitzoneDiscontinuePopupPage') ? { "fitzoneCode": pmfriendsZoneCode, "mfkID": pmfriendsStudentCode, "friendStarCount": friendStarCount, "friendsStudentImg": friendsStudentImg } : ((pageName == 'FitZoneLikePage') ? { "mfkID": pmfriendsStudentCode, "intendItem": pmfriendsZoneCode, "quote": friendStarCount, "img": friendsStudentImg } : null))), {
       cssClass: 'exercise-modal',
       enableBackdropDismiss: true
     });
@@ -529,7 +529,7 @@ export class FitZonePage {
   }
 
   friendsStudentSelect(pmCode, pmfriendsStudentCode, pmfriendsZoneCode, friendStarCount, friendsStudentImg, sendRequestFlag) {
-
+    console.log(pmCode, pmfriendsStudentCode, pmfriendsZoneCode, friendStarCount, friendsStudentImg, sendRequestFlag);
     if (pmCode == 'add') {
       this.openModal('FitzoneAddPopupPage', pmfriendsStudentCode, pmfriendsZoneCode, friendStarCount, friendsStudentImg);
     } else if (pmCode == 'accept') {

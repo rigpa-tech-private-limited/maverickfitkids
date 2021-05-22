@@ -27,4 +27,26 @@ page-games {
     position: absolute;
     width: 0;
   }
+
+  .student_class .item-inner {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .student_class ion-select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .submit-btn {
+    margin: 20px auto !important;
+  }
+
+  .select-row {
+    padding: 10px;
+  }
+  
+  .item-block {
+    border: 1px solid #ddd !important;
+  }
 }

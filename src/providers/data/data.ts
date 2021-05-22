@@ -1382,7 +1382,7 @@ export class DataProvider {
     });
   }
 
-  getPhysicalLiteracydetails(formData,tutorialcode) {
+  getPhysicalLiteracydetails(formData) {
     return new Promise((resolve, reject) => {
       let aData = formData;
       this.authService.postData(
@@ -1390,8 +1390,7 @@ export class DataProvider {
           "content": {
             "applicationId": AppConfig.APP_ID,
             "schoolcode": aData.schoolCode,
-            "classcode": aData.classCode,
-            "tutorialcode": tutorialcode
+            "classcode": aData.classCode
           }
         }, AppConfig.GET_PL_DETAILS)
         .then(res => {

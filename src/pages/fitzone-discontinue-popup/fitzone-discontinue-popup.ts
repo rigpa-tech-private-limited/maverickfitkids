@@ -31,6 +31,15 @@ export class FitzoneDiscontinuePopupPage {
         if (res) {
           this.userDetails = res;
           console.log(this.userDetails);
+          if (this.navParams.get('friendsStudentImg')) {
+            this.friendsStudentImg = this.navParams.get('friendsStudentImg');
+            console.log(this.friendsStudentImg);
+            let cusid_ele = document.getElementsByClassName('friends-student-avatar');
+            for (let i = 0; i < cusid_ele.length; ++i) {
+              let item = cusid_ele[i];
+              item.setAttribute("style", "background-image: url(" + this.friendsStudentImg + ");");
+            }
+          }
         }
       });
     if (this.navParams.get('fitzoneCode')) {
@@ -40,10 +49,6 @@ export class FitzoneDiscontinuePopupPage {
     if (this.navParams.get('mfkID')) {
       this.mfkID = this.navParams.get('mfkID');
       console.log(this.mfkID);
-    }
-    if (this.navParams.get('friendsStudentImg')) {
-      this.friendsStudentImg = this.navParams.get('friendsStudentImg');
-      console.log(this.friendsStudentImg);
     }
     if (this.navParams.get('friendStarCount')) {
       this.friendStarCount = this.navParams.get('friendStarCount');

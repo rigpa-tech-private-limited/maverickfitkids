@@ -1,0 +1,219 @@
+page-digital-certificate {
+  h2 {
+    margin: 0.5rem 0 !important;
+  }
+
+  h4 {
+    margin: 1rem 0 !important;
+  }
+
+  .text-image-icon img {
+    padding: 0;
+    max-width: 75%;
+    float: right;
+    margin: 10px !important;
+  }
+
+  .scroll-support {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .scroll-content {
+    padding: 0 !important;
+  }
+
+  .container {
+    float: left;
+    padding: 0;
+    width: 600px;
+    height: 250px;
+  }
+
+  .no-data {
+    padding: 10vh 0;
+  }
+
+  .rounded .progress-fill,
+  .rounded .progress-track {
+    border-radius: 3px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .year-div {
+    padding: 0;
+    float: left;
+    width: 13vw;
+    color: #323232;
+    font-size: 1.4rem;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dg-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/imgs/digital_certificate_bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    flex-direction: column;
+    position: relative;
+    .share-icon-holder {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #021337;
+      padding: 5px;
+      .share-icon {
+        width: 9vw;
+        height: 9vw;
+        -webkit-border-radius: 9vw;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 9vw;
+        -moz-background-clip: padding;
+        border-radius: 9vw;
+        background-clip: padding-box;
+        margin: 1.5vw 20px;
+        background-size: cover;
+        background-position: center center;
+        background-image: url("../assets/icon/share.png");
+        float: left;
+      }
+      .logo-img {
+        max-width: 40%;
+        border: 0;
+        margin-right: 20px;
+        float: right;
+      }
+    }
+  }
+
+  .top-dg-logo {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 25vh;
+    .dg-logo {
+      width: 25vw;
+      height: 25vw;
+      background-image: url("../assets/imgs/digital_certificate_logo.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      margin-left: 5vw !important;
+      margin-top: 5vw !important;
+    }
+  }
+  .top-dg-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    .dg-header {
+      width: 50vw;
+      height: 20vw;
+      background-image: url("../assets/imgs/digital_certificate_header.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+  .top-dg-present {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    h2 {
+      font-size: 1.4rem !important;
+      color: #fff !important;
+      padding: 10px !important;
+    }
+  }
+
+  .top-dg-studentname {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    h2 {
+      font-family: "AlexBrush-Regular" !important;
+      font-size: 1.8rem !important;
+      color: #fff !important;
+      padding: 5px !important;
+      font-weight: bold;
+      letter-spacing: 1rem;
+      text-transform: uppercase;
+    }
+  }
+  .top-dg-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    p {
+      font-family: "DancingScript" !important;
+      font-size: 1.4rem !important;
+      color: #fff !important;
+      padding: 5px 15px !important;
+    }
+    .dg-content {
+      width: 100vw;
+      height: 25vw;
+      background-image: url("../assets/imgs/digital_certificate_content.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      padding: 10px;
+    }
+  }
+
+  .top-dg-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    .dg-class {
+      width: 35vw;
+      height: auto;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      p {
+        font-family: "KaushanScript-Regular" !important;
+        font-size: 1.4rem !important;
+        color: #fff !important;
+        padding: 0px 5px !important;
+      }
+    }
+    .dg-batch-holder {
+      width: 30vw;
+      height: auto;
+      padding: 15px;
+      .dg-batch {
+        width: 25vw;
+        height: 25vw;
+        background-image: url("../assets/imgs/digital_certificate_batch.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<ion-content padding>
+  <div class="dg-container">
+    <div class="top-dg-logo">
+      <div class="dg-logo"></div>
+    </div>
+    <div class="top-dg-header">
+      <div class="dg-header"></div>
+    </div>
+    <div class="top-dg-present">
+      <h2>PROUDLY PRESENTED TO : </h2>
+    </div>
+    <div class="top-dg-studentname">
+      <h2>{{userDetails?.studentName}}</h2>
+    </div>
+    <div class="top-dg-content">
+      <div class="dg-content"></div>
+      <!-- <p>Physical Literacy is being aware of your embodied nature</p>
+      <p> & using that awareness to realise the sanctity and dignity of your body.</p>
+      <p> We recognize the effort you take regularly to honor your body,</p>
+      <p> & congratulate your accountability through consistency.</p> -->
+    </div>
+    <div class="top-dg-footer">
+      <div class="dg-class">
+        <p>{{userDetails?.schoolName}}</p>
+        <p>Class : {{userDetails?.className}}</p>
+      </div>
+      <div class="dg-batch-holder">
+        <div class="dg-batch"></div>
+      </div>
+      <div class="dg-class">
+        <p>{{monthYear}}</p>
+      </div>
+    </div>
+    <div class="share-icon-holder">
+      <div class="share-icon" (click)="sharePage()"></div>
+      <img src="assets/imgs/maverick_logo.png" class="logo-img">
+    </div>
+  </div>
+</ion-content>

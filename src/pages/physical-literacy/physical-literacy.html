@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-row class="select-row">
+  <!-- <ion-row class="select-row">
     <ion-col col-12>
       <ion-label><p>Select Video : </p></ion-label>
       <ion-item class="student_class">
@@ -15,10 +15,10 @@
         </ion-select>
       </ion-item>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
   <div id="slides">
     <div class="slider showing">
-      <h5 class="heading-exercise" text-center [innerHTML]="exerciseType"></h5>
+      <h5 class="heading-exercise" text-center [innerHTML]="exerciseList.tutorialTitle"></h5>
       <img *ngIf="!showVideoTag" src="{{exerciseList.exercisePath}}" />
       <video #video playsinline preload="auto" poster="assets/imgs/video_preview.jpeg" controls class="excercise-video" id="videos" loop controlsList="nodownload"></video>
       <h6 text-center [innerHTML]="exerciseList.imageVideoName"></h6>
@@ -28,6 +28,26 @@
 </ion-content>
 <ion-footer no-border id="footer-container" class="zero-margin zero-padding" color="primary">
   <ion-toolbar class="zero-margin zero-padding" color="primary">
+    <ion-row class="action-icons-holder">
+      <ion-col col-4 (click)="prevSlide()" class="previousIcon">
+        <img src="assets/imgs/previous_icon.png" class="action-icon">
+        <p class="help-text">
+          Previous
+        </p>
+      </ion-col>
+      <ion-col col-4>
+        <!-- <img src="assets/imgs/instruction_icon.png" class="action-icon"> -->
+        <p class="help-text">
+          &nbsp;
+        </p>
+      </ion-col>
+      <ion-col col-4 (click)="nextSlide()" class="nextIcon">
+        <img src="assets/imgs/next_icon.png" class="action-icon">
+        <p class="help-text">
+          Next
+        </p>
+      </ion-col>
+    </ion-row>
     <ion-row class="footer-icons-holder">
       <ion-col col-4>
         <div class="profile-avatar" (click)="goPage('UsersPage')"></div>

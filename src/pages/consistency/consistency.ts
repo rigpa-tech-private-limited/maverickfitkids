@@ -126,6 +126,10 @@ export class ConsistencyPage {
     this.navCtrl.setRoot("SettingsPage");
   }
 
+  goDigitalCertificate() {
+    this.navCtrl.setRoot("DigitalCertificatePage");
+  }
+
   sharePage() {
     console.log("share");
     if (this.totalStarCount[this.currentIndex] > 0) {

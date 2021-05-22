@@ -21,6 +21,8 @@ export class GamesPage {
   userList: any;
   isPlaying: boolean = false;
   music_icon: any = 'assets/imgs/music_icon_gray.png';
+  gamesDetailsList: any;
+  gamecode:any;
   constructor(public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
@@ -46,10 +48,14 @@ export class GamesPage {
             this.responseData = result;
             console.log(this.responseData);
             if (this.responseData.returnStatus != 0) {
-              console.log(this.responseData.gameContent);
-              this.gameContent = (this.responseData.gameContent).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
-              var strMessage1 = document.getElementById("sessions-content");
-              strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
+              console.log(this.responseData.gamesDetailsList);
+              if(this.responseData.gamesDetailsList){
+                this.gamesDetailsList = this.responseData.gamesDetailsList;
+                this.gamecode = this.responseData.gamesDetailsList[0]['gamecode'];
+                this.gameContent = (this.responseData.gamesDetailsList[0]['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+                var strMessage1 = document.getElementById("sessions-content");
+                strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
+              }
             } else if (this.responseData.returnStatus == 0) {
               console.log('returnStatus=>0');
               const alert = this.alertCtrl.create({
@@ -79,6 +85,17 @@ export class GamesPage {
         }
       });
   }
+
+
+  onSelectGame(selectedval) {
+    console.log('selectedval', selectedval);
+    this.gamecode = selectedval;
+    let gamesDetailsArr =  this.gamesDetailsList.find(x => x.gamecode == this.gamecode);
+    this.gameContent = (gamesDetailsArr['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+    var strMessage1 = document.getElementById("sessions-content");
+    strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
+  }
+
   async checkuserMusic() {
     this.userList = await this.databaseprovider.selectUserById(this.userDetails.studentId).then(res => res);
     if (this.userList) {
