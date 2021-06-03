@@ -3,7 +3,7 @@ export class AppConfig {
   public static API_BASE_URL = 'http://52.74.156.238/studentappws/mobile/';
   public static SITE_URL = 'http://52.74.156.238/';
   public static APP_ID = "MFK";
-  public static APP_VERSION = '1.1';
+  public static APP_VERSION = '1.9';
   public static ERROR_MESSAGES = {
     "register": "Sorry! Details entered do not match our files! Please ensure you maintain the syntax of your name as registered with us through your school"
   };
@@ -24,13 +24,13 @@ export class AppConfig {
   public static GET_DISCLAIMER = 'getDisclaimer';
   public static GET_STUDENT_EXERCISE_DETAILS = 'getStudentExerciseDetails';
   public static GET_STUDENT_INSIGHT_DETAILS = 'getStudentInsightDetails';
-  public static GET_STUDENT_GAMES_DETAILS = 'getStudentGamesDetails';
+  public static GET_STUDENT_GAMES_DETAILS = 'getStudentGamesDetailsNew';
   public static GET_GUIDE_EXERCISE_TYPE = 'getGuideExerciseType';
   public static GET_GUIDE_IMPLEMENTATION_TYPE = 'getGuideImplementationType';
   public static GET_STUDENT_GUIDE_DETAILS = 'getStudentGuideDetails';
   public static MARK_STAR_FOR_STUDENT = 'markStarForStudent';
   public static GET_COACH_VIDEO = 'getCoachVideo';
-  public static GET_MINUTE_VIDEO = 'getMinuteVideo';
+  public static GET_MINUTE_VIDEO = 'getMinuteVideoNew';
   public static GET_SPORTS_LIST = 'getSportsList';
   public static GET_SPORTS_IMPLEMENTATION_TYPE = 'getSportsImplementationType';
   public static GET_SPORTS_FITNESS_LEVEL = 'getSportsFitnessLevel';

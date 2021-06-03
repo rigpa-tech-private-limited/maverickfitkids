@@ -4,7 +4,7 @@ page-active-track {
   }
 
   ion-content p {
-    text-align: justify !important;
+    text-align: justify;
     line-height: 2rem !important;
   }
 
@@ -25,10 +25,33 @@ page-active-track {
     padding: 0 16px !important;
   }
 
-  audio {
+  
+  .playlist-audio {
     visibility: hidden;
     height: 0;
     position: absolute;
     width: 0;
+  }
+
+  .student_class .item-inner {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .student_class ion-select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .submit-btn {
+    margin: 20px auto !important;
+  }
+
+  .select-row {
+    padding: 10px;
+  }
+  
+  .item-block {
+    border: 1px solid #ddd !important;
   }
 }

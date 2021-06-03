@@ -77,7 +77,7 @@ export class DemoPage {
     }, false);
     this.initializeBackButtonCustomHandler();
     this.myVideo = this.video.nativeElement;
-    this.myVideo.src = AppConfig.SITE_URL + 'maverick/Demo/Student_app_Demo.mp4';
+    this.myVideo.src = AppConfig.SITE_URL + 'maverick/Demo/Student_app_Demo.mov';
   }
 
   ionViewWillLeave() {

@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content padding>
   <div class="videoContent">
-    <ion-row>
+    <!-- <ion-row>
       <ion-col col-2>
       </ion-col>
       <ion-col col-8 text-center>
@@ -15,14 +15,25 @@
       </ion-col>
       <ion-col col-2>
       </ion-col>
+    </ion-row> -->
+    <ion-row class="select-row">
+      <ion-col col-12>
+        <ion-label><p text-center><b>Select Title</b></p></ion-label>
+        <ion-item class="student_class">
+          <ion-select text-center [(ngModel)]="videotitle" cancelText="Cancel" okText="OK" placeholder="Select Title" (ionChange)="onSelectVideo($event)">
+            <ion-option [value]="videoDetail.title" *ngFor="let videoDetail of videoList">{{videoDetail.title}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
     </ion-row>
     <video #video playsinline preload="auto" poster="assets/imgs/video_preview.jpeg" controls id="videos" loop
       controlsList="nodownload"></video>
+    <div class="content-inner" [innerHTML]="coachVideoPathDesc"></div>
   </div>
 </ion-content>
 <ion-footer no-border id="footer-container" class="zero-margin zero-padding" color="primary">
   <ion-toolbar class="zero-margin zero-padding" color="primary">
-    <ion-row class="action-icons-holder">
+    <!-- <ion-row class="action-icons-holder">
       <ion-col col-4 (click)="prevSlide()">
         <div class="menu-icon-holder-div">
           <img src="assets/imgs/previous_icon.png" class="videos-prev-btn action-icon">
@@ -47,10 +58,11 @@
           </p>
         </div>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row class="footer-icons-holder">
       <ion-col col-4>
         <div class="back-icon" (click)="goHome()"></div>
+        <div class="back-icon about-icon" (click)="showAbout()"></div>
       </ion-col>
       <ion-col col-8>
         <img src="assets/imgs/maverick_logo.png" class="logo-img">

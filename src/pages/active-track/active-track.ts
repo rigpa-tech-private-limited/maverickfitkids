@@ -21,6 +21,8 @@ export class ActiveTrackPage {
   userList: any;
   isPlaying: boolean = false;
   music_icon: any = 'assets/imgs/music_icon_gray.png';
+  gamesDetailsList: any;
+  gamecode:any;
   constructor(public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
@@ -41,18 +43,26 @@ export class ActiveTrackPage {
             content: ''
           });
           loader.present();
-          this.dataService.getStudentGamesDetails(this.userDetails).then((result) => {
+          this.dataService.getStudentGamesDetails(this.userDetails).then(async (result) => {
             loader.dismiss();
             this.responseData = result;
             console.log(this.responseData);
             if (this.responseData.returnStatus != 0) {
-              console.log(this.responseData.gameContent);
-              this.gameContent = (this.responseData.gameContent).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
-              this.gameContent = (this.gameContent).replace(/\/maverick\/Directory\/Video\//g, AppConfig.SITE_URL + 'maverick/Directory/Video/');
-              this.gameContent = (this.gameContent).replace(/<video /g, '<video loop controls controlslist="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" preload="auto" ');
+              console.log(this.responseData.gamesDetailsList);
+              if(this.responseData.gamesDetailsList){
+                this.gamesDetailsList = this.responseData.gamesDetailsList;
+                this.gamecode = this.responseData.gamesDetailsList[0]['gamecode'];
+                // this.gameContent = (this.responseData.gamesDetailsList[0]['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+                const regImg = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Image/', 'g');
+                const regVideo = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Video/', 'g');
+                const regMusic = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Music/', 'g');
+                const videoTag = new RegExp('<video ', 'g');
+                const audioTag = new RegExp('<audio ', 'g');
+                this.gameContent = await ((((((this.responseData.gamesDetailsList[0]['gamecontent']).replace(regImg, AppConfig.SITE_URL + 'maverick/Directory/Image/'))).replace(regMusic, AppConfig.SITE_URL + 'maverick/Directory/Music/')).replace(regVideo, AppConfig.SITE_URL + 'maverick/Directory/Video/')).replace(videoTag, '<video controlsList="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" ')).replace(audioTag, '<audio controlsList="nodownload" ');
 
-              var strMessage1 = document.getElementById("sessions-content");
-              strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
+                var strMessage1 = document.getElementById("sessions-content");
+                strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
+              }
             } else if (this.responseData.returnStatus == 0) {
               console.log('returnStatus=>0');
               const alert = this.alertCtrl.create({
@@ -94,6 +104,23 @@ export class ActiveTrackPage {
         this.music_icon = 'assets/imgs/music_icon_gray.png';
       }
     }
+  }
+
+
+  async onSelectGame(selectedval) {
+    console.log('selectedval', selectedval);
+    this.gamecode = selectedval;
+    let gamesDetailsArr =  this.gamesDetailsList.find(x => x.gamecode == this.gamecode);
+    // this.gameContent = (gamesDetailsArr['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+    const regImg = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Image/', 'g');
+    const regVideo = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Video/', 'g');
+    const regMusic = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Music/', 'g');
+    const videoTag = new RegExp('<video ', 'g');
+    const audioTag = new RegExp('<audio ', 'g');
+    this.gameContent = await ((((((gamesDetailsArr['gamecontent']).replace(regImg, AppConfig.SITE_URL + 'maverick/Directory/Image/'))).replace(regMusic, AppConfig.SITE_URL + 'maverick/Directory/Music/')).replace(regVideo, AppConfig.SITE_URL + 'maverick/Directory/Video/')).replace(videoTag, '<video controlsList="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" ')).replace(audioTag, '<audio controlsList="nodownload" ');
+
+    var strMessage1 = document.getElementById("sessions-content");
+    strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
   }
 
   toggleAudio() {

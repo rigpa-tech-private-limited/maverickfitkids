@@ -64,6 +64,7 @@ page-digital-certificate {
     background-size: cover;
     flex-direction: column;
     position: relative;
+
     .share-icon-holder {
       position: absolute;
       bottom: 0;
@@ -72,6 +73,7 @@ page-digital-certificate {
       justify-content: space-between;
       background-color: #021337;
       padding: 5px;
+
       .share-icon {
         width: 9vw;
         height: 9vw;
@@ -87,6 +89,23 @@ page-digital-certificate {
         background-image: url("../assets/icon/share.png");
         float: left;
       }
+
+      .back-icon {
+        width: 9vw;
+        height: 9vw;
+        -webkit-border-radius: 9vw;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 9vw;
+        -moz-background-clip: padding;
+        border-radius: 9vw;
+        background-clip: padding-box;
+        margin: 1.5vw 0px;
+        background-size: cover;
+        background-position: center center;
+        background-image: url("../assets/imgs/back_icon.png");
+        float: left;
+      }
+
       .logo-img {
         max-width: 40%;
         border: 0;
@@ -102,6 +121,7 @@ page-digital-certificate {
     justify-content: start;
     width: 100%;
     height: 25vh;
+
     .dg-logo {
       width: 25vw;
       height: 25vw;
@@ -113,12 +133,14 @@ page-digital-certificate {
       margin-top: 5vw !important;
     }
   }
+
   .top-dg-header {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: auto;
+
     .dg-header {
       width: 50vw;
       height: 20vw;
@@ -128,12 +150,14 @@ page-digital-certificate {
       background-size: contain;
     }
   }
+
   .top-dg-present {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: auto;
+
     h2 {
       font-size: 1.4rem !important;
       color: #fff !important;
@@ -147,16 +171,18 @@ page-digital-certificate {
     justify-content: center;
     width: 100%;
     height: auto;
+
     h2 {
-      font-family: "AlexBrush-Regular" !important;
+      font-family: "KaushanScript-Regular" !important;
       font-size: 1.8rem !important;
       color: #fff !important;
       padding: 5px !important;
       font-weight: bold;
-      letter-spacing: 1rem;
+      letter-spacing: 0.5rem;
       text-transform: uppercase;
     }
   }
+
   .top-dg-content {
     display: flex;
     align-items: center;
@@ -164,12 +190,14 @@ page-digital-certificate {
     flex-direction: column;
     width: 100%;
     height: auto;
+
     p {
       font-family: "DancingScript" !important;
       font-size: 1.4rem !important;
       color: #fff !important;
       padding: 5px 15px !important;
     }
+
     .dg-content {
       width: 100vw;
       height: 25vw;
@@ -187,6 +215,8 @@ page-digital-certificate {
     justify-content: space-between;
     width: 100%;
     height: auto;
+    margin-top: 20px;
+
     .dg-class {
       width: 35vw;
       height: auto;
@@ -195,6 +225,7 @@ page-digital-certificate {
       align-items: center;
       justify-content: center;
       flex-direction: column;
+
       p {
         font-family: "KaushanScript-Regular" !important;
         font-size: 1.4rem !important;
@@ -202,17 +233,48 @@ page-digital-certificate {
         padding: 0px 5px !important;
       }
     }
+
     .dg-batch-holder {
       width: 30vw;
-      height: auto;
-      padding: 15px;
+      height: 30vw;
+      padding: 0;
+      display: flex;
+
       .dg-batch {
         width: 25vw;
         height: 25vw;
-        background-image: url("../assets/imgs/digital_certificate_batch.png");
+        background-image: url("../assets/imgs/dg_batch.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
+        position: absolute;
+        z-index: 101;
+      }
+
+      .dg-batch-photo-holder{
+        position: relative;
+        display: table;
+        margin: 0 auto;
+        width: 25vw;
+        height: 25vw;
+      }
+
+      .dg-batch-photo{
+        width: 25vw;
+        height: 25vw;
+        -webkit-border-radius: 9vw;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 9vw;
+        -moz-background-clip: padding;
+        border-radius: 9vw;
+        background-clip: padding-box;
+        margin: 0;
+        background-size: cover;
+        background-position: center center;
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
       }
     }
   }

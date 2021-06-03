@@ -8,7 +8,7 @@
 <ion-content padding>
   <ion-row class="select-row">
     <ion-col col-12>
-      <ion-label><p>Select Game : </p></ion-label>
+      <ion-label><p text-center><b>Select Game / Musical</b></p></ion-label>
       <ion-item class="student_class">
         <ion-select text-center [(ngModel)]="gamecode" cancelText="Cancel" okText="OK" placeholder="Select Game" (ionChange)="onSelectGame($event)">
           <ion-option [value]="gamesDetail.gamecode" *ngFor="let gamesDetail of gamesDetailsList">{{gamesDetail.title}}</ion-option>
@@ -16,7 +16,7 @@
       </ion-item>
     </ion-col>
   </ion-row>
-  <audio #musicaudio controls></audio>
+  <audio class="playlist-audio" #musicaudio controls loop></audio>
   <div class="content-inner" id="sessions-content"></div>
 </ion-content>
 <ion-footer color='primary' no-border id="footer-container" class="zero-margin zero-padding">

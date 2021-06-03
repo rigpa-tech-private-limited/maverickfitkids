@@ -69,19 +69,17 @@
   <ion-toolbar color='primary' class="zero-margin zero-padding">
     <ion-row class="footer-helptxt-holder">
       <div class="help-txt">
-        <!-- <p>Here are your stars earned! Remember, fitness cannot be stored! The key to fitness is consistency...<br /><a (click)="goDigitalCertificate()"><u><b>Digital Certificate</b></u></a></p> -->
+        <p>* Swipe left to see next week data</p>
         <p *ngIf="(userDetails?.className == 'Pre KG' || userDetails?.className == 'LKG' || userDetails?.className == 'UKG' || userDetails?.className == 'I' || userDetails?.className == 'II' || userDetails?.className == 'III' || userDetails?.className == 'IV' || userDetails?.className == 'V')">
           The key to fitness is consistency. When your parents validate your Everyday Exercises, Fit Spots, Pulse &  Transformation everyday, and when you participate in the app's Maverick Minute, What if, To be aspirations and Quiz, you earn stars that help you earn the Maverick Champ digital certificate for the month. Remember to share this with your friends and via social media.
-          <br /><br /><a (click)="goDigitalCertificate()"><u><b>Digital Certificate</b></u></a>
         </p>
         <p *ngIf="(userDetails?.className == 'VI' || userDetails?.className == 'VII' || userDetails?.className == 'VIII')">
           The key to fitness is consistency. When your parents / friends validate your Everyday Exercises, Fit Spots, Pulse &  Transformation everyday, and when you participate in the app's Maverick Minute, Active tracks / Sports drills, To be aspirations and Quiz, you earn stars that help you earn the Maverick Champ digital certificate for the month. Remember to share this with your friends and via social media.
-          <br /><br /><a (click)="goDigitalCertificate()"><u><b>Digital Certificate</b></u></a>
         </p>
         <p *ngIf="(userDetails?.className == 'IX' || userDetails?.className == 'X' || userDetails?.className == 'XI' || userDetails?.className == 'XII')">
           The key to fitness is consistency. When your parents / friends validate your Everyday Exercises, Fit Spots, Pulse / Guides &  Transformation everyday, and when you participate in the app's Maverick Minute, Active tracks, sports specific strengthening and To be aspirations  you earn stars that help you earn the Maverick Champ digital certificate for the month. Remember to share this with your friends and via social media.
-          <br /><br /><a (click)="goDigitalCertificate()"><u><b>Digital Certificate</b></u></a>
         </p>
+        <p text-center><a class="dg-link" (click)="goDigitalCertificate()"><u><b>Digital Certificate</b></u></a></p>
       </div>
     </ion-row>
     <ion-row class="footer-icons-holder">

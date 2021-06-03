@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { Screenshot } from '@ionic-native/screenshot';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Slides } from 'ionic-angular';
+import { Toast } from '@ionic-native/toast';
 
 @IonicPage()
 @Component({
@@ -36,6 +37,7 @@ export class ConsistencyPage {
     public platform: Platform,
     public dataService: DataProvider,
     private screenshot: Screenshot,
+    private toast: Toast,
     private socialSharing: SocialSharing) {
     let d = new Date();
     let n = d.getMonth();
@@ -72,6 +74,9 @@ export class ConsistencyPage {
       this.responseData = result;
       console.log(this.responseData);
       if (this.responseData.returnStatus != 0) {
+        this.totalCount = 0;
+        this.totalStarCount = [];
+        this.maxStarCount = [];
         this.weekList = (this.responseData.weekList);
         for (let i = 0; i < this.weekList.length; i++) {
           if (this.weekList[i].consistencyList) {
@@ -127,13 +132,19 @@ export class ConsistencyPage {
   }
 
   goDigitalCertificate() {
-    this.navCtrl.setRoot("DigitalCertificatePage");
+    this.navCtrl.setRoot("DigitalCertificatePage", { "selectMonth": this.selectMonth, "currYear": this.currYear });
   }
 
   sharePage() {
     console.log("share");
     if (this.totalStarCount[this.currentIndex] > 0) {
       this.navCtrl.setRoot("ConsistencySharePage", { "consistencyList": this.consistencyList[this.currentIndex], "maxStarCount": this.maxStarCount[this.currentIndex], "userDetails": this.userDetails, "totalStarCount": this.totalStarCount[this.currentIndex], "fromPage": "consistency" });
+    } else {
+      this.toast.show(`No data found this week to share`, '2000', 'bottom').subscribe(
+        toast => {
+          console.log(toast);
+        }
+      );  
     }
   }
 

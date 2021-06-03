@@ -43,7 +43,7 @@ export class GamesPage {
             content: ''
           });
           loader.present();
-          this.dataService.getStudentGamesDetails(this.userDetails).then((result) => {
+          this.dataService.getStudentGamesDetails(this.userDetails).then(async (result) => {
             loader.dismiss();
             this.responseData = result;
             console.log(this.responseData);
@@ -52,7 +52,14 @@ export class GamesPage {
               if(this.responseData.gamesDetailsList){
                 this.gamesDetailsList = this.responseData.gamesDetailsList;
                 this.gamecode = this.responseData.gamesDetailsList[0]['gamecode'];
-                this.gameContent = (this.responseData.gamesDetailsList[0]['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+                // this.gameContent = (this.responseData.gamesDetailsList[0]['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+                const regImg = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Image/', 'g');
+                const regVideo = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Video/', 'g');
+                const regMusic = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Music/', 'g');
+                const videoTag = new RegExp('<video ', 'g');
+                const audioTag = new RegExp('<audio ', 'g');
+                this.gameContent = await ((((((this.responseData.gamesDetailsList[0]['gamecontent']).replace(regImg, AppConfig.SITE_URL + 'maverick/Directory/Image/'))).replace(regMusic, AppConfig.SITE_URL + 'maverick/Directory/Music/')).replace(regVideo, AppConfig.SITE_URL + 'maverick/Directory/Video/')).replace(videoTag, '<video controlsList="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" ')).replace(audioTag, '<audio controlsList="nodownload" ');
+
                 var strMessage1 = document.getElementById("sessions-content");
                 strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
               }
@@ -87,11 +94,18 @@ export class GamesPage {
   }
 
 
-  onSelectGame(selectedval) {
+  async onSelectGame(selectedval) {
     console.log('selectedval', selectedval);
     this.gamecode = selectedval;
     let gamesDetailsArr =  this.gamesDetailsList.find(x => x.gamecode == this.gamecode);
-    this.gameContent = (gamesDetailsArr['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+    // this.gameContent = (gamesDetailsArr['gamecontent']).replace(/\/maverick\/Directory\/Image\//g, AppConfig.SITE_URL + 'maverick/Directory/Image/');
+    const regImg = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Image/', 'g');
+    const regVideo = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Video/', 'g');
+    const regMusic = new RegExp('(' + (AppConfig.SITE_URL).slice(0, -1) + ')?/maverick/Directory/Music/', 'g');
+    const videoTag = new RegExp('<video ', 'g');
+    const audioTag = new RegExp('<audio ', 'g');
+    this.gameContent = await ((((((gamesDetailsArr['gamecontent']).replace(regImg, AppConfig.SITE_URL + 'maverick/Directory/Image/'))).replace(regMusic, AppConfig.SITE_URL + 'maverick/Directory/Music/')).replace(regVideo, AppConfig.SITE_URL + 'maverick/Directory/Video/')).replace(videoTag, '<video controlsList="nodownload" playsinline poster="assets/imgs/video_preview.jpeg" ')).replace(audioTag, '<audio controlsList="nodownload" ');
+
     var strMessage1 = document.getElementById("sessions-content");
     strMessage1.innerHTML = (this.gameContent).replace(/(?:\r\n | \r | \n)/g, '<br>');
   }

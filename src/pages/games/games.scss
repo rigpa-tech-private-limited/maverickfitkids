@@ -4,7 +4,7 @@ page-games {
   }
 
   ion-content p {
-    text-align: justify !important;
+    text-align: justify;
     line-height: 2rem !important;
   }
 
@@ -21,7 +21,7 @@ page-games {
     padding: 0 16px !important;
   }
 
-  audio {
+  .playlist-audio {
     visibility: hidden;
     height: 0;
     position: absolute;

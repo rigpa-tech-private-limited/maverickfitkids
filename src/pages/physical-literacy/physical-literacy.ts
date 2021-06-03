@@ -119,8 +119,8 @@ export class PhysicalLiteracyPage {
               }
             }
             this.exerciseList.imageVideoName = this.exerciseLists[0].imageVideoName;
-            if ((this.exerciseLists[0].description) != null && (this.exerciseLists[0].description) != "") {
-              this.exerciseList.exerciseDescription = (this.exerciseLists[0].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
+            if ((this.exerciseLists[0].exerciseDescription) != null && (this.exerciseLists[0].exerciseDescription) != "") {
+              this.exerciseList.exerciseDescription = (this.exerciseLists[0].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
             } else {
               this.exerciseList.exerciseDescription = "";
             }
@@ -263,8 +263,8 @@ export class PhysicalLiteracyPage {
     } else {
       console.log("Curr", this.currentSlide + 1);
       if (this.exerciseLists[(this.currentSlide + 1)].fileType == '2') {
-        if (this.exerciseLists[(this.currentSlide + 1)].step1Path != null && this.exerciseLists[(this.currentSlide + 1)].step1Path != "") {
-          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide + 1)].step1Path).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+        if (this.exerciseLists[(this.currentSlide + 1)].exercisePath != null && this.exerciseLists[(this.currentSlide + 1)].exercisePath != "") {
+          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide + 1)].exercisePath).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
         } else {
           this.exerciseList.exercisePath = "";
         }
@@ -277,8 +277,8 @@ export class PhysicalLiteracyPage {
           item.setAttribute("style", "visibility:visible;");
         }
       } else {
-        if (this.exerciseLists[(this.currentSlide + 1)].step1Path != null || this.exerciseLists[(this.currentSlide + 1)].step1Path != "") {
-          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide + 1)].step1Path).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
+        if (this.exerciseLists[(this.currentSlide + 1)].exercisePath != null || this.exerciseLists[(this.currentSlide + 1)].exercisePath != "") {
+          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide + 1)].exercisePath).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
         } else {
           this.exerciseList.exercisePath = "";
         }
@@ -292,9 +292,9 @@ export class PhysicalLiteracyPage {
         }
       }
       this.exerciseList.imageVideoName = this.exerciseLists[(this.currentSlide + 1)].imageVideoName;
-      console.log("desc=>", (this.exerciseLists[(this.currentSlide + 1)].description));
-      if ((this.exerciseLists[(this.currentSlide + 1)].description) != null && (this.exerciseLists[(this.currentSlide + 1)].description) != "") {
-        this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide + 1)].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
+      console.log("desc=>", (this.exerciseLists[(this.currentSlide + 1)].exerciseDescription));
+      if ((this.exerciseLists[(this.currentSlide + 1)].exerciseDescription) != null && (this.exerciseLists[(this.currentSlide + 1)].exerciseDescription) != "") {
+        this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide + 1)].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
       } else {
         this.exerciseList.exerciseDescription = "";
       }
@@ -344,8 +344,8 @@ export class PhysicalLiteracyPage {
     } else {
       console.log("Curr", this.currentSlide - 1);
       if (this.exerciseLists[(this.currentSlide - 1)].fileType == '2') {
-        if (this.exerciseLists[(this.currentSlide - 1)].step1Path != null && this.exerciseLists[(this.currentSlide - 1)].step1Path != "") {
-          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide - 1)].step1Path).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+        if (this.exerciseLists[(this.currentSlide - 1)].exercisePath != null && this.exerciseLists[(this.currentSlide - 1)].exercisePath != "") {
+          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide - 1)].exercisePath).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
         } else {
           this.exerciseList.exercisePath = "";
         }
@@ -358,8 +358,8 @@ export class PhysicalLiteracyPage {
           item.setAttribute("style", "visibility:visible;");
         }
       } else {
-        if (this.exerciseLists[(this.currentSlide - 1)].step1Path != null || this.exerciseLists[(this.currentSlide - 1)].step1Path != "") {
-          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide - 1)].step1Path).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
+        if (this.exerciseLists[(this.currentSlide - 1)].exercisePath != null || this.exerciseLists[(this.currentSlide - 1)].exercisePath != "") {
+          this.exerciseList.exercisePath = (this.exerciseLists[(this.currentSlide - 1)].exercisePath).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
         } else {
           this.exerciseList.exercisePath = "";
         }
@@ -373,8 +373,8 @@ export class PhysicalLiteracyPage {
         }
       }
       this.exerciseList.imageVideoName = this.exerciseLists[(this.currentSlide - 1)].imageVideoName;
-      if ((this.exerciseLists[(this.currentSlide - 1)].description) != null && (this.exerciseLists[(this.currentSlide - 1)].description) != "") {
-        this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide - 1)].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
+      if ((this.exerciseLists[(this.currentSlide - 1)].exerciseDescription) != null && (this.exerciseLists[(this.currentSlide - 1)].exerciseDescription) != "") {
+        this.exerciseList.exerciseDescription = (this.exerciseLists[(this.currentSlide - 1)].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
       } else {
         this.exerciseList.exerciseDescription = "";
       }
@@ -446,8 +446,8 @@ export class PhysicalLiteracyPage {
       } else if (data.slideAction == 'repeat') {
         this.initializeBackButtonCustomHandler();
         if (this.exerciseLists[0].fileType == '2') {
-          if (this.exerciseLists[0].step1Path != null || this.exerciseLists[0].step1Path != "") {
-            this.exerciseList.exercisePath = (this.exerciseLists[0].step1Path).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+          if (this.exerciseLists[0].exercisePath != null || this.exerciseLists[0].exercisePath != "") {
+            this.exerciseList.exercisePath = (this.exerciseLists[0].exercisePath).replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
           } else {
             this.exerciseList.exercisePath = "";
           }
@@ -460,8 +460,8 @@ export class PhysicalLiteracyPage {
             item.setAttribute("style", "visibility:visible;");
           }
         } else {
-          if (this.exerciseLists[0].step1Path != null || this.exerciseLists[0].step1Path != "") {
-            this.exerciseList.exercisePath = (this.exerciseLists[0].step1Path).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
+          if (this.exerciseLists[0].exercisePath != null || this.exerciseLists[0].exercisePath != "") {
+            this.exerciseList.exercisePath = (this.exerciseLists[0].exercisePath).replace('/maverick/Directory/Image/', AppConfig.SITE_URL + 'maverick/Directory/Image/');
           } else {
             this.exerciseList.exercisePath = "";
           }
@@ -475,8 +475,8 @@ export class PhysicalLiteracyPage {
           }
         }
         this.exerciseList.imageVideoName = this.exerciseLists[0].imageVideoName;
-        if ((this.exerciseLists[0].description) != null && (this.exerciseLists[0].description) != "") {
-          this.exerciseList.exerciseDescription = (this.exerciseLists[0].description).replace(/(?:\r\n|\r|\n)/g, '<br>');
+        if ((this.exerciseLists[0].exerciseDescription) != null && (this.exerciseLists[0].exerciseDescription) != "") {
+          this.exerciseList.exerciseDescription = (this.exerciseLists[0].exerciseDescription).replace(/(?:\r\n|\r|\n)/g, '<br>');
         } else {
           this.exerciseList.exerciseDescription = "";
         }

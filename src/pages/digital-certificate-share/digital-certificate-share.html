@@ -1,15 +1,38 @@
-<!--
-  Generated template for the DigitalCertificateSharePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>digital-certificate-share</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-
+  <div class="dg-container">
+    <div class="top-dg-logo">
+      <div class="dg-logo"></div>
+    </div>
+    <div class="top-dg-header">
+      <div class="dg-header"></div>
+    </div>
+    <div class="top-dg-present">
+      <h2>PROUDLY PRESENTED TO : </h2>
+    </div>
+    <div class="top-dg-studentname">
+      <h2>{{userDetails?.studentName}}</h2>
+    </div>
+    <div class="top-dg-content">
+      <div class="dg-content"></div>
+      <!-- <p>Physical Literacy is being aware of your embodied nature</p>
+      <p> & using that awareness to realise the sanctity and dignity of your body.</p>
+      <p> We recognize the effort you take regularly to honor your body,</p>
+      <p> & congratulate your accountability through consistency.</p> -->
+    </div>
+    <div class="top-dg-footer">
+      <div class="dg-class">
+        <p>{{userDetails?.schoolName}}</p>
+        <p>Class : {{userDetails?.className}}</p>
+      </div>
+      <div class="dg-batch-holder">
+        <div class="dg-batch-photo-holder">
+          <div class="dg-batch-photo"></div>
+          <div class="dg-batch"></div>
+        </div>
+      </div>
+      <div class="dg-class">
+        <p>{{monthYear}}</p>
+      </div>
+    </div>
+  </div>
 </ion-content>

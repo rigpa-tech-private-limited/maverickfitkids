@@ -1352,7 +1352,7 @@ export class DataProvider {
             "schoolcode": aData.schoolCode,
             "studentid": aData.studentId,
             "month": month,
-            "year": year
+            "year": ""+year
           }
         }, AppConfig.GET_DIGITAL_CERTIFICATE)
         .then(res => {

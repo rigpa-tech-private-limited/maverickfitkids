@@ -16,15 +16,15 @@
         <a class='fa' (click)="goPage('InsightPage')"><img src="assets/imgs/circles/7_insights.png" /></a>
         <p>Insights</p>
       </li>
-      <li class='menu-item 2' *ngIf="showGuidesMenu && !showFitSpotSessionIcon">
+      <li class='menu-item 2' *ngIf="showGuidesMenu">
         <a class='fa' (click)="checkNoAccess('GuidesPage')"><img src="assets/imgs/circles/8_guides.png" /></a>
         <p>Guides</p>
       </li>
-      <li class='menu-item 2' *ngIf="showSessionMenu && !showFitSpotSessionIcon">
+      <!-- <li class='menu-item 2' *ngIf="showSessionMenu && !showFitSpotSessionIcon">
         <a class='fa' (click)="checkNoAccess('SessionsPage')"><img src="assets/imgs/circles/8_session.png" /></a>
         <p>Session</p>
-      </li>
-      <li class='menu-item 2' *ngIf="(showGuidesMenu || showSessionMenu) && showFitSpotSessionIcon">
+      </li> -->
+      <li class='menu-item 2' *ngIf="showSessionMenu">
         <a class='fa' (click)="checkNoAccess('SessionsPage')"><img src="assets/imgs/circles/8_session_fitspot.png" /></a>
         <p>Pulse</p>
       </li>

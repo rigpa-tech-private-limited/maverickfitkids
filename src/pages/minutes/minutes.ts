@@ -15,9 +15,12 @@ export class MinutesPage {
   imgPreview = 'assets/imgs/no_image.png';
   responseData: any;
   coachVideoPathStr: any;
+  coachVideoPathDesc: any;
   coachVideoPathArr: any;
   @ViewChild('video') video: ElementRef;
   private myVideo: HTMLVideoElement;
+  videoList: any;
+  videotitle: any;
   constructor(public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -36,13 +39,24 @@ export class MinutesPage {
       this.responseData = result;
       console.log(this.responseData);
       if (this.responseData.returnStatus != 0) {
-        this.coachVideoPathArr = this.responseData.videoPath;
-        if (this.coachVideoPathArr) {
-          if (this.coachVideoPathArr[0] != null || this.coachVideoPathArr[0] != "") {
-            this.coachVideoPathStr = this.coachVideoPathArr[0].replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+        this.videoList = this.responseData.videoList;
+        if (this.videoList) {
+          if (this.videoList[0].videoPath != null || this.videoList[0].videoPath != "") {
+            this.coachVideoPathStr = this.videoList[0].videoPath.replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
           } else {
             this.coachVideoPathStr = "";
           }
+          if (this.videoList[0].description != null || this.videoList[0].description != "") {
+            this.coachVideoPathDesc = this.videoList[0].description;
+          } else {
+            this.coachVideoPathDesc = "";
+          }
+          if (this.videoList[0].title != null || this.videoList[0].title != "") {
+            this.videotitle = this.videoList[0].title;
+          } else {
+            this.videotitle = "";
+          }
+          
           this.myVideo = this.video.nativeElement;
           this.myVideo.src = this.coachVideoPathStr;
           this.videoPlay();
@@ -73,6 +87,25 @@ export class MinutesPage {
       });
       alert.present();
     });
+  }
+
+  onSelectVideo(selectedval) {
+    console.log('selectedval', selectedval);
+    this.videotitle = selectedval;
+    let videosArr =  this.videoList.find(x => x.title == this.videotitle);
+    if (videosArr.videoPath != null || videosArr.videoPath != "") {
+      this.coachVideoPathStr = videosArr.videoPath.replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+    } else {
+      this.coachVideoPathStr = "";
+    }
+    if (videosArr.description != null || videosArr.description != "") {
+      this.coachVideoPathDesc = videosArr.description;
+    } else {
+      this.coachVideoPathDesc = "";
+    }
+    this.myVideo = this.video.nativeElement;
+    this.myVideo.src = this.coachVideoPathStr;
+    this.videoPlay();
   }
 
   videoPlay() {
@@ -115,15 +148,15 @@ export class MinutesPage {
     }, false);
     videos.addEventListener('pause', () => {
     }, false);
-    document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
-    document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
-    document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
-    document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
+    // document.getElementsByClassName("videos-prev-btn")[0].removeAttribute("style");
+    // document.getElementsByClassName("videos-prev-btn")[0].setAttribute("style", "opacity:0.3;");
+    // document.getElementsByClassName("videos-next-btn")[0].removeAttribute("style");
+    // document.getElementsByClassName("videos-next-btn")[0].setAttribute("style", "opacity:1;");
 
-    document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
-    document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
-    document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
-    document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
+    // document.getElementsByClassName("videos-prev-btn")[1].removeAttribute("style");
+    // document.getElementsByClassName("videos-prev-btn")[1].setAttribute("style", "opacity:0.3;");
+    // document.getElementsByClassName("videos-next-btn")[1].removeAttribute("style");
+    // document.getElementsByClassName("videos-next-btn")[1].setAttribute("style", "opacity:1;");
 
     this.initializeBackButtonCustomHandler();
   }

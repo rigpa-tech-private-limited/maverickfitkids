@@ -25,14 +25,20 @@
         <p>Class : {{userDetails?.className}}</p>
       </div>
       <div class="dg-batch-holder">
-        <div class="dg-batch"></div>
+        <div class="dg-batch-photo-holder">
+          <div class="dg-batch-photo"></div>
+          <div class="dg-batch"></div>
+        </div>
       </div>
       <div class="dg-class">
         <p>{{monthYear}}</p>
       </div>
     </div>
     <div class="share-icon-holder">
-      <div class="share-icon" (click)="sharePage()"></div>
+      <div>
+        <div class="share-icon" (click)="sharePage()"></div>
+        <div class="back-icon" (click)="goHome()"></div>
+      </div>
       <img src="assets/imgs/maverick_logo.png" class="logo-img">
     </div>
   </div>
