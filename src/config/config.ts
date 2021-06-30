@@ -3,7 +3,7 @@ export class AppConfig {
   public static API_BASE_URL = 'http://52.74.156.238/studentappws/mobile/';
   public static SITE_URL = 'http://52.74.156.238/';
   public static APP_ID = "MFK";
-  public static APP_VERSION = '1.9';
+  public static APP_VERSION = '2.1';
   public static ERROR_MESSAGES = {
     "register": "Sorry! Details entered do not match our files! Please ensure you maintain the syntax of your name as registered with us through your school"
   };
@@ -81,4 +81,6 @@ export class AppConfig {
   public static GET_DIGITAL_CERTIFICATE = 'getStudentdigitalCertificateStatus';
   public static GET_PL_TITLE = 'getPhysicalLiteracytitle';
   public static GET_PL_DETAILS = 'getPhysicalLiteracydetails';
+  public static UPDATE_PHYSICAL_LITERACY_COUNT = 'updatePhysicalLiteracycount';
+  public static GET_MINUTE_VIDEO_NEW = 'getMinuteVideoNew';
 }

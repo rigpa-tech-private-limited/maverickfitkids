@@ -1400,4 +1400,39 @@ export class DataProvider {
         });
     });
   }
+
+  updatePhysicalLiteracycount(formData, videocode) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": formData.studentId,
+            "videocode": videocode
+          }
+        }, AppConfig.UPDATE_PHYSICAL_LITERACY_COUNT)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getMinuteVideoNew(formData) {
+    return new Promise((resolve, reject) => {
+      this.authService.postData(
+        {
+          "content": {
+            "applicationId": AppConfig.APP_ID,
+            "studentid": formData.studentId,
+          }
+        }, AppConfig.GET_MINUTE_VIDEO_NEW)
+        .then(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }

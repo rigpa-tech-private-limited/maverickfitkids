@@ -134,6 +134,13 @@ export class PhysicalLiteracyPage {
             } else {
               this.exerciseList.tutorialCode = "";
             }
+            if (this.exerciseLists[0].videoCode != null || this.exerciseLists[0].videoCode != "") {
+              this.dataService.updatePhysicalLiteracycount(this.userDetails, this.exerciseLists[0].videoCode).then((result) => {
+                console.log(result);
+              }, (err) => {
+                console.log(err);
+              });
+            }
             this.videoPlay();
           }
         }
@@ -308,6 +315,13 @@ export class PhysicalLiteracyPage {
       } else {
         this.exerciseList.tutorialCode = "";
       }
+      if (this.exerciseLists[(this.currentSlide + 1)].videoCode != null || this.exerciseLists[(this.currentSlide + 1)].videoCode != "") {
+        this.dataService.updatePhysicalLiteracycount(this.userDetails, this.exerciseLists[(this.currentSlide + 1)].videoCode).then((result) => {
+          console.log(result);
+        }, (err) => {
+          console.log(err);
+        });
+      } 
       this.goToSlide(this.currentSlide + 1);
       this.videoPlay();
     }
@@ -388,6 +402,14 @@ export class PhysicalLiteracyPage {
       } else {
         this.exerciseList.tutorialCode = "";
       }
+
+      if (this.exerciseLists[(this.currentSlide - 1)].videoCode != null || this.exerciseLists[(this.currentSlide - 1)].videoCode != "") {
+        this.dataService.updatePhysicalLiteracycount(this.userDetails, this.exerciseLists[(this.currentSlide - 1)].videoCode).then((result) => {
+          console.log(result);
+        }, (err) => {
+          console.log(err);
+        });
+      } 
       this.goToSlide(this.currentSlide - 1);
       this.videoPlay();
     }

@@ -21,6 +21,7 @@ export class MinutesPage {
   private myVideo: HTMLVideoElement;
   videoList: any;
   videotitle: any;
+  userDetails: any;
   constructor(public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,70 +30,78 @@ export class MinutesPage {
     public storage: Storage,
     public platform: Platform,
     public dataService: DataProvider) {
-    let loader = this.loadingCtrl.create({
-      spinner: 'ios',
-      content: ''
-    });
-    loader.present();
-    this.dataService.getMinuteVideo().then((result) => {
-      loader.dismiss();
-      this.responseData = result;
-      console.log(this.responseData);
-      if (this.responseData.returnStatus != 0) {
-        this.videoList = this.responseData.videoList;
-        if (this.videoList) {
-          if (this.videoList[0].videoPath != null || this.videoList[0].videoPath != "") {
-            this.coachVideoPathStr = this.videoList[0].videoPath.replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
-          } else {
-            this.coachVideoPathStr = "";
-          }
-          if (this.videoList[0].description != null || this.videoList[0].description != "") {
-            this.coachVideoPathDesc = this.videoList[0].description;
-          } else {
-            this.coachVideoPathDesc = "";
-          }
-          if (this.videoList[0].title != null || this.videoList[0].title != "") {
-            this.videotitle = this.videoList[0].title;
-          } else {
-            this.videotitle = "";
-          }
-          
-          this.myVideo = this.video.nativeElement;
-          this.myVideo.src = this.coachVideoPathStr;
-          this.videoPlay();
-        }
-      } else if (this.responseData.returnStatus == 0) {
-        console.log('returnStatus=>0');
-        const alert = this.alertCtrl.create({
-          message: this.responseData.returnMessage,
-          buttons: [{
-            text: 'Ok',
-            handler: () => {
-              this.navCtrl.setRoot("HomePage");
+
+    this.storage.get('userDetails')
+      .then((res: any) => {
+        if (res) {
+          this.userDetails = res;
+          console.log(this.userDetails);
+          let loader = this.loadingCtrl.create({
+            spinner: 'ios',
+            content: ''
+          });
+          loader.present();
+          this.dataService.getMinuteVideoNew(this.userDetails).then((result) => {
+            loader.dismiss();
+            this.responseData = result;
+            console.log(this.responseData);
+            if (this.responseData.returnStatus != 0) {
+              this.videoList = this.responseData.videoList;
+              if (this.videoList) {
+                if (this.videoList[0].videoPath != null || this.videoList[0].videoPath != "") {
+                  this.coachVideoPathStr = this.videoList[0].videoPath.replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
+                } else {
+                  this.coachVideoPathStr = "";
+                }
+                if (this.videoList[0].description != null || this.videoList[0].description != "") {
+                  this.coachVideoPathDesc = this.videoList[0].description;
+                } else {
+                  this.coachVideoPathDesc = "";
+                }
+                if (this.videoList[0].title != null || this.videoList[0].title != "") {
+                  this.videotitle = this.videoList[0].title;
+                } else {
+                  this.videotitle = "";
+                }
+
+                this.myVideo = this.video.nativeElement;
+                this.myVideo.src = this.coachVideoPathStr;
+                this.videoPlay();
+              }
+            } else if (this.responseData.returnStatus == 0) {
+              console.log('returnStatus=>0');
+              const alert = this.alertCtrl.create({
+                message: this.responseData.returnMessage,
+                buttons: [{
+                  text: 'Ok',
+                  handler: () => {
+                    this.navCtrl.setRoot("HomePage");
+                  }
+                }],
+                enableBackdropDismiss: false
+              });
+              alert.present();
             }
-          }],
-          enableBackdropDismiss: false
-        });
-        alert.present();
-      }
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      const alert = this.alertCtrl.create({
-        message: AppConfig.API_ERROR,
-        buttons: [{
-          text: 'Ok',
-          handler: () => { }
-        }]
+          }, (err) => {
+            console.log(err);
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+              message: AppConfig.API_ERROR,
+              buttons: [{
+                text: 'Ok',
+                handler: () => { }
+              }]
+            });
+            alert.present();
+          });
+        }
       });
-      alert.present();
-    });
   }
 
   onSelectVideo(selectedval) {
     console.log('selectedval', selectedval);
     this.videotitle = selectedval;
-    let videosArr =  this.videoList.find(x => x.title == this.videotitle);
+    let videosArr = this.videoList.find(x => x.title == this.videotitle);
     if (videosArr.videoPath != null || videosArr.videoPath != "") {
       this.coachVideoPathStr = videosArr.videoPath.replace('/maverick/Directory/Video/', AppConfig.SITE_URL + 'maverick/Directory/Video/');
     } else {
