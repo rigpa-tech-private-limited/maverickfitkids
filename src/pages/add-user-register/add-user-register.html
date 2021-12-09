@@ -11,7 +11,7 @@
   <form class="form" (ngSubmit)="signIn()" [formGroup]="validations_form_existing_user" novalidate>
     <ion-list inset>
       <ion-item>
-        <ion-input text-center [(ngModel)]="loginData.existing_student_name" (keyup)="onKeyupExistingUser()" formControlName="existing_student_name" type="text" placeholder="Student's Name"></ion-input>
+        <ion-input text-center [(ngModel)]="loginData.existing_student_name" (keyup)="onKeyupExistingUser()" formControlName="existing_student_name" type="text" placeholder="User Name/Student's Name"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages_existing_user.existing_student_name">
@@ -21,7 +21,7 @@
         </ng-container>
       </div>
       <ion-item>
-        <ion-input text-center [(ngModel)]="loginData.existing_student_mfk_id" (keyup)="onKeyupExistingUser()" formControlName="existing_student_mfk_id" type="password" placeholder="MFK #"></ion-input>
+        <ion-input text-center [(ngModel)]="loginData.existing_student_mfk_id" (keyup)="onKeyupExistingUser()" formControlName="existing_student_mfk_id" type="password" placeholder="Password/#MFK id"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages_existing_user.existing_student_mfk_id">
