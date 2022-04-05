@@ -367,4 +367,13 @@ export class RegisterPage {
       //this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE]);
     }
   }
+
+  openExternalLink(pmLink, fromPage) {
+    if (this.platform.is('ios')) {
+    this.navCtrl.setRoot('ParentGatePage', { "externalLink": pmLink, "fromPage": fromPage });
+    } else {
+      window.open(pmLink, '_system', 'location=yes');
+      return false;
+    }
+  }
 }

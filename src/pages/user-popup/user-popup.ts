@@ -126,7 +126,7 @@ export class UserPopupPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   closeModal(): void {

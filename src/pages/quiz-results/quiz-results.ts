@@ -178,7 +178,7 @@ export class QuizResultsPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   friendsStudentSelect(pmCode) {

@@ -168,6 +168,6 @@ export class SettingsPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 }

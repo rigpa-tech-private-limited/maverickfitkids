@@ -268,7 +268,7 @@ export class UsersPage {
       this.userList = await this.databaseprovider.selectUserById(this.userDetails.studentId).then(res => res);
       console.log(this.userList, this.userList[0].status, this.userList[0].lockStatus);
       if (this.usersList.length > 0 && this.userList[0].status == "1" && this.userList[0].lockStatus == "1") {
-        this.navCtrl.setRoot("HomePage");
+        this.navCtrl.setRoot("MenuPage");
       } else {
         if (!this.showedAlert && this.platform.is('android')) {
           this.showedAlert = true;
@@ -452,7 +452,7 @@ export class UsersPage {
                 this.storage.set('loggedInUser', "yes");
                 this.storage.set('userDetails', this.userList[0]);
                 this.storage.set('imgPreview', this.userList[0].studentImage);
-                this.navCtrl.setRoot("HomePage");
+                this.navCtrl.setRoot("MenuPage");
               });
             } else {
               console.log('Register fail');

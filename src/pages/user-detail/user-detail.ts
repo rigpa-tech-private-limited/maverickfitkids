@@ -78,7 +78,7 @@ export class UserDetailPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   goPage(pmPage) {

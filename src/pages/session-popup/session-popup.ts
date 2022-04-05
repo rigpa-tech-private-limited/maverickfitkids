@@ -33,7 +33,7 @@ export class SessionPopupPage {
 
   closeModal(): void {
     this.viewCtrl.dismiss({ slideAction: 'close' });
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   repeatSlide() {

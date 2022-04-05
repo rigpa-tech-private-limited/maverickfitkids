@@ -106,7 +106,7 @@ export class SportsSelectPage {
           buttons: [{
             text: 'Ok',
             handler: () => {
-              this.navCtrl.setRoot("HomePage");
+              this.navCtrl.setRoot("MenuPage");
             }
           }],
           enableBackdropDismiss: false
@@ -158,7 +158,7 @@ export class SportsSelectPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   sportsSelect(pmCode) {

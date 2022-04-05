@@ -1,0 +1,118 @@
+<ion-content padding>
+  <div class="popup-backdrop" tappable (click)="closeModal()"></div>
+  <div class="popup-icons-holder" color="primary">
+    <p class="menu-head">{{menuHead}}</p>
+    <ul class="menu-items-outer">
+      <!-- Activity Menus -->
+      <li class='menu-item 1' *ngIf="showExerciseMenu">
+        <a class='fa' (click)="goPage('EverydayExercisePage')">
+          <img src="assets/imgs/circles/1_everyday_exercise.png" /></a>
+        <p>
+          <!-- <span class="highlight-text"></span>  -->
+          Everyday Exercise</p>
+      </li>
+      <li class='menu-item 1' *ngIf="showGamesMenu">
+        <a class='fa' (click)="goPage('GamesPage')"><img src="assets/imgs/circles/2_whatif.png" /></a>
+        <!-- <p>What If? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
+        <p>Embodied Emotions</p>
+      </li>
+      <li class='menu-item 1' *ngIf="showActiveTracksMenu">
+        <a class='fa' (click)="goPage('ActiveTrackPage')"><img src="assets/imgs/circles/2_active_tracks.png" /></a>
+        <p>Active Tracks</p>
+      </li>
+      <li class='menu-item 1' *ngIf="showSessionMenu">
+        <a class='fa' (click)="checkNoAccess('SessionsPage')"><img src="assets/imgs/circles/8_session_fitspot.png" /></a>
+        <p>Weekly Workouts</p>
+      </li>
+      <li class='menu-item 2' *ngIf="showGuidesMenu">
+        <a class='fa' (click)="checkNoAccess('GuidesPage')"><img src="assets/imgs/circles/8_guides.png" /></a>
+        <p>Guides</p>
+      </li>
+      <li class='menu-item 1' *ngIf="showSportSkillsMenu">
+        <a class='fa' (click)="goPage('SportSkillsPage')"><img src="assets/imgs/circles/2_sport_skills.png" /></a>
+        <p>Sports Skills</p>
+      </li>
+
+      <!-- Transformation Menus -->
+      <li class='menu-item 2' *ngIf="showAspirationsMenu">
+        <a class='fa' (click)="goPage('ToBeListPage')"><img src="assets/imgs/settings/to_be_list.png" /></a>
+        <p>Aspirations</p>
+      </li>
+      <li class='menu-item 2' *ngIf="showTransformMenu">
+        <a class='fa' (click)="goPage('TransformPage')"><img src="assets/imgs/circles/6_transform.png" /></a>
+        <p>Transform</p>
+      </li>
+      <li class='menu-item 8' *ngIf="showChallengeMenu">
+        <a class='fa' (click)="goPage('ChallengePage')"><img src="assets/imgs/circles/6_challenge.png" /></a>
+        <p>Challenge</p>
+      </li>
+       <li class='menu-item 2' *ngIf="showInsightsMenu">
+        <a class='fa' (click)="goPage('InsightPage')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Insights</p>
+      </li>
+     
+      <li class='menu-item 2' *ngIf="showQuizMenu">
+        <a class='fa' (click)="checkNoAccess('QuizQuestionsPage')"><img src="assets/imgs/circles/3_quiz.png" /></a>
+        <p>Quiz</p>
+      </li>
+
+      <!-- Video lesson Menus -->
+      <li class='menu-item 3' *ngIf="showCoachMenu">
+        <a class='fa' (click)="goPage('CoachPage')"><img src="assets/imgs/circles/4_coach.png" /></a>
+        <p>Coach</p>
+        <p class="coach-red-dot" *ngIf="redDotVisibleCoach"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 3' *ngIf="showPhysicalLiteracyMenu">
+        <a class='fa' (click)="goPage('PhysicalLiteracyPage')"><img src="assets/imgs/settings/physical_literacy.png" /></a>
+        <p>Physical Literacy</p>
+      </li>
+
+
+      <!-- Personal Detail Menus -->
+      <li class='menu-item 4' *ngIf="showPersonalDetailsMenu">
+        <a class='fa' (click)="goPage('UserDetailPage')"><img src="assets/imgs/settings/personal_details.png" /></a>
+        <p>Personal Details</p>
+      </li>
+      <li class='menu-item 4' *ngIf="showEndorserMenu">
+        <a class='fa' (click)="openModal('EndorserPage')"><img src="assets/imgs/settings/endorser.png" /></a>
+        <p>Endorser&nbsp;&nbsp;</p>
+      </li>
+      <li class='menu-item 4' *ngIf="showFitZoneMenu">
+        <a class='fa' (click)="goPage('FitZonePage')"><img src="assets/imgs/settings/fit_zone.png" /></a>
+        <p>Fit Zone</p>
+        <!-- <p class="fitzone-red-dot" *ngIf="redDotVisibleFitZone"><img src="assets/imgs/red_dot.png"></p> -->
+      </li>
+
+      <!-- Consistency Detail Menus -->
+      <li class='menu-item 5' *ngIf="showMaverickMinuteMenu">
+        <a class='fa' (click)="checkNoAccess('MinutesPage')"><img src="assets/imgs/circles/5_maverick_minute.png" /></a>
+        <p><span class="highlight-text">Maverick</span> Minute</p>
+        <p class="review-red-dot" *ngIf="redDotVisibleReview"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      <li class='menu-item 5' *ngIf="showFitSpotMenu">
+        <a class='fa' (click)="goPage('FitSpotPage')"><img src="assets/imgs/circles/5_fit_spot.png" /></a>
+        <p>Fit&nbsp;Spot</p>
+      </li>
+      <li class='menu-item 5' *ngIf="showConsistencyMenu">
+        <a class='fa' (click)="goPage('ConsistencyPage')"><img src="assets/imgs/settings/consistency.png" /></a>
+        <p>Consistency</p>
+      </li>
+
+      <!-- Query Menu -->
+      <li class='menu-item 6' *ngIf="showQueryMenu">
+        <a class='fa' (click)="checkNoAccess('QueryPage')"><img src="assets/imgs/settings/query.png" /></a>
+        <p>Query</p>
+        <p class="query-red-dot" *ngIf="redDotVisibleQuery"><img src="assets/imgs/red_dot.png"></p>
+      </li>
+      
+<!--       
+      <li class='menu-item 5' *ngIf="showSportsMenu">
+        <a class='fa' (click)="checkNoAccess('SportsSelectPage')"><img src="assets/imgs/circles/3_sports.png" /></a>
+        <p>Sports</p>
+      </li> -->
+      
+    
+    </ul>
+  
+  </div>
+</ion-content>

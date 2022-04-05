@@ -151,7 +151,7 @@ export class EverydayExercisePage {
                 buttons: [{
                   text: 'Ok',
                   handler: () => {
-                    this.navCtrl.setRoot("HomePage");
+                    this.navCtrl.setRoot("MenuPage");
                   }
                 }],
                 enableBackdropDismiss: false
@@ -166,7 +166,7 @@ export class EverydayExercisePage {
               buttons: [{
                 text: 'Ok',
                 handler: () => {
-                  this.navCtrl.setRoot("HomePage");
+                  this.navCtrl.setRoot("MenuPage");
                 }
               }]
             });
@@ -476,7 +476,7 @@ export class EverydayExercisePage {
   }
   goHome() {
     this.videoPause();
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
 

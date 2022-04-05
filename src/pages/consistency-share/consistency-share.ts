@@ -82,7 +82,7 @@ export class ConsistencySharePage {
 
   goHome() {
     if (this.fromPage == 'consistency') {
-      this.navCtrl.setRoot("SettingsPage");
+      this.navCtrl.setRoot("MenuPage");
     } else {
       this.navCtrl.setRoot("UsersPage");
     }

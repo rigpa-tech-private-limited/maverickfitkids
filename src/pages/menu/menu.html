@@ -1,0 +1,89 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title>
+      &nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="menus-outer-div">
+    <a (click)="openModal('MenuSubPage', 'Activity')">
+      <img src="assets/imgs/home/activity.png" />
+      <p>Activity</p>
+    </a>
+    <a (click)="openModal('MenuSubPage', 'Transformation')">
+      <img src="assets/imgs/home/transform.png" />
+      <p>Transformation</p>
+    </a>
+    <a (click)="openModal('MenuSubPage', 'Video Lessons')">
+      <img src="assets/imgs/home/vl.png" />
+      <p>Video Lessons</p>
+    </a>
+    <a (click)="openModal('MenuSubPage', 'Personal Details')">
+      <img src="assets/imgs/home/pd.png" />
+      <p>Personal Details</p>
+    </a>
+    <a (click)="openModal('MenuSubPage', 'Consistency')">
+      <img src="assets/imgs/home/cons.png" />
+      <p>Consistency</p>
+    </a>
+    <a (click)="openModal('MenuSubPage', 'Notification')">
+      <img src="assets/imgs/home/noti.png" />
+      <p>Notification</p>
+    </a>
+    <p *ngIf="specialMessage != '' && specialMessage != null" class="api-message">{{specialMessage}}</p>
+  </div>
+  
+  <!-- <nav class='menu' style="display: none;">
+    <input checked='checked' class='menu-toggler' id='menu-toggler' (click)="logOutFromHome()" type='checkbox'>
+    <label class="label-home" *ngIf="showMenuIcon"></label>
+    <label class="label-no-access" *ngIf="showNoAccessMsg">Sorry! This feature is available only for schools that use
+      the Maverick Physical Literacy Curriculum</label>
+    <ul>
+      <li class='menu-item 1'>
+        <a class='fa' (click)="openModal('MenuSubPage', 'Activity')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Activity</p>
+      </li>
+      <li class='menu-item 2'>
+        <a class='fa' (click)="openModal('MenuSubPage', 'Transformation')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Transformation</p>
+      </li>
+      <li class='menu-item 3'>
+        <a class='fa' (click)="openModal('MenuSubPage', 'Video Lessons')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Video Lessons</p>
+      </li>
+      <li class='menu-item 4'>
+        <a class='fa' (click)="openModal('MenuSubPage', 'Personal Details')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Personal Details</p>
+      </li>
+      <li class='menu-item 5'>
+        <a class='fa' (click)="openModal('MenuSubPage', 'Consistency')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Consistency</p>
+      </li>
+      <li class='menu-item 6'>
+        <a class='fa' (click)="openModal('MenuSubPage', 'Query')"><img src="assets/imgs/circles/7_insights.png" /></a>
+        <p>Query</p>
+      </li>
+      
+    </ul>
+  </nav> -->
+</ion-content>
+<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar color='primary' class="zero-margin zero-padding">
+    <!-- <ion-row class="footer-helptxt-holder">
+      <div class="help-txt">
+        <p>* Click on your photo to change the user</p>
+        <p>* Use the More icon to explore additional features...</p>
+      </div>
+    </ion-row> -->
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="profile-avatar" (click)="goPage('UsersPage')"></div>
+        <!-- <div class="settings-icon" (click)="goPage('SettingsPage')"></div> -->
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

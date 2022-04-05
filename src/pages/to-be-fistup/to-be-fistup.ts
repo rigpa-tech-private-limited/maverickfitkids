@@ -19,7 +19,7 @@ export class ToBeFistupPage {
 
   closeModal(): void {
     this.viewCtrl.dismiss({ slideAction: 'close' });
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   ionViewDidLoad() {

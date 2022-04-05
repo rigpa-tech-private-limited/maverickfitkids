@@ -51,7 +51,7 @@ export class CoachPage {
                 buttons: [{
                   text: 'Ok',
                   handler: () => {
-                    this.navCtrl.setRoot("HomePage");
+                    this.navCtrl.setRoot("MenuPage");
                   }
                 }],
                 enableBackdropDismiss: false
@@ -133,7 +133,7 @@ export class CoachPage {
 
   goHome() {
     this.videoPause();
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   goPage(pmPage) {

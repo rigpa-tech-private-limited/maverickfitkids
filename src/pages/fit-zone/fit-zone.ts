@@ -474,7 +474,7 @@ export class FitZonePage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   fistlike(pmfriendsStudentCode, pmfriendsstudentImage) {

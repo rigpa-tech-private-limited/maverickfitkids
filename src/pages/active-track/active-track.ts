@@ -70,7 +70,7 @@ export class ActiveTrackPage {
                 buttons: [{
                   text: 'Ok',
                   handler: () => {
-                    this.navCtrl.setRoot("HomePage");
+                    this.navCtrl.setRoot("MenuPage");
                   }
                 }],
                 enableBackdropDismiss: false
@@ -182,7 +182,7 @@ export class ActiveTrackPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
   ionViewDidLoad() {
     this.storage.get('imgPreview')

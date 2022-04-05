@@ -522,7 +522,7 @@ export class PhysicalLiteracyPage {
 
   goHome() {
     this.videoPause();
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   goPage(pmPage) {

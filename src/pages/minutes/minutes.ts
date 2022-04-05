@@ -75,7 +75,7 @@ export class MinutesPage {
                 buttons: [{
                   text: 'Ok',
                   handler: () => {
-                    this.navCtrl.setRoot("HomePage");
+                    this.navCtrl.setRoot("MenuPage");
                   }
                 }],
                 enableBackdropDismiss: false
@@ -275,7 +275,7 @@ export class MinutesPage {
 
   goHome() {
     this.videoPause();
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   showAbout() {

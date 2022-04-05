@@ -246,7 +246,7 @@ export class ChallengePage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   ionViewDidLoad() {

@@ -182,7 +182,7 @@ export class GamesPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   ionViewDidLoad() {

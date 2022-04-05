@@ -147,7 +147,7 @@ export class ToBeListPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   selectIntend(index, intendCode) {

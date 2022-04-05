@@ -25,11 +25,11 @@ export class MyApp {
       this.storage.get('loggedInUser')
         .then((res: any) => {
           if (res) {
-            this.rootPage = "HomePage";
+            this.rootPage = "MenuPage";
             this.usersList = this.databaseprovider.getUserDetails().then(res => res);
             console.log(this.usersList);
             if (this.usersList.length > 0) {
-              this.rootPage = "HomePage";
+              this.rootPage = "MenuPage";
             } else {
               this.rootPage = "UsersPage";
             }

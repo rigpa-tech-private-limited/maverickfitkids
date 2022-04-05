@@ -149,7 +149,7 @@ export class SportSkillsPage {
                 buttons: [{
                   text: 'Ok',
                   handler: () => {
-                    this.navCtrl.setRoot("HomePage");
+                    this.navCtrl.setRoot("MenuPage");
                   }
                 }],
                 enableBackdropDismiss: false
@@ -164,7 +164,7 @@ export class SportSkillsPage {
               buttons: [{
                 text: 'Ok',
                 handler: () => {
-                  this.navCtrl.setRoot("HomePage");
+                  this.navCtrl.setRoot("MenuPage");
                 }
               }]
             });
@@ -595,7 +595,7 @@ export class SportSkillsPage {
   }
   goHome() {
     this.videoPause();
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
 

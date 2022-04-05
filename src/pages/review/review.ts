@@ -70,7 +70,7 @@ export class ReviewPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   ionViewDidLoad() {

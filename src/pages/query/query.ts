@@ -113,7 +113,7 @@ export class QueryPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   ionViewDidLoad() {

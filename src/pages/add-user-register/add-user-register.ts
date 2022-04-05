@@ -337,4 +337,12 @@ export class AddUserRegisterPage {
     console.log("goHome");
     this.navCtrl.setRoot("UsersPage");
   }
+  openExternalLink(pmLink, fromPage) {
+    if (this.platform.is('ios')) {
+    this.navCtrl.setRoot('ParentGatePage', { "externalLink": pmLink, "fromPage": fromPage });
+    } else {
+      window.open(pmLink, '_system', 'location=yes');
+      return false;
+    }
+  }
 }

@@ -177,7 +177,7 @@ export class SessionsPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   ionViewDidLoad() {

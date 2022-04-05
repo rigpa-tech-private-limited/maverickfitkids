@@ -128,7 +128,7 @@ export class ConsistencyPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("SettingsPage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
   goDigitalCertificate() {

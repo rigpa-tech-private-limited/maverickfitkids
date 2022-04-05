@@ -91,7 +91,7 @@ export class QuizQuestionsPage {
   }
 
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
 
 

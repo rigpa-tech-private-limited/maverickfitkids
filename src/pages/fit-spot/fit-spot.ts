@@ -30,7 +30,7 @@ export class FitSpotPage {
     modal.present();
   }
   goHome() {
-    this.navCtrl.setRoot("HomePage");
+    this.navCtrl.setRoot("MenuPage");
   }
   ionViewDidLoad() {
     this.storage.get('imgPreview')
