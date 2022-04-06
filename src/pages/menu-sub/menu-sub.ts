@@ -5,6 +5,7 @@ import { DataProvider } from '../../providers/data/data';
 import { DatabaseProvider } from '../../providers/database/database';
 import { AppConfig } from '../../config/config';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { Toast } from '@ionic-native/toast';
 
 @IonicPage()
 @Component({
@@ -26,14 +27,14 @@ export class MenuSubPage {
   showSessionMenu: boolean = false; //Session (class 1 to 8)
   showGuidesMenu: boolean = false; //Guides (Class 9 to 12)
   showFitSpotSessionIcon: boolean = false;
-  showMenuIcon: boolean = true;
-  showNoAccessMsg: boolean = false;
   showAspirationsMenu: boolean = false;
   showInsightsMenu: boolean = false;
   showExerciseMenu: boolean = false;
   showFitZoneMenu: boolean = false;
   showEndorserMenu: boolean = false;
   showPersonalDetailsMenu: boolean = false;
+  showReviewMenu: boolean = false;
+  showFitFestMenu: boolean = false;
   showCoachMenu: boolean = false;
   showPhysicalLiteracyMenu: boolean = false;
   showMaverickMinuteMenu: boolean = false;
@@ -56,6 +57,7 @@ export class MenuSubPage {
     public databaseprovider: DatabaseProvider,
     public dataService: DataProvider,
     public modalCtrl: ModalController,
+    private toast: Toast,
     private iab: InAppBrowser) {
     if (this.navParams.get('sportsCode')) {
       this.menuHead = this.navParams.get('sportsCode');
@@ -176,6 +178,8 @@ export class MenuSubPage {
         this.showEndorserMenu = true;
         this.showFitZoneMenu = true;
         this.showPersonalDetailsMenu = true;
+        this.showReviewMenu = true;
+        this.showFitFestMenu = true;
     }
     if(this.menuHead == 'Consistency'){
       this.showMaverickMinuteMenu = true;
@@ -232,13 +236,11 @@ export class MenuSubPage {
       .then((res: any) => {
         if ((res.studentAccessLevel == "2" && pmPage == 'QueryPage') || (res.fitzoneFlag == "1" && pmPage == 'ReviewPage') || (res.fitzoneFlag == "1" && pmPage == 'FitFestPage')) {
           console.log(res.studentAccessLevel);
-          this.showMenuIcon = false;
-          this.showNoAccessMsg = true;
-          setTimeout(() => {
-            this.showMenuIcon = true;
-            this.showNoAccessMsg = false;
-            console.log(res.studentAccessLevel);
-          }, 7000);
+          this.toast.show(`Sorry! This feature is available only for schools that use the Maverick Physical Literacy Curriculum.If you have any queries please write to ceo@maverickliteracy.net`, '5000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
         } else {
           if (pmPage != '') {
             if (pmPage == 'ReviewPage') {
@@ -276,6 +278,7 @@ export class MenuSubPage {
           enableBackdropDismiss: true
         });
         modal.present();
+        
         // const alert = this.alertCtrl.create({
         //   message: this.responseData.returnMessage,
         //   buttons: [{
