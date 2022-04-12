@@ -55,7 +55,6 @@
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-plugin-x-socialsharing": "^5.6.8",
     "cordova-plugin-x-toast": "^2.7.2",
-    "cordova-sqlite-storage": "^5.0.0",
     "es6-promise-plugin": "^4.2.2",
     "ionic-angular": "3.9.9",
     "ionicons": "3.0.0",
@@ -73,6 +72,7 @@
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-sqlite-storage": "^6.0.0",
     "typescript": "2.6.2"
   },
   "description": "An Ionic project",
@@ -95,7 +95,6 @@
       },
       "cordova-plugin-android-permissions": {},
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
-      "cordova-sqlite-storage": {},
       "cordova-plugin-filechooser": {},
       "cordova-plugin-filepath": {},
       "cordova-plugin-file": {},
@@ -110,7 +109,8 @@
         "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."
       },
-      "cordova-plugin-x-toast": {}
+      "cordova-plugin-x-toast": {},
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "ios",

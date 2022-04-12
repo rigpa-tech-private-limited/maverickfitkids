@@ -44,16 +44,20 @@
     </ion-row>
   </form>
   <!-- Register Div - iOS only -->
-  <!-- <br /> 
-  <h2 text-center class="sub-heading KaushanScript-Regular">New Registrations</h2>
-  <p text-center class="reg-txt">To enrol a new student and / or buy a Fit Kids Kit.</p>
-  <form class="form">
+  <br *ngIf="isRegisterButton" /> 
+  <h2 *ngIf="isRegisterButton" text-center class="sub-heading KaushanScript-Regular">New Registrations</h2>
+  <p *ngIf="isRegisterButton" text-center class="reg-txt">To enrol a new student and / or buy a Fit Kids Kit.</p>
+  <form *ngIf="isRegisterButton" class="form">
     <ion-row class="action-icons-holder">
       <ion-col col-12>
         <a class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="goRegisterPage()">Register</a>
       </ion-col>
     </ion-row>
-  </form> -->
+  </form>
+  <br />
+  <p text-center class="inner-txt">
+    Maverick Fit Kids student app is a dynamic accompaniment for students enrolled via their school in the Maverick physical literacy curriculum.
+  </p>
 
   <br />
   <h2 text-center class="sub-heading KaushanScript-Regular" style="margin-bottom: 15px !important;">Watch Tutorial</h2>

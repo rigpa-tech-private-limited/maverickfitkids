@@ -18,6 +18,7 @@ declare var window: any;
 export class RegisterPage {
   isFormSubmitted: boolean = false;
   showFooter: boolean = true;
+  isRegisterButton = false;
   unregisterBackButtonAction: any;
   showedAlert: boolean;
   confirmAlert: any;
@@ -57,6 +58,11 @@ export class RegisterPage {
     public databaseprovider: DatabaseProvider,
     public androidPermissions: AndroidPermissions,
     public storage: Storage) {
+      if (this.platform.is('ios')) {
+        this.isRegisterButton = true;
+      }else{
+        this.isRegisterButton = false;
+      }
     this.checkPermission();
     this.databaseprovider.getDatabaseState();
   }

@@ -450,7 +450,7 @@ export class UsersPage {
                   });
                 this.userList = await this.databaseprovider.selectUserById(pmUserId).then(res => res);
                 this.storage.set('loggedInUser', "yes");
-                this.storage.set('userDetails', this.userList[0]);
+                this.storage.set('userDetails', this.responseData);
                 this.storage.set('imgPreview', this.userList[0].studentImage);
                 this.navCtrl.setRoot("MenuPage");
               });

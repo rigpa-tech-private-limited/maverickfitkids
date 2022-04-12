@@ -50,6 +50,7 @@ export class MenuPage {
 
     this.storage.get('userDetails')
       .then((res: any) => {
+        console.log("userDetails userDetails =>> ",JSON.stringify(res));
         if (res) {
           this.userDetails = res;
           this.specialMessage = res.specialConsideration;
