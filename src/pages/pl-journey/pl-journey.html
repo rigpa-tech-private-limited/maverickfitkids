@@ -1,0 +1,72 @@
+<ion-header no-border id="header-container">
+  <ion-navbar>
+    <ion-title> &nbsp; </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="plContent" *ngIf="questions.length > 0 && hasLoaded">
+    <div *ngFor="let question of questions; let j = index;">
+      <br />
+      <h3 *ngIf="j==0 || (question.title !== questions[j-1].title)">
+        {{question.title}}
+      </h3>
+      <h4
+        *ngIf="j==0 || (question.description !== questions[j-1]['description'])"
+      >
+        {{question.description}}
+      </h4>
+      <ion-card>
+        <ion-card-content>
+          <p>{{question.questionIndex + '. ' +question.question}}</p>
+
+          <ion-list no-lines class="gender-list form-item">
+            <ion-row class="gender-list-row" radio-group>
+              <ion-col class="gender-list-col" col-12>
+                <div class="gender-container">
+                  <div class="container-outer">
+                    <div class="container-inner">
+                      <ion-item
+                        class="gender-radio-group"
+                        *ngFor="let answer of question.answers; let i = index;"
+                      >
+                        <ion-label text-start>{{answer.options}}</ion-label>
+                        <ion-radio
+                          (click)="selectAnswer(i, j)"
+                          [checked]="questions[j]['answers'][i]['selected']"
+                        ></ion-radio>
+                      </ion-item>
+                    </div>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+<ion-footer no-border id="footer-container" class="zero-margin zero-padding">
+  <ion-toolbar class="zero-margin zero-padding">
+    <ion-row class="action-icons-holder">
+      <ion-col col-12>
+        <button
+          class="submit-btn KaushanScript-Regular"
+          ion-button
+          color="danger"
+          (click)="savePlJourney()"
+        >
+          Save
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="footer-icons-holder">
+      <ion-col col-4>
+        <div class="back-icon" (click)="goHome()"></div>
+      </ion-col>
+      <ion-col col-8>
+        <img src="assets/imgs/maverick_logo.png" class="logo-img" />
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

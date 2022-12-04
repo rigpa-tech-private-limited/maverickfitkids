@@ -1,8 +1,6 @@
 <ion-header no-border id="header-container">
   <ion-navbar>
-    <ion-title>
-      &nbsp;
-    </ion-title>
+    <ion-title> &nbsp; </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -31,9 +29,14 @@
       <img src="assets/imgs/home/noti.png" />
       <p>Notification</p>
     </a>
-    <p *ngIf="specialMessage != '' && specialMessage != null" class="api-message">{{specialMessage}}</p>
+    <p
+      *ngIf="specialMessage != '' && specialMessage != null"
+      class="api-message"
+    >
+      {{specialMessage}}
+    </p>
   </div>
-  
+
   <!-- <nav class='menu' style="display: none;">
     <input checked='checked' class='menu-toggler' id='menu-toggler' (click)="logOutFromHome()" type='checkbox'>
     <label class="label-home" *ngIf="showMenuIcon"></label>
@@ -68,8 +71,13 @@
     </ul>
   </nav> -->
 </ion-content>
-<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
-  <ion-toolbar color='primary' class="zero-margin zero-padding">
+<ion-footer
+  no-border
+  color="primary"
+  id="footer-container"
+  class="zero-margin zero-padding"
+>
+  <ion-toolbar color="primary" class="zero-margin zero-padding">
     <!-- <ion-row class="footer-helptxt-holder">
       <div class="help-txt">
         <p>* Click on your photo to change the user</p>
@@ -82,7 +90,7 @@
         <!-- <div class="settings-icon" (click)="goPage('SettingsPage')"></div> -->
       </ion-col>
       <ion-col col-8>
-        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+        <img src="assets/imgs/maverick_logo.png" class="logo-img" />
       </ion-col>
     </ion-row>
   </ion-toolbar>

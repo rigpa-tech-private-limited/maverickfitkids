@@ -42,7 +42,6 @@
     "@ionic/storage": "2.2.0",
     "com-badrit-base64": "^0.2.0",
     "com.darktalker.cordova.screenshot": "^0.1.6",
-    "cordova-android": "8.1.0",
     "cordova-ios": "5.1.1",
     "cordova-plugin-advanced-http": "^2.4.1",
     "cordova-plugin-android-permissions": "^1.0.2",
@@ -66,6 +65,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.4",
+    "cordova-android": "^9.1.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^4.1.3",
