@@ -50,7 +50,7 @@ export class AboutPage {
   }
 
   openExternalLink(pmLink, fromPage) {
-    if (this.platform.is("ios") || this.platform.is("android")) {
+    if (this.platform.is("ios")) {
       this.navCtrl.setRoot("ParentGatePage", {
         externalLink: pmLink,
         fromPage: fromPage,
