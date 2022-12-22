@@ -92,4 +92,5 @@ export class AppConfig {
   public static GET_MINUTE_VIDEO_NEW = "getMinuteVideoNew";
   public static GET_PHYSICAL_LITERACY_JOURNEY = "getPhysicalLiteracyJourney";
   public static SAVE_PHYSICAL_LITERACY_JOURNEY = "savePhysicalJourney";
+  public static GET_PHYSICAL_LITERACY_CHART = "getPhysicalLiteracyChart";
 }

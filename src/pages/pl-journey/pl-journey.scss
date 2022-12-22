@@ -226,4 +226,25 @@ page-pl-journey {
     font-weight: bold;
     font-size: 1.3em;
   }
+  .plChart {
+    max-height: 80vh;
+    height: 80vh;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+
+  h2 {
+    margin: 1.5rem 0 !important;
+  }
+
+  .plHeadRow {
+    margin-top: 10px;
+  }
+
+  .plHeadRow img {
+    padding: 0;
+    max-width: 65%;
+    float: right;
+    margin: 10px !important;
+  }
 }

@@ -44,12 +44,6 @@
         /></a>
         <p>Sports Skills</p>
       </li>
-      <li class="menu-item 1" *ngIf="showPLJourneyMenu">
-        <a class="fa" (click)="goPage('PlJourneyPage')"
-          ><img src="assets/imgs/settings/query.png"
-        /></a>
-        <p>PL Journey</p>
-      </li>
 
       <!-- Transformation Menus -->
       <li class="menu-item 2" *ngIf="showAspirationsMenu">
@@ -157,6 +151,13 @@
         <p><span class="highlight-text">Maverick</span> Champ</p>
       </li>
 
+      <li class="menu-item 5" *ngIf="showPLJourneyMenu">
+        <a class="fa" (click)="goPage('PlJourneyPage')"
+          ><img src="assets/imgs/settings/my_journey.png"
+        /></a>
+        <p>My Journey</p>
+      </li>
+
       <!-- Query Menu -->
       <li class="menu-item 6" *ngIf="showQueryMenu">
         <a class="fa" (click)="checkNoAccess('QueryPage')"
@@ -167,7 +168,6 @@
           <img src="assets/imgs/red_dot.png" />
         </p>
       </li>
-
       <!--       
       <li class='menu-item 5' *ngIf="showSportsMenu">
         <a class='fa' (click)="checkNoAccess('SportsSelectPage')"><img src="assets/imgs/circles/3_sports.png" /></a>

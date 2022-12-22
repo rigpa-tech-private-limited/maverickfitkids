@@ -141,7 +141,6 @@ export class MenuSubPage {
         if (this.menuHead == "Activity") {
           this.showExerciseMenu = true;
           this.showSessionMenu = true;
-          this.showPLJourneyMenu = true;
 
           if (
             classArr.indexOf(-3) > -1 ||
@@ -251,6 +250,7 @@ export class MenuSubPage {
       this.showMaverickMinuteMenu = true;
       this.showFitSpotMenu = true;
       this.showConsistencyMenu = true;
+      this.showPLJourneyMenu = true;
     }
     if (this.menuHead == "Notification") {
       this.showQueryMenu = true;

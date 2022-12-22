@@ -1913,6 +1913,32 @@ export class DataProvider {
     });
   }
 
+  getPhysicalLiteracyChart(formData) {
+    return new Promise((resolve, reject) => {
+      this.authService
+        .postData(
+          {
+            content: {
+              applicationId: AppConfig.APP_ID,
+              schoolcode: formData.schoolCode,
+              studentid: formData.studentId,
+              classcode: formData.classCode,
+              academicyear: formData.academicYear,
+            },
+          },
+          AppConfig.GET_PHYSICAL_LITERACY_CHART
+        )
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
+    });
+  }
+
   romanValue(r) {
     if (r === "I") return 1;
     if (r === "V") return 5;
