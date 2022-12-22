@@ -328,7 +328,7 @@ export class PlJourneyPage {
       },
       options: {
         legend: {
-          display: true,
+          display: false,
           position: "bottom",
           fullWidth: true,
           labels: {

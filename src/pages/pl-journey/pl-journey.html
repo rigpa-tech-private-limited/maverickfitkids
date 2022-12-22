@@ -21,8 +21,18 @@
     <div>
       <canvas width="80vh" height="100vh" #hrzLineChart2></canvas>
     </div>
+    <div class="plChartLegend">
+      <ion-item
+        class="gender-radio-group ptitem"
+        *ngFor="let data of chartDatasets; let i = index;"
+      >
+        <ion-label text-start class="ptlbl">
+          <div class="ptbox" [style.borderColor]="data.borderColor"></div>
+          <p>{{data.label}}</p>
+        </ion-label>
+      </ion-item>
+    </div>
   </div>
-
   <div class="plContent" *ngIf="questions.length > 0 && hasLoaded">
     <ion-row class="plHeadRow" style="margin-bottom: 0px">
       <ion-col col-10 class="zero-margin zero-padding">
@@ -50,7 +60,6 @@
       <ion-card>
         <ion-card-content>
           <p>{{question.questionIndex + '. ' +question.question}}</p>
-
           <ion-list no-lines class="gender-list form-item">
             <ion-row class="gender-list-row" radio-group>
               <ion-col class="gender-list-col" col-12>

@@ -227,10 +227,7 @@ page-pl-journey {
     font-size: 1.3em;
   }
   .plChart {
-    max-height: 80vh;
-    height: 80vh;
-    overflow: hidden;
-    overflow-x: scroll;
+    height: auto;
   }
 
   h2 {
@@ -246,5 +243,30 @@ page-pl-journey {
     max-width: 65%;
     float: right;
     margin: 10px !important;
+  }
+  .ptbox {
+    width: 15px;
+    height: 12px;
+    border: 1px solid;
+    float: left;
+    margin: 0 10px;
+  }
+  .ptlbl {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .ptitem {
+    min-height: 1rem !important;
+  }
+
+  .ptitem p {
+    font-size: 1.2rem !important;
+  }
+
+  .plChartLegend {
+    margin-top: 10px;
   }
 }
