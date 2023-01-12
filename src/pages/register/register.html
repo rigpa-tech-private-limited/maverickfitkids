@@ -1,34 +1,66 @@
 <ion-header no-border id="header-container">
   <ion-navbar>
-    <ion-title>
-      &nbsp;
-    </ion-title>
+    <ion-title> &nbsp; </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding text-center class="user-register-page">
   <h2 text-center class="sub-heading KaushanScript-Regular">User Login</h2>
   <p text-center class="inner-txt">
     <!-- Please enter your details as registered with us to activate your account. -->
-    Please enter the student name as given by your school / sent by us via email with the same syntax: Viz., capital letters, small letters, spaces & full stops.  Enter the MFK id provided  with MFK in capitals followed by the digits provided by your school. Press Submit.
+    Please enter the student name as given by your school / sent by us via email
+    with the same syntax: Viz., capital letters, small letters, spaces & full
+    stops. Enter the MFK id provided with MFK in capitals followed by the digits
+    provided by your school. Press Submit.
   </p>
-  <form class="form" (ngSubmit)="signIn()" [formGroup]="validations_form_existing_user" novalidate>
+  <form
+    class="form"
+    (ngSubmit)="signIn()"
+    [formGroup]="validations_form_existing_user"
+    novalidate
+  >
     <ion-list inset>
       <ion-item>
-        <ion-input text-center [(ngModel)]="loginData.existing_student_name" (keyup)="onKeyupExistingUser()" formControlName="existing_student_name" type="text" placeholder="User Name/Student's Name"></ion-input>
+        <ion-input
+          text-center
+          [(ngModel)]="loginData.existing_student_name"
+          (keyup)="onKeyupExistingUser()"
+          formControlName="existing_student_name"
+          type="text"
+          placeholder="User Name/Student's Name"
+        ></ion-input>
       </ion-item>
       <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages_existing_user.existing_student_name">
-          <div text-center class="error-message" *ngIf="validations_form_existing_user.get('existing_student_name').hasError(validation.type) && (validations_form_existing_user.get('existing_student_name').dirty || validations_form_existing_user.get('existing_student_name').touched)">
+        <ng-container
+          *ngFor="let validation of validation_messages_existing_user.existing_student_name"
+        >
+          <div
+            text-center
+            class="error-message"
+            *ngIf="validations_form_existing_user.get('existing_student_name').hasError(validation.type) && (validations_form_existing_user.get('existing_student_name').dirty || validations_form_existing_user.get('existing_student_name').touched)"
+          >
             {{ validation.message }}
           </div>
         </ng-container>
       </div>
       <ion-item>
-        <ion-input text-center [(ngModel)]="loginData.existing_student_mfk_id" (keyup)="onKeyupExistingUser()" formControlName="existing_student_mfk_id" type="password" placeholder="Password/#MFK id"></ion-input>
+        <ion-input
+          text-center
+          [(ngModel)]="loginData.existing_student_mfk_id"
+          (keyup)="onKeyupExistingUser()"
+          formControlName="existing_student_mfk_id"
+          type="password"
+          placeholder="Password/#MFK id"
+        ></ion-input>
       </ion-item>
       <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages_existing_user.existing_student_mfk_id">
-          <div text-center class="error-message" *ngIf="validations_form_existing_user.get('existing_student_mfk_id').hasError(validation.type) && (validations_form_existing_user.get('existing_student_mfk_id').dirty || validations_form_existing_user.get('existing_student_mfk_id').touched)">
+        <ng-container
+          *ngFor="let validation of validation_messages_existing_user.existing_student_mfk_id"
+        >
+          <div
+            text-center
+            class="error-message"
+            *ngIf="validations_form_existing_user.get('existing_student_mfk_id').hasError(validation.type) && (validations_form_existing_user.get('existing_student_mfk_id').dirty || validations_form_existing_user.get('existing_student_mfk_id').touched)"
+          >
             {{ validation.message }}
           </div>
         </ng-container>
@@ -39,33 +71,66 @@
       <ion-col col-12>
         <p class="note-txt">* Registration details are sent to your email</p>
         <br />
-        <a class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="signIn()">Submit</a>
+        <a
+          class="submit-btn KaushanScript-Regular"
+          ion-button
+          color="danger"
+          (click)="signIn()"
+          >Submit</a
+        >
       </ion-col>
     </ion-row>
   </form>
   <!-- Register Div - iOS only -->
-  <br *ngIf="isRegisterButton" /> 
-  <h2 *ngIf="isRegisterButton" text-center class="sub-heading KaushanScript-Regular">New Registrations</h2>
-  <p *ngIf="isRegisterButton" text-center class="reg-txt">To enrol a new student and / or buy a Fit Kids Kit.</p>
+  <br *ngIf="isRegisterButton" />
+  <h2
+    *ngIf="isRegisterButton"
+    text-center
+    class="sub-heading KaushanScript-Regular"
+  >
+    New Registrations
+  </h2>
+  <p *ngIf="isRegisterButton" text-center class="reg-txt">
+    To enrol a new student and / or buy a Fit Kids Kit.
+  </p>
   <form *ngIf="isRegisterButton" class="form">
     <ion-row class="action-icons-holder">
       <ion-col col-12>
-        <a class="submit-btn KaushanScript-Regular" ion-button color="danger" (click)="goRegisterPage()">Register</a>
+        <a
+          class="submit-btn KaushanScript-Regular"
+          ion-button
+          color="danger"
+          (click)="goRegisterPage()"
+          >Register</a
+        >
       </ion-col>
     </ion-row>
   </form>
   <br />
   <p text-center class="inner-txt">
-    Maverick Fit Kids student app is a dynamic accompaniment for students enrolled via their school in the Maverick physical literacy curriculum.
+    Maverick Fit Kids student app is a dynamic accompaniment for students
+    enrolled via their school in the Maverick physical literacy curriculum.
   </p>
 
   <br />
-  <h2 text-center class="sub-heading KaushanScript-Regular" style="margin-bottom: 15px !important;">Watch Tutorial</h2>
+  <h2
+    text-center
+    class="sub-heading KaushanScript-Regular"
+    style="margin-bottom: 15px !important"
+  >
+    Watch Tutorial
+  </h2>
   <!-- <p text-center class="reg-txt">To enrol a new student and / or buy a Fit Kids Kit.</p> -->
   <form class="form">
     <ion-row class="action-icons-holder">
       <ion-col col-12>
-        <a (click)="openExternalLink('https://maverickfitkids.net/downloads/', 'RegisterPage')" class="submit-btn KaushanScript-Regular" ion-button color="danger">Watch</a>
+        <a
+          (click)="openExternalLink('https://maverickfitkids.net/downloads/', 'RegisterPage')"
+          class="submit-btn KaushanScript-Regular"
+          ion-button
+          color="danger"
+          >Watch</a
+        >
       </ion-col>
     </ion-row>
   </form>
@@ -78,11 +143,11 @@
       </ion-col>
     </ion-row> -->
     <ion-row *ngIf="showFooter" class="footer-icons-holder">
-      <ion-col col-4>
-        &nbsp;
+      <ion-col col-4 class="footer-back">
+        <div class="back-icon" (click)="goMainPage()"></div>
       </ion-col>
-      <ion-col col-8>
-        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+      <ion-col col-8 class="footer-logo">
+        <img src="assets/imgs/maverick_logo.png" class="logo-img" />
       </ion-col>
     </ion-row>
   </ion-toolbar>

@@ -1,8 +1,6 @@
 <ion-header no-border id="header-container">
   <ion-navbar>
-    <ion-title>
-      &nbsp;
-    </ion-title>
+    <ion-title> &nbsp; </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -10,153 +8,244 @@
   <ion-grid class="zero-margin zero-padding add-user-list">
     <ion-row class="zero-margin zero-padding users-row ripple1">
       <ion-col col-3 class="zero-margin zero-padding">
-        <img *ngIf="(userStatus1=='0')" class="lockunlock not-visible" src="assets/imgs/green_lock.png">
-        <img *ngIf="(userStatus1=='1')" class="lockunlock" src="assets/imgs/green_lock.png"
-          (click)="updateUserStatus(userId1,userStatus1)">
-        <img *ngIf="(userStatus1=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
-          (click)="updateUserStatus(userId1,userStatus1)">
-        <div class="user-profile-avatar profile-avatar1" (click)="getPhoto(0)"></div>
+        <img
+          *ngIf="(userStatus1=='0')"
+          class="lockunlock not-visible"
+          src="assets/imgs/green_lock.png"
+        />
+        <img
+          *ngIf="(userStatus1=='1')"
+          class="lockunlock"
+          src="assets/imgs/green_lock.png"
+          (click)="updateUserStatus(userId1,userStatus1)"
+        />
+        <img
+          *ngIf="(userStatus1=='2')"
+          class="lockunlock"
+          src="assets/imgs/red_lock.png"
+          (click)="updateUserStatus(userId1,userStatus1)"
+        />
+        <div
+          class="user-profile-avatar profile-avatar1"
+          (click)="getPhoto(0)"
+        ></div>
       </ion-col>
-      <ion-col col-4 class="user-label zero-margin zero-padding"
-        (click)="selectUser(userId1,1,redDotVisible1,userStatus1)">
+      <ion-col
+        col-4
+        class="user-label zero-margin zero-padding"
+        (click)="selectUser(userId1,1,redDotVisible1,userStatus1)"
+      >
         <p>
           {{userName1}}
           <!-- <sub *ngIf="redDotVisible1 not-visible"><img src="assets/imgs/red_dot.png"></sub> -->
         </p>
       </ion-col>
       <ion-col col-2 class="user-stars zero-margin zero-padding">
-        <img *ngIf="(userId1!='0')" src="assets/imgs/red_star.png">
+        <img *ngIf="(userId1!='0')" src="assets/imgs/red_star.png" />
         <span *ngIf="(userId1!='0')">{{userStar1}}</span>
       </ion-col>
       <ion-col col-3 class="lockunlock-switch zero-margin zero-padding">
-        <ion-toggle *ngIf="(userStatus1=='1')" [(ngModel)]="redDotVisible1"
-          (ionChange)="enableActiveUser(userId1,userStatus1,1)"></ion-toggle>
+        <ion-toggle
+          *ngIf="(userStatus1=='1')"
+          [(ngModel)]="redDotVisible1"
+          (ionChange)="enableActiveUser(userId1,userStatus1,1)"
+        ></ion-toggle>
       </ion-col>
     </ion-row>
 
     <ion-row class="zero-margin zero-padding users-row ripple2">
       <ion-col col-3 class="zero-margin zero-padding">
-        <img *ngIf="(userStatus2=='0')" class="lockunlock not-visible" src="assets/imgs/green_lock.png">
-        <img *ngIf="(userStatus2=='1')" class="lockunlock" src="assets/imgs/green_lock.png"
-          (click)="updateUserStatus(userId2,userStatus2)">
-        <img *ngIf="(userStatus2=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
-          (click)="updateUserStatus(userId2,userStatus2)">
-        <div class="user-profile-avatar profile-avatar2" (click)="getPhoto(1)"></div>
+        <img
+          *ngIf="(userStatus2=='0')"
+          class="lockunlock not-visible"
+          src="assets/imgs/green_lock.png"
+        />
+        <img
+          *ngIf="(userStatus2=='1')"
+          class="lockunlock"
+          src="assets/imgs/green_lock.png"
+          (click)="updateUserStatus(userId2,userStatus2)"
+        />
+        <img
+          *ngIf="(userStatus2=='2')"
+          class="lockunlock"
+          src="assets/imgs/red_lock.png"
+          (click)="updateUserStatus(userId2,userStatus2)"
+        />
+        <div
+          class="user-profile-avatar profile-avatar2"
+          (click)="getPhoto(1)"
+        ></div>
       </ion-col>
-      <ion-col col-4 class="user-label zero-margin zero-padding"
-        (click)="selectUser(userId2,2,redDotVisible2,userStatus2)">
+      <ion-col
+        col-4
+        class="user-label zero-margin zero-padding"
+        (click)="selectUser(userId2,2,redDotVisible2,userStatus2)"
+      >
         <p>
           {{userName2}}
           <!-- <sub *ngIf="redDotVisible2 not-visible"><img src="assets/imgs/red_dot.png"></sub> -->
         </p>
       </ion-col>
       <ion-col col-2 class="user-stars zero-margin zero-padding">
-        <img *ngIf="(userId2!='0')" src="assets/imgs/red_star.png">
+        <img *ngIf="(userId2!='0')" src="assets/imgs/red_star.png" />
         <span *ngIf="(userId2!='0')">{{userStar2}}</span>
       </ion-col>
       <ion-col col-3 class="lockunlock-switch zero-margin zero-padding">
-        <ion-toggle *ngIf="(userStatus2=='1')" [(ngModel)]="redDotVisible2"
-          (ionChange)="enableActiveUser(userId2,userStatus2,2)"></ion-toggle>
+        <ion-toggle
+          *ngIf="(userStatus2=='1')"
+          [(ngModel)]="redDotVisible2"
+          (ionChange)="enableActiveUser(userId2,userStatus2,2)"
+        ></ion-toggle>
       </ion-col>
     </ion-row>
 
     <ion-row class="zero-margin zero-padding users-row ripple3">
       <ion-col col-3 class="zero-margin zero-padding">
-        <img *ngIf="(userStatus3=='0')" class="lockunlock not-visible" src="assets/imgs/green_lock.png">
-        <img *ngIf="(userStatus3=='1')" class="lockunlock" src="assets/imgs/green_lock.png"
-          (click)="updateUserStatus(userId3,userStatus3)">
-        <img *ngIf="(userStatus3=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
-          (click)="updateUserStatus(userId3,userStatus3)">
-        <div class="user-profile-avatar profile-avatar3" (click)="getPhoto(2)"></div>
+        <img
+          *ngIf="(userStatus3=='0')"
+          class="lockunlock not-visible"
+          src="assets/imgs/green_lock.png"
+        />
+        <img
+          *ngIf="(userStatus3=='1')"
+          class="lockunlock"
+          src="assets/imgs/green_lock.png"
+          (click)="updateUserStatus(userId3,userStatus3)"
+        />
+        <img
+          *ngIf="(userStatus3=='2')"
+          class="lockunlock"
+          src="assets/imgs/red_lock.png"
+          (click)="updateUserStatus(userId3,userStatus3)"
+        />
+        <div
+          class="user-profile-avatar profile-avatar3"
+          (click)="getPhoto(2)"
+        ></div>
       </ion-col>
-      <ion-col col-4 class="user-label zero-margin zero-padding"
-        (click)="selectUser(userId3,3,redDotVisible3,userStatus3)">
+      <ion-col
+        col-4
+        class="user-label zero-margin zero-padding"
+        (click)="selectUser(userId3,3,redDotVisible3,userStatus3)"
+      >
         <p>
           {{userName3}}
           <!-- <sub *ngIf="redDotVisible3 not-visible"><img src="assets/imgs/red_dot.png"></sub> -->
         </p>
       </ion-col>
       <ion-col col-2 class="user-stars zero-margin zero-padding">
-        <img *ngIf="(userId3!='0')" src="assets/imgs/red_star.png">
+        <img *ngIf="(userId3!='0')" src="assets/imgs/red_star.png" />
         <span *ngIf="(userId3!='0')">{{userStar3}}</span>
       </ion-col>
       <ion-col col-3 class="lockunlock-switch zero-margin zero-padding">
-        <ion-toggle *ngIf="(userStatus3=='1')" [(ngModel)]="redDotVisible3"
-          (ionChange)="enableActiveUser(userId3,userStatus3,3)"></ion-toggle>
+        <ion-toggle
+          *ngIf="(userStatus3=='1')"
+          [(ngModel)]="redDotVisible3"
+          (ionChange)="enableActiveUser(userId3,userStatus3,3)"
+        ></ion-toggle>
       </ion-col>
     </ion-row>
 
     <ion-row class="zero-margin zero-padding users-row ripple4">
       <ion-col col-3 class="zero-margin zero-padding">
-        <img *ngIf="(userStatus4=='0')" class="lockunlock not-visible" src="assets/imgs/green_lock.png">
-        <img *ngIf="(userStatus4=='1')" class="lockunlock" src="assets/imgs/green_lock.png"
-          (click)="updateUserStatus(userId4,userStatus4)">
-        <img *ngIf="(userStatus4=='2')" class="lockunlock" src="assets/imgs/red_lock.png"
-          (click)="updateUserStatus(userId4,userStatus4)">
-        <div class="user-profile-avatar profile-avatar4" (click)="getPhoto(3)"></div>
+        <img
+          *ngIf="(userStatus4=='0')"
+          class="lockunlock not-visible"
+          src="assets/imgs/green_lock.png"
+        />
+        <img
+          *ngIf="(userStatus4=='1')"
+          class="lockunlock"
+          src="assets/imgs/green_lock.png"
+          (click)="updateUserStatus(userId4,userStatus4)"
+        />
+        <img
+          *ngIf="(userStatus4=='2')"
+          class="lockunlock"
+          src="assets/imgs/red_lock.png"
+          (click)="updateUserStatus(userId4,userStatus4)"
+        />
+        <div
+          class="user-profile-avatar profile-avatar4"
+          (click)="getPhoto(3)"
+        ></div>
       </ion-col>
-      <ion-col col-4 class="user-label zero-margin zero-padding"
-        (click)="selectUser(userId4,4,redDotVisible4,userStatus4)">
+      <ion-col
+        col-4
+        class="user-label zero-margin zero-padding"
+        (click)="selectUser(userId4,4,redDotVisible4,userStatus4)"
+      >
         <p>
           {{userName4}}
           <!-- <sub *ngIf="redDotVisible4 not-visible"><img src="assets/imgs/red_dot.png"></sub> -->
         </p>
       </ion-col>
       <ion-col col-2 class="user-stars zero-margin zero-padding">
-        <img *ngIf="(userId4!='0')" src="assets/imgs/red_star.png">
+        <img *ngIf="(userId4!='0')" src="assets/imgs/red_star.png" />
         <span *ngIf="(userId4!='0')">{{userStar4}}</span>
       </ion-col>
       <ion-col col-3 class="lockunlock-switch zero-margin zero-padding">
-        <ion-toggle *ngIf="(userStatus4=='1')" [(ngModel)]="redDotVisible4"
-          (ionChange)="enableActiveUser(userId4,userStatus4,4)"></ion-toggle>
+        <ion-toggle
+          *ngIf="(userStatus4=='1')"
+          [(ngModel)]="redDotVisible4"
+          (ionChange)="enableActiveUser(userId4,userStatus4,4)"
+        ></ion-toggle>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <p class="p-head">Welcome to the Maverick experience!</p>
-        <p class="p-sub">Use the slide button next to the name to select the current user.
-          Click on the selected user’s name to begin your exploration.
-          Click on the photo to change profile pic.
-          Use the lock icon on the left to lock/unlock the user profile</p>
-        <p class="p-sub">To acquire your personal Maverick Fit Kids Kit to workout at
-          home, please visit our website <a (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"><u><b>www.maverickfitkids.net</b></u></a></p>
+        <p class="p-sub">
+          Use the slide button next to the name to select the current user.
+          Click on the selected user’s name to begin your exploration. Click on
+          the photo to change profile pic. Use the lock icon on the left to
+          lock/unlock the user profile
+        </p>
+        <!-- <p class="p-sub">To acquire your personal Maverick Fit Kids Kit to workout at
+          home, please visit our website <a (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"><u><b>www.maverickfitkids.net</b></u></a></p> -->
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer no-border color='primary' id="footer-container" class="zero-margin zero-padding">
-  <ion-toolbar color='primary' class="zero-margin zero-padding">
+<ion-footer
+  no-border
+  color="primary"
+  id="footer-container"
+  class="zero-margin zero-padding"
+>
+  <ion-toolbar color="primary" class="zero-margin zero-padding">
     <ion-row class="instruction-icons-holder">
       <ion-col col-4 (click)="openModal('AboutPage')">
-        <img src="assets/imgs/info_icon.png" class="instruction-icon">
-        <p class="help-text">
-          About
-        </p>
+        <img src="assets/imgs/info_icon.png" class="instruction-icon" />
+        <p class="help-text">About</p>
       </ion-col>
       <ion-col col-4 (click)="goPage('DemoPage')">
-        <img src="assets/imgs/demo_icon.png" class="instruction-icon">
-        <p class="help-text">
-          Demo
-        </p>
+        <img src="assets/imgs/demo_icon.png" class="instruction-icon" />
+        <p class="help-text">Demo</p>
       </ion-col>
       <ion-col col-4 (click)="openModal('CredentialsPage')">
-        <img src="assets/imgs/credentials_icon.png" class="instruction-icon">
-        <p class="help-text">
-          Credentials
-        </p>
+        <img src="assets/imgs/credentials_icon.png" class="instruction-icon" />
+        <p class="help-text">Credentials</p>
       </ion-col>
     </ion-row>
     <ion-row class="footer-icons-holder">
       <ion-col col-4 *ngIf="(totalStarCount > 0)">
         <div class="share-icon" (click)="sharePage(selectedUserIndex)"></div>
-        <div class="settings-icon website-icon" (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"></div>
+        <div
+          class="settings-icon website-icon"
+          (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"
+        ></div>
       </ion-col>
       <ion-col col-4 *ngIf="(totalStarCount == 0)">
-        <div class="settings-icon website-icon" (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"></div>
+        <div
+          class="settings-icon website-icon"
+          (click)="openExternalLink('https://maverickfitkids.net/store/', 'UsersPage')"
+        ></div>
         <div class="dummy-icon"></div>
       </ion-col>
       <ion-col col-8>
-        <img src="assets/imgs/maverick_logo.png" class="logo-img">
+        <img src="assets/imgs/maverick_logo.png" class="logo-img" />
       </ion-col>
     </ion-row>
   </ion-toolbar>
